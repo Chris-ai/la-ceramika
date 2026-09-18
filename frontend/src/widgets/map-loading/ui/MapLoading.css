@@ -1,0 +1,77 @@
+.map-loading {
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.map-loading::before {
+  content: '';
+  position: absolute;
+  width: min(680px, 82vw);
+  aspect-ratio: 1.35;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(255 253 251 / 96%), rgb(255 250 245 / 66%) 52%, transparent 76%);
+  filter: blur(8px);
+}
+.map-loading-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+}
+.map-loading svg {
+  position: relative;
+  width: min(520px, 86vw);
+  overflow: visible;
+  filter: drop-shadow(4px 7px 0 rgb(53 37 31 / 13%));
+}
+.app-spinner {
+  color: var(--color-border);
+}
+.map-loading-spinner {
+  width: 54px;
+  height: 54px;
+  margin-top: -26px;
+}
+.map-loading-hex {
+  fill: #e3dfdb;
+  stroke: var(--color-border);
+  stroke-width: 1.5;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: loading-hex-hop;
+  animation-timing-function: cubic-bezier(0.28, 0.78, 0.3, 1);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+.map-loading-hex:nth-child(4n + 1) {
+  fill: #cfd9f3;
+}
+.map-loading-hex:nth-child(4n + 2) {
+  fill: #f6d98d;
+}
+.map-loading-hex:nth-child(4n + 3) {
+  fill: #bee5dc;
+}
+@keyframes loading-hex-hop {
+  0%,
+  22% {
+    opacity: 0.48;
+    transform: translateY(0) scale(0.94);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-18px) scale(1);
+  }
+  100% {
+    opacity: 0.82;
+    transform: translateY(-8px) scale(0.98);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .map-loading-hex {
+    animation: none;
+    opacity: 0.8;
+  }
+}
