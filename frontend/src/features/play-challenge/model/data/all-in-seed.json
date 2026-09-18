@@ -1,0 +1,541 @@
+{
+  "schema_version": 1,
+  "content_type": "ALL_IN",
+  "set": "La Ceramica — ALL IN seed v1 FINAL",
+  "generated_at": "2026-09-16",
+  "count": 24,
+  "questions": [
+    {
+      "category": "Muzyka",
+      "question": "Który z tych artystów nigdy nie wystąpił w Super Bowl Halftime Show?",
+      "options": [
+        {
+          "text": "Lady Gaga",
+          "is_correct": false
+        },
+        {
+          "text": "Beyoncé",
+          "is_correct": false
+        },
+        {
+          "text": "Bruno Mars",
+          "is_correct": false
+        },
+        {
+          "text": "Taylor Swift",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Świat",
+      "question": "Która z tych stolic leży najdalej na północ?",
+      "options": [
+        {
+          "text": "Oslo",
+          "is_correct": false
+        },
+        {
+          "text": "Helsinki",
+          "is_correct": true
+        },
+        {
+          "text": "Sztokholm",
+          "is_correct": false
+        },
+        {
+          "text": "Tallinn",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Świat",
+      "question": "Która z tych pustyń jest największa pod względem powierzchni?",
+      "options": [
+        {
+          "text": "Sahara",
+          "is_correct": false
+        },
+        {
+          "text": "Gobi",
+          "is_correct": false
+        },
+        {
+          "text": "Antarktyda",
+          "is_correct": true
+        },
+        {
+          "text": "Pustynia Arabska",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Świat",
+      "question": "Które z tych państw ma najmniejszą powierzchnię?",
+      "options": [
+        {
+          "text": "Monako",
+          "is_correct": false
+        },
+        {
+          "text": "San Marino",
+          "is_correct": false
+        },
+        {
+          "text": "Liechtenstein",
+          "is_correct": false
+        },
+        {
+          "text": "Watykan",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Nauka",
+      "question": "Na której planecie obrót wokół własnej osi trwa dłużej niż obieg wokół Słońca?",
+      "options": [
+        {
+          "text": "Merkury",
+          "is_correct": false
+        },
+        {
+          "text": "Wenus",
+          "is_correct": true
+        },
+        {
+          "text": "Mars",
+          "is_correct": false
+        },
+        {
+          "text": "Jowisz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Biznes",
+      "question": "Która z tych sieci restauracji miała najwięcej lokali na świecie na koniec 2025 roku?",
+      "options": [
+        {
+          "text": "Starbucks",
+          "is_correct": false
+        },
+        {
+          "text": "KFC",
+          "is_correct": false
+        },
+        {
+          "text": "McDonald’s",
+          "is_correct": true
+        },
+        {
+          "text": "Pizza Hut",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Gry",
+      "question": "W którym roku zadebiutowała pierwsza konsola PlayStation?",
+      "options": [
+        {
+          "text": "1992",
+          "is_correct": false
+        },
+        {
+          "text": "1994",
+          "is_correct": true
+        },
+        {
+          "text": "1996",
+          "is_correct": false
+        },
+        {
+          "text": "1998",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Gry",
+      "question": "Jak pierwotnie nazywała się postać znana dziś jako Mario?",
+      "options": [
+        {
+          "text": "Jumpman",
+          "is_correct": true
+        },
+        {
+          "text": "Plumber Man",
+          "is_correct": false
+        },
+        {
+          "text": "Mr. Nintendo",
+          "is_correct": false
+        },
+        {
+          "text": "Red Cap",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Internet",
+      "question": "Jaki był pierwotny cel sieci ARPANET?",
+      "options": [
+        {
+          "text": "Sprzedaż produktów online",
+          "is_correct": false
+        },
+        {
+          "text": "Wymiana zasobów i informacji między ośrodkami badawczymi",
+          "is_correct": true
+        },
+        {
+          "text": "Streaming filmów",
+          "is_correct": false
+        },
+        {
+          "text": "Obsługa telefonii komórkowej",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Internet",
+      "question": "Co zawierał pierwszy tweet opublikowany przez Jacka Dorseya?",
+      "options": [
+        {
+          "text": "hello world",
+          "is_correct": false
+        },
+        {
+          "text": "just setting up my twttr",
+          "is_correct": true
+        },
+        {
+          "text": "welcome to twitter",
+          "is_correct": false
+        },
+        {
+          "text": "my first tweet",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Film",
+      "question": "Który z tych filmów miał premierę najwcześniej?",
+      "options": [
+        {
+          "text": "Shrek",
+          "is_correct": true
+        },
+        {
+          "text": "Lilo i Stich",
+          "is_correct": false
+        },
+        {
+          "text": "Gdzie jest Nemo",
+          "is_correct": false
+        },
+        {
+          "text": "Iniemamocni",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Film",
+      "question": "Który film jako pierwszy film animowany w historii otrzymał nominację do Oscara za najlepszy film?",
+      "options": [
+        {
+          "text": "Król Lew",
+          "is_correct": false
+        },
+        {
+          "text": "Piękna i Bestia",
+          "is_correct": true
+        },
+        {
+          "text": "Toy Story",
+          "is_correct": false
+        },
+        {
+          "text": "Shrek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Świat",
+      "question": "Które państwo ma najwięcej standardowych stref czasowych, licząc terytoria zamorskie?",
+      "options": [
+        {
+          "text": "Rosja",
+          "is_correct": false
+        },
+        {
+          "text": "Stany Zjednoczone",
+          "is_correct": false
+        },
+        {
+          "text": "Francja",
+          "is_correct": true
+        },
+        {
+          "text": "Australia",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Pokémon",
+      "question": "Którego z tych Pokémonów Ash Ketchum nie posiadał?",
+      "options": [
+        {
+          "text": "Charizard",
+          "is_correct": false
+        },
+        {
+          "text": "Squirtle",
+          "is_correct": false
+        },
+        {
+          "text": "Pikachu",
+          "is_correct": false
+        },
+        {
+          "text": "Eevee",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Biznes",
+      "question": "Który z tych miliarderów ma obecnie największy majątek?",
+      "options": [
+        {
+          "text": "Bill Gates",
+          "is_correct": false
+        },
+        {
+          "text": "Jeff Bezos",
+          "is_correct": false
+        },
+        {
+          "text": "Warren Buffett",
+          "is_correct": false
+        },
+        {
+          "text": "Elon Musk",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Sport",
+      "question": "Który z tych klubów zdobył najwięcej Pucharów Europy / Lig Mistrzów?",
+      "options": [
+        {
+          "text": "FC Barcelona",
+          "is_correct": false
+        },
+        {
+          "text": "Bayern Monachium",
+          "is_correct": false
+        },
+        {
+          "text": "AC Milan",
+          "is_correct": false
+        },
+        {
+          "text": "Real Madryt",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Biblia",
+      "question": "Który z tych mężczyzn nie był jednym z Dwunastu Apostołów?",
+      "options": [
+        {
+          "text": "Mateusz",
+          "is_correct": false
+        },
+        {
+          "text": "Jan",
+          "is_correct": false
+        },
+        {
+          "text": "Piotr",
+          "is_correct": false
+        },
+        {
+          "text": "Marek",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Moda",
+      "question": "Która z tych luksusowych marek modowych nie pochodzi z Francji?",
+      "options": [
+        {
+          "text": "Dior",
+          "is_correct": false
+        },
+        {
+          "text": "Hermès",
+          "is_correct": false
+        },
+        {
+          "text": "Louis Vuitton",
+          "is_correct": false
+        },
+        {
+          "text": "Dolce & Gabbana",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Europa",
+      "question": "Ile państw liczyła Unia Europejska w momencie jej powstania w 1993 roku?",
+      "options": [
+        {
+          "text": "6",
+          "is_correct": false
+        },
+        {
+          "text": "10",
+          "is_correct": false
+        },
+        {
+          "text": "12",
+          "is_correct": true
+        },
+        {
+          "text": "15",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Technologia",
+      "question": "Czego obawiano się w związku z tzw. problemem Y2K przed nadejściem roku 2000?",
+      "options": [
+        {
+          "text": "Że komputery utracą dostęp do internetu",
+          "is_correct": false
+        },
+        {
+          "text": "Że systemy pomylą rok 2000 z 1900",
+          "is_correct": true
+        },
+        {
+          "text": "Że dyski twarde automatycznie się wyczyszczą",
+          "is_correct": false
+        },
+        {
+          "text": "Że satelity GPS przestaną działać",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Internet",
+      "question": "Co było pierwszym produktem sprzedanym przez Amazon?",
+      "options": [
+        {
+          "text": "Płyta CD",
+          "is_correct": false
+        },
+        {
+          "text": "Książka",
+          "is_correct": true
+        },
+        {
+          "text": "Komputer",
+          "is_correct": false
+        },
+        {
+          "text": "Zegarek",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Europa",
+      "question": "Które z tych państw jako ostatnie przyjęło euro?",
+      "options": [
+        {
+          "text": "Chorwacja",
+          "is_correct": false
+        },
+        {
+          "text": "Litwa",
+          "is_correct": false
+        },
+        {
+          "text": "Łotwa",
+          "is_correct": false
+        },
+        {
+          "text": "Bułgaria",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "category": "Nauka",
+      "question": "Który z tych pierwiastków ma symbol chemiczny W?",
+      "options": [
+        {
+          "text": "Wolfram",
+          "is_correct": true
+        },
+        {
+          "text": "Wanad",
+          "is_correct": false
+        },
+        {
+          "text": "Wapń",
+          "is_correct": false
+        },
+        {
+          "text": "Wodór",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "category": "Kultura",
+      "question": "Który z tych instrumentów ma standardowo 88 klawiszy?",
+      "options": [
+        {
+          "text": "Akordeon",
+          "is_correct": false
+        },
+        {
+          "text": "Fortepian",
+          "is_correct": true
+        },
+        {
+          "text": "Organy Hammonda",
+          "is_correct": false
+        },
+        {
+          "text": "Klawesyn",
+          "is_correct": false
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Pytania o majątek i liczbę lokali są dynamiczne i powinny być okresowo rewalidowane.",
+    "Pytanie o euro jest poprawne dla stanu na 2026-09-16."
+  ]
+}
