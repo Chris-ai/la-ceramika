@@ -2,16 +2,34 @@
   "name": "la-ceramika",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "yarn@1.22.22",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -b",
+    "check": "yarn format:check && yarn lint && yarn typecheck",
+    "test:form": "node --experimental-strip-types --test tests/game-setup.schema.test.ts",
+    "test:map": "node --experimental-strip-types --test tests/map-preview.test.ts",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
+    "@iconify-icons/game-icons": "^2.0.0",
+    "@iconify-icons/heroicons": "^2.0.1",
+    "@iconify-icons/svg-spinners": "^2.0.0",
+    "@iconify/react": "^6.0.2",
+    "@tanstack/react-query": "^5.103.1",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "react-hook-form": "^7.88.0",
+    "react-router-dom": "^7.18.4",
+    "zod": "^4.6.5",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@babel/core": "^7.29.7",
@@ -27,6 +45,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.6",
     "globals": "^17.12.0",
+    "prettier": "^3.9.8",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.69.0",
     "vite": "^8.3.0"
