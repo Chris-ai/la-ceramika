@@ -1,0 +1,23 @@
+export const teamColors = [
+  { value: '#91abea', label: 'Błękitny' },
+  { value: '#f28e9a', label: 'Koralowy' },
+  { value: '#f7ca62', label: 'Miodowy' },
+  { value: '#63cfc1', label: 'Turkusowy' },
+  { value: '#ad91d8', label: 'Lawendowy' },
+  { value: '#f4a96e', label: 'Brzoskwiniowy' },
+  { value: '#78b889', label: 'Zielony' },
+  { value: '#e77ab7', label: 'Różowy' },
+  { value: '#7995b2', label: 'Stalowy' },
+  { value: '#c6a37d', label: 'Piaskowy' },
+] as const
+
+export const animalIcons = [
+  { id: 'game-icons:owl', slug: 'owl', label: 'Sowa' },
+  { id: 'game-icons:bear-head', slug: 'bear-head', label: 'Niedźwiedź' },
+  { id: 'game-icons:duck', slug: 'duck', label: 'Kaczka' },
+  { id: 'game-icons:sloth', slug: 'sloth', label: 'Leniwiec' },
+  { id: 'game-icons:capybara', slug: 'capybara', label: 'Kapibara' },
+  { id: 'game-icons:cow', slug: 'cow', label: 'Krowa' },
+  { id: 'game-icons:monkey', slug: 'monkey', label: 'Małpa' },
+  { id: 'game-icons:horse-head', slug: 'horse-head', label: 'Koń' },
+] as const
