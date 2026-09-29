@@ -82,6 +82,14 @@ export function MoreLessGame({
           Więcej
         </button>
       </div>
+      <button
+        type="button"
+        className="gamble-confirm"
+        disabled={choice === null || revealed}
+        onClick={() => setRevealed(true)}
+      >
+        Zatwierdź odpowiedź
+      </button>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import type { Hex } from '@/entities/game'
+export type HexCoordinate = { q: number; r: number }
 
 export const HEX_RADIUS = 34
 export const HEX_TILT = 0.84
@@ -31,6 +31,6 @@ export const shadeColor = (hexColor: string, factor: number) => {
   )
   return `#${channels.map((channel) => channel.toString(16).padStart(2, '0')).join('')}`
 }
-export const hexKey = (hex: Hex) => `${hex.q},${hex.r}`
-export const areAdjacent = (first: Hex, second: Hex) =>
+export const hexKey = (hex: HexCoordinate) => `${hex.q},${hex.r}`
+export const areAdjacent = (first: HexCoordinate, second: HexCoordinate) =>
   directions.some(([dq, dr]) => first.q + dq === second.q && first.r + dr === second.r)

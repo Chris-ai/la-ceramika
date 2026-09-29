@@ -1,16 +1,18 @@
+import { Toast } from '@/shared/ui/toast'
+import { teamLabel } from '@/entities/team'
 import { useEffect, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Icon } from '@iconify/react/offline'
 import fireIcon from '@iconify-icons/heroicons/fire-solid'
-import closeIcon from '@iconify-icons/heroicons/x-mark'
 import turnArrowIcon from '@iconify-icons/heroicons/arrow-right'
 import type { ChallengeType } from '@/entities/challenge'
 import type { Game, Hex } from '@/entities/game'
 import { ChallengeModal, resolveChallenge, spinRoulette, type ChallengeData } from '@/features/play-challenge'
 import { nextPlayer } from '@/features/end-turn'
-import type { Duel } from '@/features/duel-control'
+import { createDuel, getCurrentDuel, type Duel } from '@/features/duel-control'
 import { HexActionPanel } from '@/features/select-hex-action'
 import { DuelHost } from '@/widgets/duel-screen'
+import { PurgatoryPanel } from './PurgatoryPanel'
 import { ActionWheel } from './ActionWheel'
 import { HexMap } from './HexMap'
 import './GameBoard.css'
@@ -31,6 +33,9 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
   const [turnEndModal, setTurnEndModal] = useState<'BASE_REQUIRED' | 'BONUS_CONFIRM' | null>(null)
   const [activeDuel, setActiveDuel] = useState<Duel | null>(null)
   const nextTurnMutation = useMutation({ mutationFn: nextPlayer })
+  const duelMutation = useMutation({
+    mutationFn: ({ gameId, hexId }: { gameId: string; hexId: string }) => createDuel(gameId, hexId),
+  })
   const resolveChallengeMutation = useMutation({
     mutationFn: ({
       gameId,
@@ -52,25 +57,29 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
     const timeout = window.setTimeout(() => setIsMapEntering(false), 1750)
     return () => window.clearTimeout(timeout)
   }, [])
+  useEffect(() => {
+    if (!map.gameId) return
+
+    let cancelled = false
+    void getCurrentDuel(map.gameId)
+      .then((duel) => {
+        if (!cancelled && duel) setActiveDuel(duel)
+      })
+      .catch(() => undefined)
+
+    return () => {
+      cancelled = true
+    }
+  }, [map.gameId])
   const activeTeamIndex = Math.max(
     0,
     map.teams.findIndex((team) => team.id === map.currentTeamId),
   )
   const activeTeam = map.teams[activeTeamIndex]
-  const actionCount = (map.baseMoveUsed ? 0 : 1) + (activeTeam.bonusMoves ?? 0)
-
-  if (activeDuel)
-    return (
-      <DuelHost
-        initialDuel={activeDuel}
-        onGameUpdated={onGameUpdated}
-        onReturn={() => {
-          setActiveDuel(null)
-          setHexActionTarget(null)
-          setSelectedHex(null)
-        }}
-      />
-    )
+  const actionCount =
+    activeTeam.status === 'PURGATORY' || map.status === 'FINISHED'
+      ? 0
+      : (map.baseMoveUsed ? 0 : 1) + (activeTeam.bonusMoves ?? 0)
 
   function requestNextTurn() {
     if (!map.baseMoveUsed) {
@@ -104,6 +113,7 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
 
   return (
     <main className="board-screen">
+      <PurgatoryPanel key={map.currentTeamId} game={map} onGameUpdated={onGameUpdated} />
       <HexMap
         game={map}
         activeTeamIndex={activeTeamIndex}
@@ -112,31 +122,44 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
         isEntering={isMapEntering}
         onSelect={(hex, mode) => {
           setSelectedHex(`${hex.q},${hex.r}`)
-          if (mode) {
+          if (mode === 'DUEL' && map.gameId && hex.id) {
+            if (duelMutation.isPending || activeDuel) return
+            setHexActionTarget(null)
+            setActionError(null)
+            const presentation = window.open(`/game/${map.gameId}/presentation`, 'la-ceramica-presentation')
+            void duelMutation
+              .mutateAsync({ gameId: map.gameId, hexId: hex.id })
+              .then((duel) => {
+                setActiveDuel(duel)
+                presentation?.focus()
+                window.focus()
+              })
+              .catch(async (error) => {
+                const existingDuel = await getCurrentDuel(map.gameId!).catch(() => null)
+                if (existingDuel) {
+                  setActiveDuel(existingDuel)
+                  presentation?.focus()
+                  window.focus()
+                  return
+                }
+                presentation?.close()
+                setActionError(error instanceof Error ? error.message : 'Nie udało się rozpocząć pojedynku.')
+              })
+            return
+          }
+          if (mode === 'NEUTRAL') {
             setMapVerdict(null)
             setHexActionTarget({ hex, mode })
           } else setHexActionTarget(null)
         }}
       />
-      {hexActionTarget && !challengeTarget && map.gameId && (
+      {hexActionTarget?.mode === 'NEUTRAL' && !challengeTarget && map.gameId && (
         <HexActionPanel
           gameId={map.gameId}
           target={hexActionTarget}
-          onDuel={setActiveDuel}
           onError={setActionError}
           onChallenge={(type, data) => setChallengeTarget({ ...hexActionTarget, type, data })}
         />
-      )}
-      {map.gameId && (
-        <button
-          type="button"
-          className="presentation-open"
-          onClick={() => {
-            window.open(`/game/${map.gameId}/presentation`, 'la-ceramica-presentation')
-          }}
-        >
-          Ekran prezentacyjny
-        </button>
       )}
       <div className="turn-status">
         <div className="turn-streak" aria-label={`Seria zwycięstw: ${activeTeam.streak ?? 0}`}>
@@ -151,9 +174,13 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
         type="button"
         className={`turn-end ${isTurnChanging ? 'turn-end--changing' : ''}`}
         style={{ backgroundColor: activeTeam.color }}
-        disabled={isTurnChanging}
+        disabled={
+          isTurnChanging ||
+          map.status === 'FINISHED' ||
+          (activeTeam.status === 'PURGATORY' && !map.baseMoveUsed)
+        }
         onClick={requestNextTurn}
-        aria-label={`Zakończ turę drużyny ${activeTeam.name}`}
+        aria-label={`Zakończ turę drużyny ${teamLabel(activeTeam)}`}
       >
         <Icon icon={turnArrowIcon} aria-hidden="true" />
       </button>
@@ -195,15 +222,11 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
         </div>
       )}
       {mapVerdict && (
-        <div className={`map-verdict map-verdict--${mapVerdict.toLowerCase()}`} role="status">
-          <strong>{mapVerdict === 'WIN' ? 'Wyzwanie wygrane' : 'Wyzwanie przegrane'}</strong>
-          <span>
-            {mapVerdict === 'WIN' ? 'Pole jest gotowe do przejęcia.' : 'Pole nie zostało przejęte.'}
-          </span>
-          <button type="button" aria-label="Ukryj werdykt" onClick={() => setMapVerdict(null)}>
-            <Icon icon={closeIcon} aria-hidden="true" />
-          </button>
-        </div>
+        <Toast
+          message={mapVerdict === 'WIN' ? 'Pole przejęte!' : 'Pole nie zostało przejęte.'}
+          tone={mapVerdict === 'WIN' ? 'success' : 'error'}
+          onDismiss={() => setMapVerdict(null)}
+        />
       )}
       {challengeTarget && (
         <ChallengeModal
@@ -235,6 +258,17 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
             setChallengeTarget(null)
             setHexActionTarget(null)
             setMapVerdict(verdict)
+          }}
+        />
+      )}
+      {activeDuel && (
+        <DuelHost
+          initialDuel={activeDuel}
+          onGameUpdated={onGameUpdated}
+          onReturn={() => {
+            setActiveDuel(null)
+            setHexActionTarget(null)
+            setSelectedHex(null)
           }}
         />
       )}

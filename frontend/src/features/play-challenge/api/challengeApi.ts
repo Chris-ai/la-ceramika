@@ -29,3 +29,9 @@ export const spinRoulette = (gameId: string, hexId: string, choice: 'RED' | 'BLA
     `/games/${gameId}/hexes/${hexId}/roulette-spin`,
     jsonRequest('POST', { choice }),
   )
+
+export const startResurrection = (gameId: string) =>
+  apiRequest<{ game: Game; hexId: string | null; challenge: ChallengeData | null }>(
+    `/games/${gameId}/resurrection`,
+    jsonRequest('POST', {}),
+  )

@@ -9,11 +9,16 @@ export type DuelSnapshot = {
   activeTeamId: string | null
   winnerTeamId: string | null
 }
-type Message = { kind: 'SNAPSHOT'; snapshot: DuelSnapshot } | { kind: 'REQUEST_SNAPSHOT' }
+type DuelCommand = 'START' | 'PASS' | 'SWITCH' | 'RETURN'
+type Message =
+  | { kind: 'SNAPSHOT'; snapshot: DuelSnapshot }
+  | { kind: 'REQUEST_SNAPSHOT' }
+  | { kind: 'COMMAND'; command: DuelCommand }
 
 export type DuelTransport = {
   publish(snapshot: DuelSnapshot): void
   requestSnapshot(): void
+  command(command: DuelCommand): void
   subscribe(listener: (message: Message) => void): () => void
   close(): void
 }
@@ -23,6 +28,7 @@ export function createDuelTransport(gameId: string): DuelTransport {
   return {
     publish: (snapshot) => channel.postMessage({ kind: 'SNAPSHOT', snapshot } satisfies Message),
     requestSnapshot: () => channel.postMessage({ kind: 'REQUEST_SNAPSHOT' } satisfies Message),
+    command: (command) => channel.postMessage({ kind: 'COMMAND', command } satisfies Message),
     subscribe(listener) {
       const handler = (event: MessageEvent<Message>) => listener(event.data)
       channel.addEventListener('message', handler)

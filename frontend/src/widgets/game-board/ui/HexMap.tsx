@@ -1,4 +1,5 @@
-import { animalIcons } from '@/entities/team'
+import { teamLabel } from '@/entities/team'
+import { teamIcons } from '@/entities/team'
 import type { Game, Hex } from '@/entities/game'
 import {
   areAdjacent,
@@ -9,7 +10,7 @@ import {
   hexVertices,
   polygonPoints,
   shadeColor,
-} from '../lib/hexGeometry'
+} from '@/entities/hex'
 
 type HexMapProps = {
   game: Game
@@ -45,7 +46,7 @@ export function HexMap({
   return (
     <div
       className="board-map"
-      aria-label={`Spójna mapa z ${game.hexCount} heksami i bazami ${game.teams.map((team) => team.name).join(', ')}`}
+      aria-label={`Spójna mapa z ${game.hexCount} heksami i bazami ${game.teams.map((team) => teamLabel(team)).join(', ')}`}
     >
       <svg
         viewBox={`${bounds.left} ${bounds.top} ${bounds.right - bounds.left} ${bounds.bottom - bounds.top}`}
@@ -54,7 +55,7 @@ export function HexMap({
         {orderedHexes.map((hex) => {
           const { x, y } = hexCenter(hex.q, hex.r)
           const team = hex.ownerTeamIndex === null ? null : game.teams[hex.ownerTeamIndex]
-          const icon = team ? animalIcons.find((animal) => animal.id === team.avatar) : null
+          const icon = team ? teamIcons.find((animal) => animal.id === team.avatar) : null
           const key = hexKey(hex)
           const isActiveBase = hex.isBase && hex.ownerTeamIndex === activeTeamIndex
           const isReachable = hex.status !== 'DESTROYED' && canReach(hex)
@@ -68,7 +69,7 @@ export function HexMap({
           const corners = hexVertices(x, y)
           const height = hexDepth(hex.q, hex.r)
           const label = team
-            ? `Baza drużyny ${team.name}`
+            ? `Baza drużyny ${teamLabel(team)}`
             : canAttack
               ? 'Sąsiedni neutralny heks'
               : 'Neutralny heks'

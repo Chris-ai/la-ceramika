@@ -1,5 +1,7 @@
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://127.0.0.1:8000'
 
+export const apiUrl = (path: string) => `${API_URL}${path}`
+
 export async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_URL}${path}`, init)
   if (!response.ok) {

@@ -1,0 +1,46 @@
+.demo-hex__outline,
+.demo-hex__top,
+.demo-hex__side {
+  stroke: var(--color-border);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: fill 400ms ease;
+}
+.demo-hex__side {
+  stroke-width: 1.7;
+  filter: drop-shadow(1px 3px 2px rgb(53 37 31 / 14%));
+}
+.demo-hex__capture-fill {
+  transform-box: view-box;
+  animation: demo-hex-capture 450ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.demo-hex--loss {
+  animation: demo-hex-miss 400ms ease;
+}
+@keyframes demo-hex-capture {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes demo-hex-miss {
+  25% {
+    transform: translateX(-2px);
+  }
+  65% {
+    transform: translateX(2px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-hex,
+  .demo-hex__capture-fill {
+    animation: none;
+  }
+  .demo-hex__top,
+  .demo-hex__side {
+    transition: none;
+  }
+}

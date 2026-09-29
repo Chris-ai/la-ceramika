@@ -1,3 +1,5 @@
+import './TeamAvatar.css'
+
 export function TeamAvatar({
   slug,
   color,

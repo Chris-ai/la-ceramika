@@ -4,6 +4,7 @@ import type { DuelSnapshot } from './duelChannel'
 
 type DuelState = DuelSnapshot & {
   setDuel(duel: Duel): void
+  updateDuel(duel: Duel): void
   start(): void
   setTimers(attackerMs: number, defenderMs: number): void
   switchPlayer(): void
@@ -15,8 +16,8 @@ type DuelState = DuelSnapshot & {
 const empty: DuelSnapshot = {
   duel: null,
   phase: 'IDLE',
-  attackerMs: 45000,
-  defenderMs: 45000,
+  attackerMs: 30000,
+  defenderMs: 30000,
   activeTeamId: null,
   winnerTeamId: null,
 }
@@ -30,6 +31,7 @@ export const useDuelStore = create<DuelState>((set) => ({
       phase: duel.status === 'ACTIVE' ? 'ACTIVE' : 'INTRO',
       activeTeamId: duel.attacker.id,
     }),
+  updateDuel: (duel) => set({ duel }),
   start: () => set((state) => ({ phase: 'ACTIVE', activeTeamId: state.duel?.attacker.id ?? null })),
   setTimers: (attackerMs, defenderMs) => set({ attackerMs, defenderMs }),
   switchPlayer: () =>

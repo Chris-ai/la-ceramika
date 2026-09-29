@@ -1,0 +1,18 @@
+.demo-board {
+  width: min(520px, 78vw, 64svh);
+  transition: opacity 600ms ease;
+  pointer-events: none;
+}
+.demo-board svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.demo-board--fading {
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .demo-board {
+    transition: none;
+  }
+}

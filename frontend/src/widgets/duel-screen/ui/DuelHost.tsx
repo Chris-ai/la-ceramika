@@ -1,5 +1,7 @@
+import { useEffect, useEffectEvent, useMemo } from 'react'
 import type { Game } from '@/entities/game'
-import { useDuelController, type Duel } from '@/features/duel-control'
+import { createDuelTransport, useDuelController, type Duel } from '@/features/duel-control'
+
 import { DuelView } from './DuelView'
 import './DuelScreen.css'
 
@@ -12,39 +14,36 @@ export function DuelHost({
   onGameUpdated(game: Game): void
   onReturn(): void
 }) {
-  const { snapshot, isStarting, error, begin, pass, switchPlayer } = useDuelController(
+  const { snapshot, isStarting, isPromptLoading, error, begin, pass, switchPlayer } = useDuelController(
     initialDuel,
     onGameUpdated,
   )
 
+  const transport = useMemo(() => createDuelTransport(initialDuel.gameId), [initialDuel.gameId])
+  const handleCommand = useEffectEvent((command: string) => {
+    if (command === 'START' && snapshot.phase === 'INTRO' && !isStarting) void begin().catch(() => undefined)
+    if (command === 'PASS' && snapshot.phase === 'ACTIVE' && !isPromptLoading) pass()
+    if (command === 'SWITCH' && snapshot.phase === 'ACTIVE' && !isPromptLoading)
+      void switchPlayer().catch(() => undefined)
+    if (command === 'RETURN' && snapshot.phase === 'RESULT') onReturn()
+  })
+  useEffect(() => {
+    const unsubscribe = transport.subscribe((message) => {
+      if (message.kind === 'COMMAND') handleCommand(message.command)
+    })
+    return () => {
+      unsubscribe()
+      transport.close()
+    }
+  }, [transport])
   return (
-    <main className="duel-host-screen">
+    <div className="duel-host-screen">
       <DuelView snapshot={snapshot} />
-      <footer className="duel-controls">
-        {snapshot.phase === 'INTRO' && (
-          <button className="duel-start" disabled={isStarting} onClick={() => void begin()}>
-            START
-          </button>
-        )}
-        {snapshot.phase === 'ACTIVE' && (
-          <>
-            <button onClick={pass}>PASS −3 s</button>
-            <button className="duel-change" onClick={switchPlayer}>
-              POPRAWNA
-            </button>
-          </>
-        )}
-        {snapshot.phase === 'RESULT' && (
-          <button className="duel-start" onClick={onReturn}>
-            WRÓĆ DO MAPY
-          </button>
-        )}
-      </footer>
       {error && (
         <div className="duel-error" role="alert">
           {error}
         </div>
       )}
-    </main>
+    </div>
   )
 }

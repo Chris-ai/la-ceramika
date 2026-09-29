@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import type { Game } from '@/entities/game'
-import { finishDuel, startDuel, type Duel } from '../api/duelApi'
+import { finishDuel, nextDuelPrompt, startDuel, type Duel } from '../api/duelApi'
 import { createDuelTransport } from './duelChannel'
 import { duelSnapshot, useDuelStore } from './duelStore'
 
@@ -10,6 +10,7 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
   const finishing = useRef(false)
   const transport = useMemo(() => createDuelTransport(initialDuel.gameId), [initialDuel.gameId])
   const startMutation = useMutation({ mutationFn: startDuel })
+  const promptMutation = useMutation({ mutationFn: nextDuelPrompt })
   const finishMutation = useMutation({
     mutationFn: ({ duel, winnerId }: { duel: Duel; winnerId: string }) => finishDuel(duel, winnerId),
   })
@@ -30,6 +31,7 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
   useEffect(() => {
     transport.publish(duelSnapshot())
   }, [
+    snapshot.duel,
     snapshot.phase,
     snapshot.attackerMs,
     snapshot.defenderMs,
@@ -84,11 +86,21 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
     useDuelStore.getState().start()
   }
 
-  const mutationError = startMutation.error ?? finishMutation.error
+  async function switchPlayer() {
+    if (!snapshot.duel) return
+    if (snapshot.duel.type === 'IDENTIFY') {
+      const duel = await promptMutation.mutateAsync(snapshot.duel)
+      useDuelStore.getState().updateDuel(duel)
+    }
+    useDuelStore.getState().switchPlayer()
+  }
+
+  const mutationError = startMutation.error ?? promptMutation.error ?? finishMutation.error
 
   return {
     snapshot,
     isStarting: startMutation.isPending,
+    isPromptLoading: promptMutation.isPending,
     error:
       mutationError instanceof Error
         ? mutationError.message
@@ -97,6 +109,6 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
           : null,
     begin,
     pass: useDuelStore.getState().pass,
-    switchPlayer: useDuelStore.getState().switchPlayer,
+    switchPlayer,
   }
 }

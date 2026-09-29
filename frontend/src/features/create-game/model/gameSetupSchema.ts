@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { animalIcons, teamColors } from '../../../entities/team/config/teamOptions.ts'
+import { teamIcons, teamColors } from '../../../entities/team/config/teamOptions.ts'
 
-export { animalIcons, teamColors }
+export { teamIcons, teamColors }
 
 export type MapPreset = 'S' | 'M' | 'XL' | 'XXL'
 
@@ -25,17 +25,12 @@ export const gameSetupSchema = z
     teams: z
       .array(
         z.object({
-          name: z
-            .string()
-            .trim()
-            .min(1, 'Podaj nazwę drużyny.')
-            .max(40, 'Nazwa może mieć maksymalnie 40 znaków.'),
           color: z
             .string()
             .refine((value) => teamColors.some((color) => color.value === value), 'Wybierz kolor drużyny.'),
           avatar: z
             .string()
-            .refine((value) => animalIcons.some((icon) => icon.id === value), 'Wybierz ikonę drużyny.'),
+            .refine((value) => teamIcons.some((icon) => icon.id === value), 'Wybierz ikonę drużyny.'),
         }),
       )
       .min(2, 'Dodaj przynajmniej 2 drużyny.')
@@ -77,7 +72,7 @@ export type ValidatedGameSetup = z.output<typeof gameSetupSchema>
 
 export function toGameSetupPayload(values: ValidatedGameSetup) {
   return {
-    teams: values.teams,
+    teams: values.teams.map((team, index) => ({ ...team, name: `Drużyna ${index + 1}` })),
     hexCount: mapSizes(values.teams.length)[values.mapPreset],
     winCondition: values.winCondition,
     roundLimit: values.winCondition === 'ROUND_LIMIT' ? Number(values.roundLimit.trim()) : null,

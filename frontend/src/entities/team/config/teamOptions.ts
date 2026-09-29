@@ -11,13 +11,21 @@ export const teamColors = [
   { value: '#c6a37d', label: 'Piaskowy' },
 ] as const
 
-export const animalIcons = [
+export const teamIcons = [
   { id: 'game-icons:owl', slug: 'owl', label: 'Sowa' },
+  { id: 'game-icons:rocket', slug: 'rocket', label: 'Rakieta' },
+  { id: 'game-icons:coffee-cup', slug: 'coffee-cup', label: 'Kawa' },
   { id: 'game-icons:bear-head', slug: 'bear-head', label: 'Niedźwiedź' },
+  { id: 'game-icons:anchor', slug: 'anchor', label: 'Kotwica' },
   { id: 'game-icons:duck', slug: 'duck', label: 'Kaczka' },
+  { id: 'game-icons:diamond-hard', slug: 'diamond-hard', label: 'Diament' },
   { id: 'game-icons:sloth', slug: 'sloth', label: 'Leniwiec' },
+  { id: 'game-icons:castle', slug: 'castle', label: 'Zamek' },
   { id: 'game-icons:capybara', slug: 'capybara', label: 'Kapibara' },
+  { id: 'game-icons:musical-notes', slug: 'musical-notes', label: 'Nuty' },
   { id: 'game-icons:cow', slug: 'cow', label: 'Krowa' },
+  { id: 'game-icons:crowned-skull', slug: 'crowned-skull', label: 'Czaszka' },
   { id: 'game-icons:monkey', slug: 'monkey', label: 'Małpa' },
+  { id: 'game-icons:power-lightning', slug: 'power-lightning', label: 'Błyskawica' },
   { id: 'game-icons:horse-head', slug: 'horse-head', label: 'Koń' },
 ] as const
