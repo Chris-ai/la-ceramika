@@ -83,9 +83,17 @@ def content_pool(session: Session, content_type: str) -> list[UUID]:
 
 def serialize_game(game: Game) -> dict:
     index_by_id = {team.id: index for index, team in enumerate(game.teams)}
+    scores = {team.id: 0 for team in game.teams}
+    for tile in game.hexes:
+        if tile.status == "ACTIVE" and tile.owner_team_id in scores:
+            scores[tile.owner_team_id] += 1
+    highest = max(scores.values(), default=0)
+    leaders = [team_id for team_id, score in scores.items() if score == highest and score > 0]
+    winner_id = leaders[0] if game.status == "FINISHED" and len(leaders) == 1 else None
     return {
         "gameId": game.id,
         "status": game.status,
+        "winnerTeamId": winner_id,
         "hexCount": len(game.hexes),
         "currentTeamId": game.current_team_id,
         "currentRound": game.current_round,

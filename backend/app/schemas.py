@@ -59,6 +59,7 @@ class HexState(BaseModel):
 
 
 class GameState(BaseModel):
+    winnerTeamId: uuid.UUID | None = None
     gameId: uuid.UUID
     status: str
     hexCount: int
