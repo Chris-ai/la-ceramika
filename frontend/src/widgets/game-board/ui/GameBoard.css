@@ -1,6 +1,8 @@
 .board-screen {
-  min-height: 100svh;
+  height: 100svh;
+  min-height: 420px;
   display: grid;
+  grid-template-rows: minmax(0, 1fr);
   place-items: center;
   position: relative;
   padding: 24px;
@@ -28,8 +30,10 @@
 }
 .board-map {
   width: 100%;
-  min-height: min(750px, 100svh);
+  height: 100%;
+  min-height: 0;
   display: grid;
+  grid-template-rows: minmax(0, 1fr);
   place-items: center;
   position: relative;
   isolation: isolate;
@@ -39,7 +43,7 @@
   position: absolute;
   z-index: 0;
   width: min(1000px, 82vw);
-  height: min(680px, 73svh);
+  height: min(680px, 73svh, 100%);
   border-radius: 50%;
   background: radial-gradient(
     ellipse,
@@ -56,7 +60,9 @@
   position: relative;
   z-index: 1;
   width: min(1020px, calc(100vw - 510px));
-  height: min(78svh, 760px);
+  height: 100%;
+  min-height: 0;
+  max-height: 760px;
   overflow: visible;
 }
 .board-tile {
@@ -416,7 +422,7 @@
 }
 @media (max-width: 700px) {
   .board-screen {
-    padding: 12px;
+    padding: 80px 12px 108px;
   }
   .board-back {
     top: 12px;
@@ -455,7 +461,30 @@
     height: 45px;
   }
   .board-map svg {
-    width: calc(100vw - 300px);
-    height: min(70svh, 600px);
+    width: 100%;
+    max-height: 600px;
+  }
+}
+@media (max-width: 600px) {
+  .board-screen:has(.purgatory-panel) {
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .board-screen > .purgatory-panel {
+    grid-row: 1;
+  }
+  .board-screen:has(.purgatory-panel) > .board-map {
+    grid-row: 2;
+  }
+}
+@media (max-height: 750px) {
+  .turn-end {
+    width: 80px;
+    height: 80px;
+    right: 20px;
+    bottom: 20px;
+  }
+  .turn-end svg {
+    width: 42px;
+    height: 42px;
   }
 }

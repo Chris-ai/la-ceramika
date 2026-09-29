@@ -3,7 +3,7 @@
   padding: 0.12em 0.2em 0.18em;
   overflow: visible;
   font-family: 'Lobster Two', var(--font-family-primary);
-  font-size: clamp(36px, 7.8vw, 106px);
+  font-size: clamp(36px, min(7.8vw, 12svh), 106px);
   font-weight: 700;
   font-style: italic;
   line-height: 1.3;

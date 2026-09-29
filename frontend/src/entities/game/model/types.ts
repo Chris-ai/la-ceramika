@@ -19,6 +19,7 @@ export type GameTeam = {
 }
 
 export type Game = {
+  winnerTeamId?: string | null
   gameId?: string
   status?: string
   currentTeamId?: string
