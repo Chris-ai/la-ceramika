@@ -1,0 +1,4552 @@
+{
+  "schema_version": 1,
+  "content_type": "RUSH",
+  "normalization_recommendation": {
+    "case_insensitive": true,
+    "trim": true,
+    "collapse_spaces": true,
+    "ignore_terminal_punctuation": true,
+    "diacritics": "keep canonical; optionally accept normalized ASCII aliases"
+  },
+  "tasks": [
+    {
+      "prompt": "Wymień państwa z największą liczbą katolików na świecie.",
+      "required_count": 5,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Brazylia",
+          "aliases": [
+            "Brazil"
+          ]
+        },
+        {
+          "answer": "Meksyk",
+          "aliases": [
+            "Mexico"
+          ]
+        },
+        {
+          "answer": "Filipiny",
+          "aliases": [
+            "Philippines"
+          ]
+        },
+        {
+          "answer": "Stany Zjednoczone",
+          "aliases": [
+            "USA",
+            "US",
+            "Stany Zjednoczone Ameryki"
+          ]
+        },
+        {
+          "answer": "Demokratyczna Republika Konga",
+          "aliases": [
+            "DR Konga",
+            "DRK",
+            "DRC",
+            "Kongo-Kinszasa"
+          ]
+        },
+        {
+          "answer": "Włochy",
+          "aliases": [
+            "Italy"
+          ]
+        },
+        {
+          "answer": "Francja",
+          "aliases": [
+            "France"
+          ]
+        },
+        {
+          "answer": "Kolumbia",
+          "aliases": [
+            "Colombia"
+          ]
+        },
+        {
+          "answer": "Hiszpania",
+          "aliases": [
+            "Spain"
+          ]
+        },
+        {
+          "answer": "Argentyna",
+          "aliases": [
+            "Argentina"
+          ]
+        },
+        {
+          "answer": "Nigeria",
+          "aliases": []
+        },
+        {
+          "answer": "Polska",
+          "aliases": [
+            "Poland"
+          ]
+        },
+        {
+          "answer": "Peru",
+          "aliases": []
+        },
+        {
+          "answer": "Niemcy",
+          "aliases": [
+            "Germany"
+          ]
+        },
+        {
+          "answer": "Uganda",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień stany USA.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Alabama",
+          "aliases": []
+        },
+        {
+          "answer": "Alaska",
+          "aliases": []
+        },
+        {
+          "answer": "Arizona",
+          "aliases": []
+        },
+        {
+          "answer": "Arkansas",
+          "aliases": []
+        },
+        {
+          "answer": "California",
+          "aliases": []
+        },
+        {
+          "answer": "Colorado",
+          "aliases": []
+        },
+        {
+          "answer": "Connecticut",
+          "aliases": []
+        },
+        {
+          "answer": "Delaware",
+          "aliases": []
+        },
+        {
+          "answer": "Florida",
+          "aliases": []
+        },
+        {
+          "answer": "Georgia",
+          "aliases": []
+        },
+        {
+          "answer": "Hawaii",
+          "aliases": []
+        },
+        {
+          "answer": "Idaho",
+          "aliases": []
+        },
+        {
+          "answer": "Illinois",
+          "aliases": []
+        },
+        {
+          "answer": "Indiana",
+          "aliases": []
+        },
+        {
+          "answer": "Iowa",
+          "aliases": []
+        },
+        {
+          "answer": "Kansas",
+          "aliases": []
+        },
+        {
+          "answer": "Kentucky",
+          "aliases": []
+        },
+        {
+          "answer": "Louisiana",
+          "aliases": []
+        },
+        {
+          "answer": "Maine",
+          "aliases": []
+        },
+        {
+          "answer": "Maryland",
+          "aliases": []
+        },
+        {
+          "answer": "Massachusetts",
+          "aliases": []
+        },
+        {
+          "answer": "Michigan",
+          "aliases": []
+        },
+        {
+          "answer": "Minnesota",
+          "aliases": []
+        },
+        {
+          "answer": "Mississippi",
+          "aliases": []
+        },
+        {
+          "answer": "Missouri",
+          "aliases": []
+        },
+        {
+          "answer": "Montana",
+          "aliases": []
+        },
+        {
+          "answer": "Nebraska",
+          "aliases": []
+        },
+        {
+          "answer": "Nevada",
+          "aliases": []
+        },
+        {
+          "answer": "New Hampshire",
+          "aliases": []
+        },
+        {
+          "answer": "New Jersey",
+          "aliases": []
+        },
+        {
+          "answer": "New Mexico",
+          "aliases": []
+        },
+        {
+          "answer": "New York",
+          "aliases": []
+        },
+        {
+          "answer": "North Carolina",
+          "aliases": []
+        },
+        {
+          "answer": "North Dakota",
+          "aliases": []
+        },
+        {
+          "answer": "Ohio",
+          "aliases": []
+        },
+        {
+          "answer": "Oklahoma",
+          "aliases": []
+        },
+        {
+          "answer": "Oregon",
+          "aliases": []
+        },
+        {
+          "answer": "Pennsylvania",
+          "aliases": []
+        },
+        {
+          "answer": "Rhode Island",
+          "aliases": []
+        },
+        {
+          "answer": "South Carolina",
+          "aliases": []
+        },
+        {
+          "answer": "South Dakota",
+          "aliases": []
+        },
+        {
+          "answer": "Tennessee",
+          "aliases": []
+        },
+        {
+          "answer": "Texas",
+          "aliases": []
+        },
+        {
+          "answer": "Utah",
+          "aliases": []
+        },
+        {
+          "answer": "Vermont",
+          "aliases": []
+        },
+        {
+          "answer": "Virginia",
+          "aliases": []
+        },
+        {
+          "answer": "Washington",
+          "aliases": []
+        },
+        {
+          "answer": "West Virginia",
+          "aliases": []
+        },
+        {
+          "answer": "Wisconsin",
+          "aliases": []
+        },
+        {
+          "answer": "Wyoming",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień oryginalną szóstkę Avengersów z filmu Avengers (2012).",
+      "required_count": 6,
+      "time_limit": 45,
+      "answers": [
+        {
+          "answer": "Iron Man",
+          "aliases": [
+            "Tony Stark"
+          ]
+        },
+        {
+          "answer": "Captain America",
+          "aliases": [
+            "Kapitan Ameryka",
+            "Steve Rogers"
+          ]
+        },
+        {
+          "answer": "Thor",
+          "aliases": []
+        },
+        {
+          "answer": "Hulk",
+          "aliases": [
+            "Bruce Banner"
+          ]
+        },
+        {
+          "answer": "Black Widow",
+          "aliases": [
+            "Czarna Wdowa",
+            "Natasha Romanoff",
+            "Natasha"
+          ]
+        },
+        {
+          "answer": "Hawkeye",
+          "aliases": [
+            "Clint Barton"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień wszystkie województwa Polski.",
+      "required_count": 16,
+      "time_limit": 90,
+      "answers": [
+        {
+          "answer": "dolnośląskie",
+          "aliases": []
+        },
+        {
+          "answer": "kujawsko-pomorskie",
+          "aliases": []
+        },
+        {
+          "answer": "lubelskie",
+          "aliases": []
+        },
+        {
+          "answer": "lubuskie",
+          "aliases": []
+        },
+        {
+          "answer": "łódzkie",
+          "aliases": []
+        },
+        {
+          "answer": "małopolskie",
+          "aliases": []
+        },
+        {
+          "answer": "mazowieckie",
+          "aliases": []
+        },
+        {
+          "answer": "opolskie",
+          "aliases": []
+        },
+        {
+          "answer": "podkarpackie",
+          "aliases": []
+        },
+        {
+          "answer": "podlaskie",
+          "aliases": []
+        },
+        {
+          "answer": "pomorskie",
+          "aliases": []
+        },
+        {
+          "answer": "śląskie",
+          "aliases": []
+        },
+        {
+          "answer": "świętokrzyskie",
+          "aliases": []
+        },
+        {
+          "answer": "warmińsko-mazurskie",
+          "aliases": []
+        },
+        {
+          "answer": "wielkopolskie",
+          "aliases": []
+        },
+        {
+          "answer": "zachodniopomorskie",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień dzielniki liczby 360.",
+      "required_count": 12,
+      "time_limit": 90,
+      "answers": [
+        {
+          "answer": "1",
+          "aliases": []
+        },
+        {
+          "answer": "2",
+          "aliases": []
+        },
+        {
+          "answer": "3",
+          "aliases": []
+        },
+        {
+          "answer": "4",
+          "aliases": []
+        },
+        {
+          "answer": "5",
+          "aliases": []
+        },
+        {
+          "answer": "6",
+          "aliases": []
+        },
+        {
+          "answer": "8",
+          "aliases": []
+        },
+        {
+          "answer": "9",
+          "aliases": []
+        },
+        {
+          "answer": "10",
+          "aliases": []
+        },
+        {
+          "answer": "12",
+          "aliases": []
+        },
+        {
+          "answer": "15",
+          "aliases": []
+        },
+        {
+          "answer": "18",
+          "aliases": []
+        },
+        {
+          "answer": "20",
+          "aliases": []
+        },
+        {
+          "answer": "24",
+          "aliases": []
+        },
+        {
+          "answer": "30",
+          "aliases": []
+        },
+        {
+          "answer": "36",
+          "aliases": []
+        },
+        {
+          "answer": "40",
+          "aliases": []
+        },
+        {
+          "answer": "45",
+          "aliases": []
+        },
+        {
+          "answer": "60",
+          "aliases": []
+        },
+        {
+          "answer": "72",
+          "aliases": []
+        },
+        {
+          "answer": "90",
+          "aliases": []
+        },
+        {
+          "answer": "120",
+          "aliases": []
+        },
+        {
+          "answer": "180",
+          "aliases": []
+        },
+        {
+          "answer": "360",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień biomy z gry Minecraft.",
+      "required_count": 5,
+      "time_limit": 50,
+      "answers": [
+        {
+          "answer": "Plains",
+          "aliases": [
+            "Równiny"
+          ]
+        },
+        {
+          "answer": "Forest",
+          "aliases": [
+            "Las"
+          ]
+        },
+        {
+          "answer": "Desert",
+          "aliases": [
+            "Pustynia"
+          ]
+        },
+        {
+          "answer": "Taiga",
+          "aliases": [
+            "Tajga"
+          ]
+        },
+        {
+          "answer": "Swamp",
+          "aliases": [
+            "Bagno"
+          ]
+        },
+        {
+          "answer": "Jungle",
+          "aliases": [
+            "Dżungla"
+          ]
+        },
+        {
+          "answer": "Savanna",
+          "aliases": [
+            "Sawanna"
+          ]
+        },
+        {
+          "answer": "Badlands",
+          "aliases": [
+            "Mesa"
+          ]
+        },
+        {
+          "answer": "Beach",
+          "aliases": [
+            "Plaża"
+          ]
+        },
+        {
+          "answer": "Ocean",
+          "aliases": []
+        },
+        {
+          "answer": "River",
+          "aliases": [
+            "Rzeka"
+          ]
+        },
+        {
+          "answer": "Mushroom Fields",
+          "aliases": [
+            "Grzybowe pola"
+          ]
+        },
+        {
+          "answer": "Dark Forest",
+          "aliases": [
+            "Ciemny las"
+          ]
+        },
+        {
+          "answer": "Birch Forest",
+          "aliases": [
+            "Brzozowy las"
+          ]
+        },
+        {
+          "answer": "Cherry Grove",
+          "aliases": [
+            "Wiśniowy gaj"
+          ]
+        },
+        {
+          "answer": "Mangrove Swamp",
+          "aliases": [
+            "Namorzynowe bagno"
+          ]
+        },
+        {
+          "answer": "Meadow",
+          "aliases": [
+            "Łąka"
+          ]
+        },
+        {
+          "answer": "Deep Dark",
+          "aliases": [
+            "Głęboka ciemność"
+          ]
+        },
+        {
+          "answer": "Nether Wastes",
+          "aliases": [
+            "Nether"
+          ]
+        },
+        {
+          "answer": "Soul Sand Valley",
+          "aliases": [
+            "Dolina piasku dusz"
+          ]
+        },
+        {
+          "answer": "Crimson Forest",
+          "aliases": [
+            "Karmazynowy las"
+          ]
+        },
+        {
+          "answer": "Warped Forest",
+          "aliases": [
+            "Spaczony las"
+          ]
+        },
+        {
+          "answer": "Basalt Deltas",
+          "aliases": [
+            "Bazaltowe delty"
+          ]
+        },
+        {
+          "answer": "The End",
+          "aliases": [
+            "End",
+            "Kres"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień reprezentacje, które zagrały na Mistrzostwach Świata 2026.",
+      "required_count": 24,
+      "time_limit": 150,
+      "answers": [
+        {
+          "answer": "Kanada",
+          "aliases": []
+        },
+        {
+          "answer": "Meksyk",
+          "aliases": []
+        },
+        {
+          "answer": "Stany Zjednoczone",
+          "aliases": []
+        },
+        {
+          "answer": "Australia",
+          "aliases": []
+        },
+        {
+          "answer": "Irak",
+          "aliases": []
+        },
+        {
+          "answer": "Iran",
+          "aliases": []
+        },
+        {
+          "answer": "Japonia",
+          "aliases": []
+        },
+        {
+          "answer": "Jordania",
+          "aliases": []
+        },
+        {
+          "answer": "Korea Południowa",
+          "aliases": []
+        },
+        {
+          "answer": "Katar",
+          "aliases": []
+        },
+        {
+          "answer": "Arabia Saudyjska",
+          "aliases": []
+        },
+        {
+          "answer": "Uzbekistan",
+          "aliases": []
+        },
+        {
+          "answer": "Algieria",
+          "aliases": []
+        },
+        {
+          "answer": "Republika Zielonego Przylądka",
+          "aliases": []
+        },
+        {
+          "answer": "Demokratyczna Republika Konga",
+          "aliases": []
+        },
+        {
+          "answer": "Wybrzeże Kości Słoniowej",
+          "aliases": []
+        },
+        {
+          "answer": "Egipt",
+          "aliases": []
+        },
+        {
+          "answer": "Ghana",
+          "aliases": []
+        },
+        {
+          "answer": "Maroko",
+          "aliases": []
+        },
+        {
+          "answer": "Senegal",
+          "aliases": []
+        },
+        {
+          "answer": "Republika Południowej Afryki",
+          "aliases": []
+        },
+        {
+          "answer": "Tunezja",
+          "aliases": []
+        },
+        {
+          "answer": "Curaçao",
+          "aliases": []
+        },
+        {
+          "answer": "Haiti",
+          "aliases": []
+        },
+        {
+          "answer": "Panama",
+          "aliases": []
+        },
+        {
+          "answer": "Argentyna",
+          "aliases": []
+        },
+        {
+          "answer": "Brazylia",
+          "aliases": []
+        },
+        {
+          "answer": "Kolumbia",
+          "aliases": []
+        },
+        {
+          "answer": "Ekwador",
+          "aliases": []
+        },
+        {
+          "answer": "Paragwaj",
+          "aliases": []
+        },
+        {
+          "answer": "Urugwaj",
+          "aliases": []
+        },
+        {
+          "answer": "Nowa Zelandia",
+          "aliases": []
+        },
+        {
+          "answer": "Austria",
+          "aliases": []
+        },
+        {
+          "answer": "Belgia",
+          "aliases": []
+        },
+        {
+          "answer": "Bośnia i Hercegowina",
+          "aliases": []
+        },
+        {
+          "answer": "Chorwacja",
+          "aliases": []
+        },
+        {
+          "answer": "Czechy",
+          "aliases": []
+        },
+        {
+          "answer": "Anglia",
+          "aliases": []
+        },
+        {
+          "answer": "Francja",
+          "aliases": []
+        },
+        {
+          "answer": "Niemcy",
+          "aliases": []
+        },
+        {
+          "answer": "Niderlandy",
+          "aliases": []
+        },
+        {
+          "answer": "Norwegia",
+          "aliases": []
+        },
+        {
+          "answer": "Portugalia",
+          "aliases": []
+        },
+        {
+          "answer": "Szkocja",
+          "aliases": []
+        },
+        {
+          "answer": "Hiszpania",
+          "aliases": []
+        },
+        {
+          "answer": "Szwecja",
+          "aliases": []
+        },
+        {
+          "answer": "Szwajcaria",
+          "aliases": []
+        },
+        {
+          "answer": "Turcja",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień państwa wyspiarskie.",
+      "required_count": 8,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Japonia",
+          "aliases": []
+        },
+        {
+          "answer": "Islandia",
+          "aliases": []
+        },
+        {
+          "answer": "Kuba",
+          "aliases": []
+        },
+        {
+          "answer": "Madagaskar",
+          "aliases": []
+        },
+        {
+          "answer": "Sri Lanka",
+          "aliases": []
+        },
+        {
+          "answer": "Nowa Zelandia",
+          "aliases": []
+        },
+        {
+          "answer": "Filipiny",
+          "aliases": []
+        },
+        {
+          "answer": "Indonezja",
+          "aliases": []
+        },
+        {
+          "answer": "Malediwy",
+          "aliases": []
+        },
+        {
+          "answer": "Bahamy",
+          "aliases": []
+        },
+        {
+          "answer": "Fidżi",
+          "aliases": []
+        },
+        {
+          "answer": "Samoa",
+          "aliases": []
+        },
+        {
+          "answer": "Tonga",
+          "aliases": []
+        },
+        {
+          "answer": "Barbados",
+          "aliases": []
+        },
+        {
+          "answer": "Jamajka",
+          "aliases": []
+        },
+        {
+          "answer": "Wielka Brytania",
+          "aliases": []
+        },
+        {
+          "answer": "Irlandia",
+          "aliases": []
+        },
+        {
+          "answer": "Malta",
+          "aliases": []
+        },
+        {
+          "answer": "Cypr",
+          "aliases": []
+        },
+        {
+          "answer": "Mauritius",
+          "aliases": []
+        },
+        {
+          "answer": "Seszele",
+          "aliases": []
+        },
+        {
+          "answer": "Bahrajn",
+          "aliases": []
+        },
+        {
+          "answer": "Singapur",
+          "aliases": []
+        },
+        {
+          "answer": "Timor Wschodni",
+          "aliases": []
+        },
+        {
+          "answer": "Papua-Nowa Gwinea",
+          "aliases": []
+        },
+        {
+          "answer": "Vanuatu",
+          "aliases": []
+        },
+        {
+          "answer": "Tuvalu",
+          "aliases": []
+        },
+        {
+          "answer": "Nauru",
+          "aliases": []
+        },
+        {
+          "answer": "Palau",
+          "aliases": []
+        },
+        {
+          "answer": "Kiribati",
+          "aliases": []
+        },
+        {
+          "answer": "Komory",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień postacie i zwierzęta tradycyjnej szopki bożonarodzeniowej.",
+      "required_count": 8,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Jezus",
+          "aliases": [
+            "Dzieciątko Jezus",
+            "Dzieciątko"
+          ]
+        },
+        {
+          "answer": "Maryja",
+          "aliases": [
+            "Maria",
+            "Matka Boska"
+          ]
+        },
+        {
+          "answer": "Józef",
+          "aliases": [
+            "Święty Józef",
+            "św. Józef"
+          ]
+        },
+        {
+          "answer": "Kacper",
+          "aliases": [
+            "Kasper"
+          ]
+        },
+        {
+          "answer": "Melchior",
+          "aliases": []
+        },
+        {
+          "answer": "Baltazar",
+          "aliases": [
+            "Balthazar"
+          ]
+        },
+        {
+          "answer": "Pasterz",
+          "aliases": [
+            "Pasterze"
+          ]
+        },
+        {
+          "answer": "Anioł",
+          "aliases": [
+            "Aniołowie"
+          ]
+        },
+        {
+          "answer": "Wół",
+          "aliases": []
+        },
+        {
+          "answer": "Osioł",
+          "aliases": [
+            "Osiołek"
+          ]
+        },
+        {
+          "answer": "Owca",
+          "aliases": [
+            "Owce",
+            "Baranek"
+          ]
+        },
+        {
+          "answer": "Wielbłąd",
+          "aliases": [
+            "Wielbłądy"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień kontynenty.",
+      "required_count": 7,
+      "time_limit": 50,
+      "answers": [
+        {
+          "answer": "Europa",
+          "aliases": []
+        },
+        {
+          "answer": "Azja",
+          "aliases": []
+        },
+        {
+          "answer": "Afryka",
+          "aliases": []
+        },
+        {
+          "answer": "Ameryka Północna",
+          "aliases": [
+            "Ameryka północna"
+          ]
+        },
+        {
+          "answer": "Ameryka Południowa",
+          "aliases": [
+            "Ameryka południowa"
+          ]
+        },
+        {
+          "answer": "Australia",
+          "aliases": [
+            "Australia i Oceania",
+            "Oceania"
+          ]
+        },
+        {
+          "answer": "Antarktyda",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień rodzaje makaronu.",
+      "required_count": 6,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Spaghetti",
+          "aliases": []
+        },
+        {
+          "answer": "Penne",
+          "aliases": []
+        },
+        {
+          "answer": "Fusilli",
+          "aliases": [
+            "Świderki"
+          ]
+        },
+        {
+          "answer": "Farfalle",
+          "aliases": [
+            "Kokardki"
+          ]
+        },
+        {
+          "answer": "Tagliatelle",
+          "aliases": []
+        },
+        {
+          "answer": "Pappardelle",
+          "aliases": []
+        },
+        {
+          "answer": "Linguine",
+          "aliases": []
+        },
+        {
+          "answer": "Rigatoni",
+          "aliases": []
+        },
+        {
+          "answer": "Ravioli",
+          "aliases": []
+        },
+        {
+          "answer": "Tortellini",
+          "aliases": []
+        },
+        {
+          "answer": "Lasagne",
+          "aliases": [
+            "Lasagna"
+          ]
+        },
+        {
+          "answer": "Cannelloni",
+          "aliases": []
+        },
+        {
+          "answer": "Conchiglie",
+          "aliases": [
+            "Muszelki"
+          ]
+        },
+        {
+          "answer": "Orecchiette",
+          "aliases": []
+        },
+        {
+          "answer": "Bucatini",
+          "aliases": []
+        },
+        {
+          "answer": "Fettuccine",
+          "aliases": []
+        },
+        {
+          "answer": "Macaroni",
+          "aliases": [
+            "Kolanka"
+          ]
+        },
+        {
+          "answer": "Orzo",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień kluby, które przynajmniej raz zagrały w Ekstraklasie.",
+      "required_count": 16,
+      "time_limit": 90,
+      "answers": [
+        {
+          "answer": "Legia Warszawa",
+          "aliases": []
+        },
+        {
+          "answer": "Lech Poznań",
+          "aliases": []
+        },
+        {
+          "answer": "Wisła Kraków",
+          "aliases": []
+        },
+        {
+          "answer": "Ruch Chorzów",
+          "aliases": []
+        },
+        {
+          "answer": "Górnik Zabrze",
+          "aliases": []
+        },
+        {
+          "answer": "Widzew Łódź",
+          "aliases": []
+        },
+        {
+          "answer": "ŁKS Łódź",
+          "aliases": []
+        },
+        {
+          "answer": "Cracovia",
+          "aliases": []
+        },
+        {
+          "answer": "Pogoń Szczecin",
+          "aliases": []
+        },
+        {
+          "answer": "Śląsk Wrocław",
+          "aliases": []
+        },
+        {
+          "answer": "Jagiellonia Białystok",
+          "aliases": []
+        },
+        {
+          "answer": "Zagłębie Lubin",
+          "aliases": []
+        },
+        {
+          "answer": "Piast Gliwice",
+          "aliases": []
+        },
+        {
+          "answer": "Lechia Gdańsk",
+          "aliases": []
+        },
+        {
+          "answer": "Arka Gdynia",
+          "aliases": []
+        },
+        {
+          "answer": "Korona Kielce",
+          "aliases": []
+        },
+        {
+          "answer": "Raków Częstochowa",
+          "aliases": []
+        },
+        {
+          "answer": "GKS Katowice",
+          "aliases": []
+        },
+        {
+          "answer": "Stal Mielec",
+          "aliases": []
+        },
+        {
+          "answer": "Radomiak Radom",
+          "aliases": []
+        },
+        {
+          "answer": "Motor Lublin",
+          "aliases": []
+        },
+        {
+          "answer": "Polonia Warszawa",
+          "aliases": []
+        },
+        {
+          "answer": "Warta Poznań",
+          "aliases": []
+        },
+        {
+          "answer": "Odra Opole",
+          "aliases": []
+        },
+        {
+          "answer": "Zawisza Bydgoszcz",
+          "aliases": []
+        },
+        {
+          "answer": "Dyskobolia Grodzisk Wielkopolski",
+          "aliases": []
+        },
+        {
+          "answer": "Amica Wronki",
+          "aliases": []
+        },
+        {
+          "answer": "GKS Bełchatów",
+          "aliases": []
+        },
+        {
+          "answer": "Podbeskidzie Bielsko-Biała",
+          "aliases": []
+        },
+        {
+          "answer": "Bruk-Bet Termalica Nieciecza",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień stolice państw europejskich.",
+      "required_count": 20,
+      "time_limit": 90,
+      "answers": [
+        {
+          "answer": "Warszawa",
+          "aliases": []
+        },
+        {
+          "answer": "Berlin",
+          "aliases": []
+        },
+        {
+          "answer": "Paryż",
+          "aliases": []
+        },
+        {
+          "answer": "Rzym",
+          "aliases": []
+        },
+        {
+          "answer": "Madryt",
+          "aliases": []
+        },
+        {
+          "answer": "Lizbona",
+          "aliases": []
+        },
+        {
+          "answer": "Londyn",
+          "aliases": []
+        },
+        {
+          "answer": "Dublin",
+          "aliases": []
+        },
+        {
+          "answer": "Bruksela",
+          "aliases": []
+        },
+        {
+          "answer": "Amsterdam",
+          "aliases": []
+        },
+        {
+          "answer": "Luksemburg",
+          "aliases": []
+        },
+        {
+          "answer": "Wiedeń",
+          "aliases": []
+        },
+        {
+          "answer": "Praga",
+          "aliases": []
+        },
+        {
+          "answer": "Bratysława",
+          "aliases": []
+        },
+        {
+          "answer": "Budapeszt",
+          "aliases": []
+        },
+        {
+          "answer": "Lublana",
+          "aliases": []
+        },
+        {
+          "answer": "Zagrzeb",
+          "aliases": []
+        },
+        {
+          "answer": "Sarajewo",
+          "aliases": []
+        },
+        {
+          "answer": "Belgrad",
+          "aliases": []
+        },
+        {
+          "answer": "Podgorica",
+          "aliases": []
+        },
+        {
+          "answer": "Tirana",
+          "aliases": []
+        },
+        {
+          "answer": "Skopje",
+          "aliases": []
+        },
+        {
+          "answer": "Sofia",
+          "aliases": []
+        },
+        {
+          "answer": "Bukareszt",
+          "aliases": []
+        },
+        {
+          "answer": "Ateny",
+          "aliases": []
+        },
+        {
+          "answer": "Oslo",
+          "aliases": []
+        },
+        {
+          "answer": "Sztokholm",
+          "aliases": []
+        },
+        {
+          "answer": "Helsinki",
+          "aliases": []
+        },
+        {
+          "answer": "Kopenhaga",
+          "aliases": []
+        },
+        {
+          "answer": "Reykjavik",
+          "aliases": []
+        },
+        {
+          "answer": "Tallinn",
+          "aliases": []
+        },
+        {
+          "answer": "Ryga",
+          "aliases": []
+        },
+        {
+          "answer": "Wilno",
+          "aliases": []
+        },
+        {
+          "answer": "Kijów",
+          "aliases": []
+        },
+        {
+          "answer": "Kiszyniów",
+          "aliases": []
+        },
+        {
+          "answer": "Berno",
+          "aliases": []
+        },
+        {
+          "answer": "Vaduz",
+          "aliases": []
+        },
+        {
+          "answer": "Monako",
+          "aliases": []
+        },
+        {
+          "answer": "Andora",
+          "aliases": []
+        },
+        {
+          "answer": "San Marino",
+          "aliases": []
+        },
+        {
+          "answer": "Watykan",
+          "aliases": []
+        },
+        {
+          "answer": "Valletta",
+          "aliases": []
+        },
+        {
+          "answer": "Nikozja",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień wszystkie kluby Roberta Lewandowskiego od Lecha Poznań.",
+      "required_count": 5,
+      "time_limit": 45,
+      "answers": [
+        {
+          "answer": "Lech Poznań",
+          "aliases": [
+            "Lech"
+          ]
+        },
+        {
+          "answer": "Borussia Dortmund",
+          "aliases": [
+            "BVB",
+            "Dortmund"
+          ]
+        },
+        {
+          "answer": "Bayern Monachium",
+          "aliases": [
+            "Bayern München",
+            "Bayern Munich",
+            "Bayern"
+          ]
+        },
+        {
+          "answer": "FC Barcelona",
+          "aliases": [
+            "Barcelona",
+            "Barca",
+            "Barça"
+          ]
+        },
+        {
+          "answer": "Chicago Fire",
+          "aliases": [
+            "Chicago Fire FC"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień piosenki, których tytuł zawiera słowo „love”.",
+      "required_count": 6,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Love Story",
+          "aliases": []
+        },
+        {
+          "answer": "I Will Always Love You",
+          "aliases": []
+        },
+        {
+          "answer": "Crazy Little Thing Called Love",
+          "aliases": []
+        },
+        {
+          "answer": "What Is Love",
+          "aliases": []
+        },
+        {
+          "answer": "Bleeding Love",
+          "aliases": []
+        },
+        {
+          "answer": "Love Me Tender",
+          "aliases": []
+        },
+        {
+          "answer": "Love Yourself",
+          "aliases": []
+        },
+        {
+          "answer": "Endless Love",
+          "aliases": []
+        },
+        {
+          "answer": "Love on Top",
+          "aliases": []
+        },
+        {
+          "answer": "I Want to Know What Love Is",
+          "aliases": []
+        },
+        {
+          "answer": "Whole Lotta Love",
+          "aliases": []
+        },
+        {
+          "answer": "Love Me Like You Do",
+          "aliases": []
+        },
+        {
+          "answer": "We Found Love",
+          "aliases": []
+        },
+        {
+          "answer": "Love the Way You Lie",
+          "aliases": []
+        },
+        {
+          "answer": "Can’t Help Falling in Love",
+          "aliases": []
+        },
+        {
+          "answer": "How Deep Is Your Love",
+          "aliases": []
+        },
+        {
+          "answer": "Where Is the Love?",
+          "aliases": []
+        },
+        {
+          "answer": "Somebody to Love",
+          "aliases": []
+        },
+        {
+          "answer": "Addicted to Love",
+          "aliases": []
+        },
+        {
+          "answer": "Lovefool",
+          "aliases": []
+        },
+        {
+          "answer": "Love Shack",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień zespoły, które zdobyły mistrzostwo konstruktorów Formuły 1.",
+      "required_count": 5,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Ferrari",
+          "aliases": []
+        },
+        {
+          "answer": "McLaren",
+          "aliases": []
+        },
+        {
+          "answer": "Williams",
+          "aliases": []
+        },
+        {
+          "answer": "Mercedes",
+          "aliases": []
+        },
+        {
+          "answer": "Red Bull",
+          "aliases": []
+        },
+        {
+          "answer": "Lotus",
+          "aliases": []
+        },
+        {
+          "answer": "Renault",
+          "aliases": []
+        },
+        {
+          "answer": "Benetton",
+          "aliases": []
+        },
+        {
+          "answer": "Cooper",
+          "aliases": []
+        },
+        {
+          "answer": "Brabham",
+          "aliases": []
+        },
+        {
+          "answer": "BRM",
+          "aliases": []
+        },
+        {
+          "answer": "Vanwall",
+          "aliases": []
+        },
+        {
+          "answer": "Tyrrell",
+          "aliases": []
+        },
+        {
+          "answer": "Brawn GP",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień owoce na literę A.",
+      "required_count": 5,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Ananas",
+          "aliases": []
+        },
+        {
+          "answer": "Arbuz",
+          "aliases": []
+        },
+        {
+          "answer": "Agrest",
+          "aliases": []
+        },
+        {
+          "answer": "Awokado",
+          "aliases": []
+        },
+        {
+          "answer": "Acerola",
+          "aliases": []
+        },
+        {
+          "answer": "Aronia",
+          "aliases": []
+        },
+        {
+          "answer": "Anona",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień państwa, których głową państwa jest król lub królowa.",
+      "required_count": 6,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Wielka Brytania",
+          "aliases": []
+        },
+        {
+          "answer": "Hiszpania",
+          "aliases": []
+        },
+        {
+          "answer": "Szwecja",
+          "aliases": []
+        },
+        {
+          "answer": "Norwegia",
+          "aliases": []
+        },
+        {
+          "answer": "Dania",
+          "aliases": []
+        },
+        {
+          "answer": "Belgia",
+          "aliases": []
+        },
+        {
+          "answer": "Niderlandy",
+          "aliases": []
+        },
+        {
+          "answer": "Kanada",
+          "aliases": []
+        },
+        {
+          "answer": "Australia",
+          "aliases": []
+        },
+        {
+          "answer": "Nowa Zelandia",
+          "aliases": []
+        },
+        {
+          "answer": "Jamajka",
+          "aliases": []
+        },
+        {
+          "answer": "Bahamy",
+          "aliases": []
+        },
+        {
+          "answer": "Belize",
+          "aliases": []
+        },
+        {
+          "answer": "Grenada",
+          "aliases": []
+        },
+        {
+          "answer": "Papua-Nowa Gwinea",
+          "aliases": []
+        },
+        {
+          "answer": "Wyspy Salomona",
+          "aliases": []
+        },
+        {
+          "answer": "Tuvalu",
+          "aliases": []
+        },
+        {
+          "answer": "Antigua i Barbuda",
+          "aliases": []
+        },
+        {
+          "answer": "Saint Kitts i Nevis",
+          "aliases": []
+        },
+        {
+          "answer": "Saint Lucia",
+          "aliases": []
+        },
+        {
+          "answer": "Saint Vincent i Grenadyny",
+          "aliases": []
+        },
+        {
+          "answer": "Jordania",
+          "aliases": []
+        },
+        {
+          "answer": "Arabia Saudyjska",
+          "aliases": []
+        },
+        {
+          "answer": "Bahrajn",
+          "aliases": []
+        },
+        {
+          "answer": "Tajlandia",
+          "aliases": []
+        },
+        {
+          "answer": "Kambodża",
+          "aliases": []
+        },
+        {
+          "answer": "Malezja",
+          "aliases": []
+        },
+        {
+          "answer": "Bhutan",
+          "aliases": []
+        },
+        {
+          "answer": "Tonga",
+          "aliases": []
+        },
+        {
+          "answer": "Lesotho",
+          "aliases": []
+        },
+        {
+          "answer": "Eswatini",
+          "aliases": []
+        },
+        {
+          "answer": "Maroko",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień przyprawy.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Pieprz",
+          "aliases": []
+        },
+        {
+          "answer": "Papryka",
+          "aliases": []
+        },
+        {
+          "answer": "Kurkuma",
+          "aliases": []
+        },
+        {
+          "answer": "Cynamon",
+          "aliases": []
+        },
+        {
+          "answer": "Bazylia",
+          "aliases": []
+        },
+        {
+          "answer": "Oregano",
+          "aliases": []
+        },
+        {
+          "answer": "Tymianek",
+          "aliases": []
+        },
+        {
+          "answer": "Rozmaryn",
+          "aliases": []
+        },
+        {
+          "answer": "Majeranek",
+          "aliases": []
+        },
+        {
+          "answer": "Kminek",
+          "aliases": []
+        },
+        {
+          "answer": "Kumin",
+          "aliases": []
+        },
+        {
+          "answer": "Kardamon",
+          "aliases": []
+        },
+        {
+          "answer": "Goździki",
+          "aliases": []
+        },
+        {
+          "answer": "Gałka muszkatołowa",
+          "aliases": []
+        },
+        {
+          "answer": "Kolendra",
+          "aliases": []
+        },
+        {
+          "answer": "Imbir",
+          "aliases": []
+        },
+        {
+          "answer": "Szafran",
+          "aliases": []
+        },
+        {
+          "answer": "Anyż",
+          "aliases": []
+        },
+        {
+          "answer": "Chili",
+          "aliases": []
+        },
+        {
+          "answer": "Czosnek",
+          "aliases": []
+        },
+        {
+          "answer": "Koper",
+          "aliases": []
+        },
+        {
+          "answer": "Estragon",
+          "aliases": []
+        },
+        {
+          "answer": "Szałwia",
+          "aliases": []
+        },
+        {
+          "answer": "Liść laurowy",
+          "aliases": []
+        },
+        {
+          "answer": "Ziele angielskie",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień wszystkie rodzaje znaków drogowych w Polsce.",
+      "required_count": 7,
+      "time_limit": 120,
+      "answers": [
+        {
+          "answer": "ostrzegawcze",
+          "aliases": [
+            "znaki ostrzegawcze"
+          ]
+        },
+        {
+          "answer": "zakazu",
+          "aliases": [
+            "znaki zakazu"
+          ]
+        },
+        {
+          "answer": "nakazu",
+          "aliases": [
+            "znaki nakazu"
+          ]
+        },
+        {
+          "answer": "informacyjne",
+          "aliases": [
+            "znaki informacyjne"
+          ]
+        },
+        {
+          "answer": "kierunku i miejscowości",
+          "aliases": [
+            "znaki kierunku i miejscowości"
+          ]
+        },
+        {
+          "answer": "uzupełniające",
+          "aliases": [
+            "znaki uzupełniające"
+          ]
+        },
+        {
+          "answer": "dodatkowe znaki przed przejazdami kolejowymi",
+          "aliases": [
+            "znaki przed przejazdami kolejowymi"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień szczyty w Tatrach.",
+      "required_count": 7,
+      "time_limit": 75,
+      "answers": [
+        {
+          "answer": "Rysy",
+          "aliases": []
+        },
+        {
+          "answer": "Giewont",
+          "aliases": []
+        },
+        {
+          "answer": "Kasprowy Wierch",
+          "aliases": []
+        },
+        {
+          "answer": "Świnica",
+          "aliases": []
+        },
+        {
+          "answer": "Kościelec",
+          "aliases": []
+        },
+        {
+          "answer": "Mnich",
+          "aliases": []
+        },
+        {
+          "answer": "Gerlach",
+          "aliases": []
+        },
+        {
+          "answer": "Łomnica",
+          "aliases": []
+        },
+        {
+          "answer": "Krywań",
+          "aliases": []
+        },
+        {
+          "answer": "Baranie Rogi",
+          "aliases": []
+        },
+        {
+          "answer": "Starorobociański Wierch",
+          "aliases": []
+        },
+        {
+          "answer": "Wołowiec",
+          "aliases": []
+        },
+        {
+          "answer": "Kozi Wierch",
+          "aliases": []
+        },
+        {
+          "answer": "Granaty",
+          "aliases": []
+        },
+        {
+          "answer": "Mięguszowiecki Szczyt",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień wszystkie planety Układu Słonecznego.",
+      "required_count": 8,
+      "time_limit": 45,
+      "answers": [
+        {
+          "answer": "Merkury",
+          "aliases": []
+        },
+        {
+          "answer": "Wenus",
+          "aliases": []
+        },
+        {
+          "answer": "Ziemia",
+          "aliases": []
+        },
+        {
+          "answer": "Mars",
+          "aliases": []
+        },
+        {
+          "answer": "Jowisz",
+          "aliases": []
+        },
+        {
+          "answer": "Saturn",
+          "aliases": []
+        },
+        {
+          "answer": "Uran",
+          "aliases": []
+        },
+        {
+          "answer": "Neptun",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień palindromy.",
+      "required_count": 5,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "kajak",
+          "aliases": []
+        },
+        {
+          "answer": "potop",
+          "aliases": []
+        },
+        {
+          "answer": "oko",
+          "aliases": []
+        },
+        {
+          "answer": "zaraz",
+          "aliases": []
+        },
+        {
+          "answer": "sedes",
+          "aliases": []
+        },
+        {
+          "answer": "zakaz",
+          "aliases": []
+        },
+        {
+          "answer": "radar",
+          "aliases": []
+        },
+        {
+          "answer": "rotor",
+          "aliases": []
+        },
+        {
+          "answer": "level",
+          "aliases": []
+        },
+        {
+          "answer": "anna",
+          "aliases": []
+        },
+        {
+          "answer": "otto",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień jednostki masy.",
+      "required_count": 5,
+      "time_limit": 50,
+      "answers": [
+        {
+          "answer": "miligram",
+          "aliases": [
+            "mg"
+          ]
+        },
+        {
+          "answer": "gram",
+          "aliases": [
+            "g"
+          ]
+        },
+        {
+          "answer": "dekagram",
+          "aliases": [
+            "dag",
+            "deka"
+          ]
+        },
+        {
+          "answer": "kilogram",
+          "aliases": [
+            "kg"
+          ]
+        },
+        {
+          "answer": "tona",
+          "aliases": [
+            "t"
+          ]
+        },
+        {
+          "answer": "mikrogram",
+          "aliases": [
+            "µg",
+            "ug"
+          ]
+        },
+        {
+          "answer": "funt",
+          "aliases": [
+            "lb",
+            "lbs"
+          ]
+        },
+        {
+          "answer": "uncja",
+          "aliases": [
+            "oz"
+          ]
+        },
+        {
+          "answer": "karat",
+          "aliases": [
+            "ct"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień gatunki drzew.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Dąb",
+          "aliases": []
+        },
+        {
+          "answer": "Brzoza",
+          "aliases": []
+        },
+        {
+          "answer": "Sosna",
+          "aliases": []
+        },
+        {
+          "answer": "Świerk",
+          "aliases": []
+        },
+        {
+          "answer": "Buk",
+          "aliases": []
+        },
+        {
+          "answer": "Klon",
+          "aliases": []
+        },
+        {
+          "answer": "Lipa",
+          "aliases": []
+        },
+        {
+          "answer": "Jodła",
+          "aliases": []
+        },
+        {
+          "answer": "Modrzew",
+          "aliases": []
+        },
+        {
+          "answer": "Grab",
+          "aliases": []
+        },
+        {
+          "answer": "Jesion",
+          "aliases": []
+        },
+        {
+          "answer": "Wiąz",
+          "aliases": []
+        },
+        {
+          "answer": "Olcha",
+          "aliases": []
+        },
+        {
+          "answer": "Topola",
+          "aliases": []
+        },
+        {
+          "answer": "Wierzba",
+          "aliases": []
+        },
+        {
+          "answer": "Jarząb",
+          "aliases": []
+        },
+        {
+          "answer": "Cis",
+          "aliases": []
+        },
+        {
+          "answer": "Kasztanowiec",
+          "aliases": []
+        },
+        {
+          "answer": "Akacja",
+          "aliases": []
+        },
+        {
+          "answer": "Platan",
+          "aliases": []
+        },
+        {
+          "answer": "Sekwoja",
+          "aliases": []
+        },
+        {
+          "answer": "Cedr",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień komunikatory internetowe.",
+      "required_count": 8,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Messenger",
+          "aliases": [
+            "Facebook Messenger"
+          ]
+        },
+        {
+          "answer": "WhatsApp",
+          "aliases": []
+        },
+        {
+          "answer": "Telegram",
+          "aliases": []
+        },
+        {
+          "answer": "Signal",
+          "aliases": []
+        },
+        {
+          "answer": "Discord",
+          "aliases": []
+        },
+        {
+          "answer": "Skype",
+          "aliases": []
+        },
+        {
+          "answer": "Viber",
+          "aliases": []
+        },
+        {
+          "answer": "WeChat",
+          "aliases": []
+        },
+        {
+          "answer": "Gadu-Gadu",
+          "aliases": [
+            "GG",
+            "Gadu Gadu"
+          ]
+        },
+        {
+          "answer": "Snapchat",
+          "aliases": [
+            "Snap"
+          ]
+        },
+        {
+          "answer": "Instagram",
+          "aliases": [
+            "IG"
+          ]
+        },
+        {
+          "answer": "Facebook",
+          "aliases": [
+            "FB"
+          ]
+        },
+        {
+          "answer": "TikTok",
+          "aliases": []
+        },
+        {
+          "answer": "X",
+          "aliases": [
+            "Twitter"
+          ]
+        },
+        {
+          "answer": "LinkedIn",
+          "aliases": []
+        },
+        {
+          "answer": "Reddit",
+          "aliases": []
+        },
+        {
+          "answer": "iMessage",
+          "aliases": []
+        },
+        {
+          "answer": "Microsoft Teams",
+          "aliases": [
+            "Teams"
+          ]
+        },
+        {
+          "answer": "Slack",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień popularne skróty używane w języku polskim lub internecie.",
+      "required_count": 12,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "itp.",
+          "aliases": [
+            "itp"
+          ]
+        },
+        {
+          "answer": "itd.",
+          "aliases": [
+            "itd"
+          ]
+        },
+        {
+          "answer": "np.",
+          "aliases": [
+            "np"
+          ]
+        },
+        {
+          "answer": "m.in.",
+          "aliases": [
+            "m in",
+            "m.in"
+          ]
+        },
+        {
+          "answer": "tj.",
+          "aliases": [
+            "tj"
+          ]
+        },
+        {
+          "answer": "tzn.",
+          "aliases": [
+            "tzn"
+          ]
+        },
+        {
+          "answer": "etc.",
+          "aliases": [
+            "etc"
+          ]
+        },
+        {
+          "answer": "BTW",
+          "aliases": [
+            "btw"
+          ]
+        },
+        {
+          "answer": "LOL",
+          "aliases": [
+            "lol"
+          ]
+        },
+        {
+          "answer": "IDK",
+          "aliases": [
+            "idk"
+          ]
+        },
+        {
+          "answer": "IMO",
+          "aliases": [
+            "imo"
+          ]
+        },
+        {
+          "answer": "ASAP",
+          "aliases": [
+            "asap"
+          ]
+        },
+        {
+          "answer": "THX",
+          "aliases": [
+            "thx"
+          ]
+        },
+        {
+          "answer": "PLS",
+          "aliases": [
+            "pls"
+          ]
+        },
+        {
+          "answer": "GG",
+          "aliases": [
+            "gg"
+          ]
+        },
+        {
+          "answer": "BRB",
+          "aliases": [
+            "brb"
+          ]
+        },
+        {
+          "answer": "AFK",
+          "aliases": [
+            "afk"
+          ]
+        },
+        {
+          "answer": "FYI",
+          "aliases": [
+            "fyi"
+          ]
+        },
+        {
+          "answer": "OMG",
+          "aliases": [
+            "omg"
+          ]
+        },
+        {
+          "answer": "DIY",
+          "aliases": [
+            "diy"
+          ]
+        },
+        {
+          "answer": "FAQ",
+          "aliases": [
+            "faq"
+          ]
+        },
+        {
+          "answer": "PS",
+          "aliases": [
+            "P.S.",
+            "ps"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień prezydentów III RP.",
+      "required_count": 5,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Wojciech Jaruzelski",
+          "aliases": [
+            "Jaruzelski"
+          ]
+        },
+        {
+          "answer": "Lech Wałęsa",
+          "aliases": [
+            "Wałęsa",
+            "Walesa"
+          ]
+        },
+        {
+          "answer": "Aleksander Kwaśniewski",
+          "aliases": [
+            "Kwaśniewski",
+            "Kwasniewski"
+          ]
+        },
+        {
+          "answer": "Lech Kaczyński",
+          "aliases": [
+            "Kaczyński",
+            "Kaczynski"
+          ]
+        },
+        {
+          "answer": "Bronisław Komorowski",
+          "aliases": [
+            "Komorowski"
+          ]
+        },
+        {
+          "answer": "Andrzej Duda",
+          "aliases": [
+            "Duda"
+          ]
+        },
+        {
+          "answer": "Karol Nawrocki",
+          "aliases": [
+            "Nawrocki"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień wszystkie części filmowej trylogii Władca Pierścieni.",
+      "required_count": 3,
+      "time_limit": 45,
+      "answers": [
+        {
+          "answer": "Drużyna Pierścienia",
+          "aliases": [
+            "Władca Pierścieni: Drużyna Pierścienia",
+            "The Fellowship of the Ring"
+          ]
+        },
+        {
+          "answer": "Dwie Wieże",
+          "aliases": [
+            "Władca Pierścieni: Dwie Wieże",
+            "The Two Towers"
+          ]
+        },
+        {
+          "answer": "Powrót Króla",
+          "aliases": [
+            "Władca Pierścieni: Powrót Króla",
+            "The Return of the King"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień zwierzęta, dla których poruszanie się na dwóch nogach jest podstawowym sposobem lokomocji.",
+      "required_count": 8,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Struś",
+          "aliases": []
+        },
+        {
+          "answer": "Emu",
+          "aliases": []
+        },
+        {
+          "answer": "Kazuar",
+          "aliases": []
+        },
+        {
+          "answer": "Pingwin",
+          "aliases": []
+        },
+        {
+          "answer": "Kura",
+          "aliases": []
+        },
+        {
+          "answer": "Indyk",
+          "aliases": []
+        },
+        {
+          "answer": "Flaming",
+          "aliases": []
+        },
+        {
+          "answer": "Bocian",
+          "aliases": []
+        },
+        {
+          "answer": "Żuraw",
+          "aliases": []
+        },
+        {
+          "answer": "Kiwi",
+          "aliases": []
+        },
+        {
+          "answer": "Kangur",
+          "aliases": []
+        },
+        {
+          "answer": "Nandu",
+          "aliases": []
+        },
+        {
+          "answer": "Perliczka",
+          "aliases": []
+        },
+        {
+          "answer": "Paw",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień artystów wykonujących muzykę pop.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Taylor Swift",
+          "aliases": []
+        },
+        {
+          "answer": "Lady Gaga",
+          "aliases": []
+        },
+        {
+          "answer": "Madonna",
+          "aliases": []
+        },
+        {
+          "answer": "Dua Lipa",
+          "aliases": []
+        },
+        {
+          "answer": "Bruno Mars",
+          "aliases": []
+        },
+        {
+          "answer": "Ed Sheeran",
+          "aliases": []
+        },
+        {
+          "answer": "Rihanna",
+          "aliases": []
+        },
+        {
+          "answer": "Ariana Grande",
+          "aliases": []
+        },
+        {
+          "answer": "Britney Spears",
+          "aliases": []
+        },
+        {
+          "answer": "Justin Bieber",
+          "aliases": []
+        },
+        {
+          "answer": "Katy Perry",
+          "aliases": []
+        },
+        {
+          "answer": "Beyoncé",
+          "aliases": []
+        },
+        {
+          "answer": "Miley Cyrus",
+          "aliases": []
+        },
+        {
+          "answer": "The Weeknd",
+          "aliases": []
+        },
+        {
+          "answer": "Harry Styles",
+          "aliases": []
+        },
+        {
+          "answer": "Justin Timberlake",
+          "aliases": []
+        },
+        {
+          "answer": "Shawn Mendes",
+          "aliases": []
+        },
+        {
+          "answer": "Selena Gomez",
+          "aliases": []
+        },
+        {
+          "answer": "Sia",
+          "aliases": []
+        },
+        {
+          "answer": "P!nk",
+          "aliases": []
+        },
+        {
+          "answer": "Dawid Podsiadło",
+          "aliases": []
+        },
+        {
+          "answer": "Doda",
+          "aliases": []
+        },
+        {
+          "answer": "Sanah",
+          "aliases": []
+        },
+        {
+          "answer": "Margaret",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień dyscypliny sportowe, w których używa się piłki.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Piłka nożna",
+          "aliases": []
+        },
+        {
+          "answer": "Koszykówka",
+          "aliases": []
+        },
+        {
+          "answer": "Siatkówka",
+          "aliases": []
+        },
+        {
+          "answer": "Piłka ręczna",
+          "aliases": []
+        },
+        {
+          "answer": "Tenis",
+          "aliases": []
+        },
+        {
+          "answer": "Rugby",
+          "aliases": []
+        },
+        {
+          "answer": "Baseball",
+          "aliases": []
+        },
+        {
+          "answer": "Golf",
+          "aliases": []
+        },
+        {
+          "answer": "Piłka wodna",
+          "aliases": []
+        },
+        {
+          "answer": "Hokej na trawie",
+          "aliases": []
+        },
+        {
+          "answer": "Squash",
+          "aliases": []
+        },
+        {
+          "answer": "Padel",
+          "aliases": []
+        },
+        {
+          "answer": "Tenis stołowy",
+          "aliases": []
+        },
+        {
+          "answer": "Softball",
+          "aliases": []
+        },
+        {
+          "answer": "Krykiet",
+          "aliases": []
+        },
+        {
+          "answer": "Futsal",
+          "aliases": []
+        },
+        {
+          "answer": "Siatkówka plażowa",
+          "aliases": []
+        },
+        {
+          "answer": "Lacrosse",
+          "aliases": []
+        },
+        {
+          "answer": "Polo",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień największe europejskie mocarstwa kolonialne w historii.",
+      "required_count": 5,
+      "time_limit": 50,
+      "answers": [
+        {
+          "answer": "Wielka Brytania",
+          "aliases": [
+            "Imperium Brytyjskie",
+            "Anglia"
+          ]
+        },
+        {
+          "answer": "Francja",
+          "aliases": []
+        },
+        {
+          "answer": "Hiszpania",
+          "aliases": []
+        },
+        {
+          "answer": "Portugalia",
+          "aliases": []
+        },
+        {
+          "answer": "Niderlandy",
+          "aliases": [
+            "Holandia"
+          ]
+        },
+        {
+          "answer": "Belgia",
+          "aliases": []
+        },
+        {
+          "answer": "Niemcy",
+          "aliases": []
+        },
+        {
+          "answer": "Włochy",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień cały alfabet angielski.",
+      "required_count": 26,
+      "time_limit": 58,
+      "answers": [
+        {
+          "answer": "A",
+          "aliases": [
+            "a"
+          ]
+        },
+        {
+          "answer": "B",
+          "aliases": [
+            "b"
+          ]
+        },
+        {
+          "answer": "C",
+          "aliases": [
+            "c"
+          ]
+        },
+        {
+          "answer": "D",
+          "aliases": [
+            "d"
+          ]
+        },
+        {
+          "answer": "E",
+          "aliases": [
+            "e"
+          ]
+        },
+        {
+          "answer": "F",
+          "aliases": [
+            "f"
+          ]
+        },
+        {
+          "answer": "G",
+          "aliases": [
+            "g"
+          ]
+        },
+        {
+          "answer": "H",
+          "aliases": [
+            "h"
+          ]
+        },
+        {
+          "answer": "I",
+          "aliases": [
+            "i"
+          ]
+        },
+        {
+          "answer": "J",
+          "aliases": [
+            "j"
+          ]
+        },
+        {
+          "answer": "K",
+          "aliases": [
+            "k"
+          ]
+        },
+        {
+          "answer": "L",
+          "aliases": [
+            "l"
+          ]
+        },
+        {
+          "answer": "M",
+          "aliases": [
+            "m"
+          ]
+        },
+        {
+          "answer": "N",
+          "aliases": [
+            "n"
+          ]
+        },
+        {
+          "answer": "O",
+          "aliases": [
+            "o"
+          ]
+        },
+        {
+          "answer": "P",
+          "aliases": [
+            "p"
+          ]
+        },
+        {
+          "answer": "Q",
+          "aliases": [
+            "q"
+          ]
+        },
+        {
+          "answer": "R",
+          "aliases": [
+            "r"
+          ]
+        },
+        {
+          "answer": "S",
+          "aliases": [
+            "s"
+          ]
+        },
+        {
+          "answer": "T",
+          "aliases": [
+            "t"
+          ]
+        },
+        {
+          "answer": "U",
+          "aliases": [
+            "u"
+          ]
+        },
+        {
+          "answer": "V",
+          "aliases": [
+            "v"
+          ]
+        },
+        {
+          "answer": "W",
+          "aliases": [
+            "w"
+          ]
+        },
+        {
+          "answer": "X",
+          "aliases": [
+            "x"
+          ]
+        },
+        {
+          "answer": "Y",
+          "aliases": [
+            "y"
+          ]
+        },
+        {
+          "answer": "Z",
+          "aliases": [
+            "z"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień wszystkie przypadki gramatyczne w języku polskim.",
+      "required_count": 7,
+      "time_limit": 50,
+      "answers": [
+        {
+          "answer": "mianownik",
+          "aliases": []
+        },
+        {
+          "answer": "dopełniacz",
+          "aliases": []
+        },
+        {
+          "answer": "celownik",
+          "aliases": []
+        },
+        {
+          "answer": "biernik",
+          "aliases": []
+        },
+        {
+          "answer": "narzędnik",
+          "aliases": []
+        },
+        {
+          "answer": "miejscownik",
+          "aliases": []
+        },
+        {
+          "answer": "wołacz",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień filmy wyreżyserowane przez Christophera Nolana.",
+      "required_count": 5,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Following",
+          "aliases": []
+        },
+        {
+          "answer": "Memento",
+          "aliases": []
+        },
+        {
+          "answer": "Bezsenność",
+          "aliases": [
+            "Insomnia"
+          ]
+        },
+        {
+          "answer": "Batman: Początek",
+          "aliases": [
+            "Batman Begins"
+          ]
+        },
+        {
+          "answer": "Prestiż",
+          "aliases": [
+            "The Prestige"
+          ]
+        },
+        {
+          "answer": "Mroczny Rycerz",
+          "aliases": [
+            "The Dark Knight"
+          ]
+        },
+        {
+          "answer": "Incepcja",
+          "aliases": [
+            "Inception"
+          ]
+        },
+        {
+          "answer": "Mroczny Rycerz powstaje",
+          "aliases": [
+            "The Dark Knight Rises"
+          ]
+        },
+        {
+          "answer": "Interstellar",
+          "aliases": []
+        },
+        {
+          "answer": "Dunkierka",
+          "aliases": [
+            "Dunkirk"
+          ]
+        },
+        {
+          "answer": "Tenet",
+          "aliases": []
+        },
+        {
+          "answer": "Oppenheimer",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień potęgi liczby 2 od 2¹ do 2¹².",
+      "required_count": 12,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "2",
+          "aliases": []
+        },
+        {
+          "answer": "4",
+          "aliases": []
+        },
+        {
+          "answer": "8",
+          "aliases": []
+        },
+        {
+          "answer": "16",
+          "aliases": []
+        },
+        {
+          "answer": "32",
+          "aliases": []
+        },
+        {
+          "answer": "64",
+          "aliases": []
+        },
+        {
+          "answer": "128",
+          "aliases": []
+        },
+        {
+          "answer": "256",
+          "aliases": []
+        },
+        {
+          "answer": "512",
+          "aliases": []
+        },
+        {
+          "answer": "1024",
+          "aliases": []
+        },
+        {
+          "answer": "2048",
+          "aliases": []
+        },
+        {
+          "answer": "4096",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień laureatów Nagrody Nobla.",
+      "required_count": 7,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Maria Skłodowska-Curie",
+          "aliases": [
+            "Maria Curie",
+            "Marie Curie",
+            "Skłodowska-Curie"
+          ]
+        },
+        {
+          "answer": "Albert Einstein",
+          "aliases": [
+            "Einstein"
+          ]
+        },
+        {
+          "answer": "Wisława Szymborska",
+          "aliases": [
+            "Szymborska"
+          ]
+        },
+        {
+          "answer": "Czesław Miłosz",
+          "aliases": [
+            "Miłosz"
+          ]
+        },
+        {
+          "answer": "Olga Tokarczuk",
+          "aliases": [
+            "Tokarczuk"
+          ]
+        },
+        {
+          "answer": "Lech Wałęsa",
+          "aliases": [
+            "Wałęsa"
+          ]
+        },
+        {
+          "answer": "Barack Obama",
+          "aliases": [
+            "Obama"
+          ]
+        },
+        {
+          "answer": "Ernest Hemingway",
+          "aliases": [
+            "Hemingway"
+          ]
+        },
+        {
+          "answer": "Nelson Mandela",
+          "aliases": [
+            "Mandela"
+          ]
+        },
+        {
+          "answer": "Martin Luther King Jr.",
+          "aliases": [
+            "Martin Luther King",
+            "MLK"
+          ]
+        },
+        {
+          "answer": "Winston Churchill",
+          "aliases": [
+            "Churchill"
+          ]
+        },
+        {
+          "answer": "Bob Dylan",
+          "aliases": [
+            "Dylan"
+          ]
+        },
+        {
+          "answer": "Niels Bohr",
+          "aliases": [
+            "Bohr"
+          ]
+        },
+        {
+          "answer": "Alexander Fleming",
+          "aliases": [
+            "Fleming"
+          ]
+        },
+        {
+          "answer": "Matka Teresa",
+          "aliases": [
+            "Mother Teresa",
+            "Teresa z Kalkuty"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień księgi biblijne.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Księga Rodzaju",
+          "aliases": [
+            "Rodzaju",
+            "Genesis"
+          ]
+        },
+        {
+          "answer": "Księga Wyjścia",
+          "aliases": [
+            "Wyjścia",
+            "Exodus"
+          ]
+        },
+        {
+          "answer": "Księga Kapłańska",
+          "aliases": [
+            "Kapłańska"
+          ]
+        },
+        {
+          "answer": "Księga Liczb",
+          "aliases": [
+            "Liczb"
+          ]
+        },
+        {
+          "answer": "Księga Powtórzonego Prawa",
+          "aliases": [
+            "Powtórzonego Prawa"
+          ]
+        },
+        {
+          "answer": "Księga Jozuego",
+          "aliases": [
+            "Jozuego"
+          ]
+        },
+        {
+          "answer": "Księga Sędziów",
+          "aliases": [
+            "Sędziów"
+          ]
+        },
+        {
+          "answer": "Księga Rut",
+          "aliases": [
+            "Rut"
+          ]
+        },
+        {
+          "answer": "Księga Hioba",
+          "aliases": [
+            "Hioba"
+          ]
+        },
+        {
+          "answer": "Księga Psalmów",
+          "aliases": [
+            "Psalmy",
+            "Psalmów"
+          ]
+        },
+        {
+          "answer": "Księga Przysłów",
+          "aliases": [
+            "Przysłów"
+          ]
+        },
+        {
+          "answer": "Księga Koheleta",
+          "aliases": [
+            "Koheleta",
+            "Eklezjastes"
+          ]
+        },
+        {
+          "answer": "Pieśń nad Pieśniami",
+          "aliases": [
+            "PnP"
+          ]
+        },
+        {
+          "answer": "Księga Izajasza",
+          "aliases": [
+            "Izajasza"
+          ]
+        },
+        {
+          "answer": "Księga Jeremiasza",
+          "aliases": [
+            "Jeremiasza"
+          ]
+        },
+        {
+          "answer": "Księga Ezechiela",
+          "aliases": [
+            "Ezechiela"
+          ]
+        },
+        {
+          "answer": "Księga Daniela",
+          "aliases": [
+            "Daniela"
+          ]
+        },
+        {
+          "answer": "Ewangelia wg św. Mateusza",
+          "aliases": [
+            "Ewangelia Mateusza",
+            "Mateusza"
+          ]
+        },
+        {
+          "answer": "Ewangelia wg św. Marka",
+          "aliases": [
+            "Ewangelia Marka",
+            "Marka"
+          ]
+        },
+        {
+          "answer": "Ewangelia wg św. Łukasza",
+          "aliases": [
+            "Ewangelia Łukasza",
+            "Łukasza"
+          ]
+        },
+        {
+          "answer": "Ewangelia wg św. Jana",
+          "aliases": [
+            "Ewangelia Jana",
+            "Jana"
+          ]
+        },
+        {
+          "answer": "Dzieje Apostolskie",
+          "aliases": [
+            "Dzieje"
+          ]
+        },
+        {
+          "answer": "List do Rzymian",
+          "aliases": [
+            "Rzymian"
+          ]
+        },
+        {
+          "answer": "1 List do Koryntian",
+          "aliases": [
+            "1 Koryntian"
+          ]
+        },
+        {
+          "answer": "2 List do Koryntian",
+          "aliases": [
+            "2 Koryntian"
+          ]
+        },
+        {
+          "answer": "Apokalipsa św. Jana",
+          "aliases": [
+            "Apokalipsa",
+            "Objawienie św. Jana"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień firmy technologiczne.",
+      "required_count": 15,
+      "time_limit": 70,
+      "answers": [
+        {
+          "answer": "Apple",
+          "aliases": []
+        },
+        {
+          "answer": "Microsoft",
+          "aliases": []
+        },
+        {
+          "answer": "Google",
+          "aliases": [
+            "Alphabet"
+          ]
+        },
+        {
+          "answer": "Meta",
+          "aliases": [
+            "Facebook"
+          ]
+        },
+        {
+          "answer": "Amazon",
+          "aliases": []
+        },
+        {
+          "answer": "NVIDIA",
+          "aliases": [
+            "Nvidia"
+          ]
+        },
+        {
+          "answer": "Intel",
+          "aliases": []
+        },
+        {
+          "answer": "AMD",
+          "aliases": [
+            "Advanced Micro Devices"
+          ]
+        },
+        {
+          "answer": "Samsung",
+          "aliases": [
+            "Samsung Electronics"
+          ]
+        },
+        {
+          "answer": "Sony",
+          "aliases": []
+        },
+        {
+          "answer": "LG",
+          "aliases": [
+            "LG Electronics"
+          ]
+        },
+        {
+          "answer": "Huawei",
+          "aliases": []
+        },
+        {
+          "answer": "Xiaomi",
+          "aliases": []
+        },
+        {
+          "answer": "Lenovo",
+          "aliases": []
+        },
+        {
+          "answer": "Dell",
+          "aliases": [
+            "Dell Technologies"
+          ]
+        },
+        {
+          "answer": "HP",
+          "aliases": [
+            "Hewlett-Packard",
+            "Hewlett Packard"
+          ]
+        },
+        {
+          "answer": "ASUS",
+          "aliases": [
+            "Asus"
+          ]
+        },
+        {
+          "answer": "Acer",
+          "aliases": []
+        },
+        {
+          "answer": "Philips",
+          "aliases": []
+        },
+        {
+          "answer": "Panasonic",
+          "aliases": []
+        },
+        {
+          "answer": "IBM",
+          "aliases": []
+        },
+        {
+          "answer": "Oracle",
+          "aliases": []
+        },
+        {
+          "answer": "Cisco",
+          "aliases": [
+            "Cisco Systems"
+          ]
+        },
+        {
+          "answer": "Adobe",
+          "aliases": []
+        },
+        {
+          "answer": "Qualcomm",
+          "aliases": []
+        },
+        {
+          "answer": "Motorola",
+          "aliases": []
+        },
+        {
+          "answer": "Nokia",
+          "aliases": []
+        },
+        {
+          "answer": "OnePlus",
+          "aliases": []
+        },
+        {
+          "answer": "OPPO",
+          "aliases": [
+            "Oppo"
+          ]
+        },
+        {
+          "answer": "vivo",
+          "aliases": [
+            "Vivo"
+          ]
+        },
+        {
+          "answer": "realme",
+          "aliases": [
+            "Realme"
+          ]
+        },
+        {
+          "answer": "Nothing",
+          "aliases": []
+        },
+        {
+          "answer": "HTC",
+          "aliases": []
+        },
+        {
+          "answer": "Toshiba",
+          "aliases": []
+        },
+        {
+          "answer": "Sharp",
+          "aliases": []
+        },
+        {
+          "answer": "Fujitsu",
+          "aliases": []
+        },
+        {
+          "answer": "Ericsson",
+          "aliases": []
+        },
+        {
+          "answer": "Logitech",
+          "aliases": []
+        },
+        {
+          "answer": "Razer",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień marki piwa.",
+      "required_count": 8,
+      "time_limit": 55,
+      "answers": [
+        {
+          "answer": "Żywiec",
+          "aliases": []
+        },
+        {
+          "answer": "Tyskie",
+          "aliases": []
+        },
+        {
+          "answer": "Lech",
+          "aliases": []
+        },
+        {
+          "answer": "Warka",
+          "aliases": []
+        },
+        {
+          "answer": "Łomża",
+          "aliases": []
+        },
+        {
+          "answer": "Perła",
+          "aliases": []
+        },
+        {
+          "answer": "Kasztelan",
+          "aliases": []
+        },
+        {
+          "answer": "Harnaś",
+          "aliases": []
+        },
+        {
+          "answer": "Okocim",
+          "aliases": []
+        },
+        {
+          "answer": "Carlsberg",
+          "aliases": []
+        },
+        {
+          "answer": "Heineken",
+          "aliases": []
+        },
+        {
+          "answer": "Guinness",
+          "aliases": []
+        },
+        {
+          "answer": "Corona",
+          "aliases": []
+        },
+        {
+          "answer": "Budweiser",
+          "aliases": []
+        },
+        {
+          "answer": "Desperados",
+          "aliases": []
+        },
+        {
+          "answer": "Kozel",
+          "aliases": []
+        },
+        {
+          "answer": "Pilsner Urquell",
+          "aliases": []
+        },
+        {
+          "answer": "Paulaner",
+          "aliases": []
+        },
+        {
+          "answer": "Książęce",
+          "aliases": []
+        },
+        {
+          "answer": "Namysłów",
+          "aliases": []
+        },
+        {
+          "answer": "Żubr",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień animowane filmy Disneya lub Pixara.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Król Lew",
+          "aliases": []
+        },
+        {
+          "answer": "Aladyn",
+          "aliases": []
+        },
+        {
+          "answer": "Mała Syrenka",
+          "aliases": []
+        },
+        {
+          "answer": "Piękna i Bestia",
+          "aliases": []
+        },
+        {
+          "answer": "Mulan",
+          "aliases": []
+        },
+        {
+          "answer": "Herkules",
+          "aliases": []
+        },
+        {
+          "answer": "Tarzan",
+          "aliases": []
+        },
+        {
+          "answer": "Kraina Lodu",
+          "aliases": []
+        },
+        {
+          "answer": "Vaiana",
+          "aliases": []
+        },
+        {
+          "answer": "Zwierzogród",
+          "aliases": []
+        },
+        {
+          "answer": "Encanto",
+          "aliases": []
+        },
+        {
+          "answer": "Ralph Demolka",
+          "aliases": []
+        },
+        {
+          "answer": "Lilo i Stich",
+          "aliases": []
+        },
+        {
+          "answer": "Toy Story",
+          "aliases": []
+        },
+        {
+          "answer": "Auta",
+          "aliases": []
+        },
+        {
+          "answer": "Ratatuj",
+          "aliases": []
+        },
+        {
+          "answer": "WALL-E",
+          "aliases": []
+        },
+        {
+          "answer": "Coco",
+          "aliases": []
+        },
+        {
+          "answer": "Odlot",
+          "aliases": []
+        },
+        {
+          "answer": "Iniemamocni",
+          "aliases": []
+        },
+        {
+          "answer": "Gdzie jest Nemo",
+          "aliases": []
+        },
+        {
+          "answer": "Potwory i spółka",
+          "aliases": []
+        },
+        {
+          "answer": "Merida Waleczna",
+          "aliases": []
+        },
+        {
+          "answer": "Co w duszy gra",
+          "aliases": []
+        },
+        {
+          "answer": "Luca",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień sieci sklepów odzieżowych.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "H&M",
+          "aliases": []
+        },
+        {
+          "answer": "Reserved",
+          "aliases": []
+        },
+        {
+          "answer": "Zara",
+          "aliases": []
+        },
+        {
+          "answer": "Cropp",
+          "aliases": []
+        },
+        {
+          "answer": "House",
+          "aliases": []
+        },
+        {
+          "answer": "Sinsay",
+          "aliases": []
+        },
+        {
+          "answer": "Bershka",
+          "aliases": []
+        },
+        {
+          "answer": "Pull&Bear",
+          "aliases": []
+        },
+        {
+          "answer": "C&A",
+          "aliases": []
+        },
+        {
+          "answer": "New Yorker",
+          "aliases": []
+        },
+        {
+          "answer": "Mohito",
+          "aliases": []
+        },
+        {
+          "answer": "Mango",
+          "aliases": []
+        },
+        {
+          "answer": "Stradivarius",
+          "aliases": []
+        },
+        {
+          "answer": "Primark",
+          "aliases": []
+        },
+        {
+          "answer": "Uniqlo",
+          "aliases": []
+        },
+        {
+          "answer": "TK Maxx",
+          "aliases": []
+        },
+        {
+          "answer": "Pepco",
+          "aliases": []
+        },
+        {
+          "answer": "KiK",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień sieci sklepów spożywczych.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Biedronka",
+          "aliases": []
+        },
+        {
+          "answer": "Lidl",
+          "aliases": []
+        },
+        {
+          "answer": "Aldi",
+          "aliases": []
+        },
+        {
+          "answer": "Kaufland",
+          "aliases": []
+        },
+        {
+          "answer": "Carrefour",
+          "aliases": []
+        },
+        {
+          "answer": "Auchan",
+          "aliases": []
+        },
+        {
+          "answer": "Dino",
+          "aliases": []
+        },
+        {
+          "answer": "Netto",
+          "aliases": []
+        },
+        {
+          "answer": "Stokrotka",
+          "aliases": []
+        },
+        {
+          "answer": "Lewiatan",
+          "aliases": []
+        },
+        {
+          "answer": "Żabka",
+          "aliases": []
+        },
+        {
+          "answer": "Intermarché",
+          "aliases": []
+        },
+        {
+          "answer": "Polomarket",
+          "aliases": []
+        },
+        {
+          "answer": "Chorten",
+          "aliases": []
+        },
+        {
+          "answer": "Topaz",
+          "aliases": []
+        },
+        {
+          "answer": "Społem",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień marki smartfonów.",
+      "required_count": 8,
+      "time_limit": 55,
+      "answers": [
+        {
+          "answer": "Apple",
+          "aliases": []
+        },
+        {
+          "answer": "Samsung",
+          "aliases": []
+        },
+        {
+          "answer": "Xiaomi",
+          "aliases": []
+        },
+        {
+          "answer": "Motorola",
+          "aliases": []
+        },
+        {
+          "answer": "Google",
+          "aliases": []
+        },
+        {
+          "answer": "OnePlus",
+          "aliases": []
+        },
+        {
+          "answer": "Oppo",
+          "aliases": []
+        },
+        {
+          "answer": "Vivo",
+          "aliases": []
+        },
+        {
+          "answer": "Realme",
+          "aliases": []
+        },
+        {
+          "answer": "Honor",
+          "aliases": []
+        },
+        {
+          "answer": "Huawei",
+          "aliases": []
+        },
+        {
+          "answer": "Sony",
+          "aliases": []
+        },
+        {
+          "answer": "Asus",
+          "aliases": []
+        },
+        {
+          "answer": "Nothing",
+          "aliases": []
+        },
+        {
+          "answer": "Nokia",
+          "aliases": []
+        },
+        {
+          "answer": "ZTE",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień marki słodyczy.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Wedel",
+          "aliases": []
+        },
+        {
+          "answer": "Milka",
+          "aliases": []
+        },
+        {
+          "answer": "Kinder",
+          "aliases": []
+        },
+        {
+          "answer": "Haribo",
+          "aliases": []
+        },
+        {
+          "answer": "M&M's",
+          "aliases": []
+        },
+        {
+          "answer": "Skittles",
+          "aliases": []
+        },
+        {
+          "answer": "Oreo",
+          "aliases": []
+        },
+        {
+          "answer": "Mars",
+          "aliases": []
+        },
+        {
+          "answer": "Snickers",
+          "aliases": []
+        },
+        {
+          "answer": "Twix",
+          "aliases": []
+        },
+        {
+          "answer": "KitKat",
+          "aliases": []
+        },
+        {
+          "answer": "Lion",
+          "aliases": []
+        },
+        {
+          "answer": "Prince Polo",
+          "aliases": []
+        },
+        {
+          "answer": "Ferrero",
+          "aliases": []
+        },
+        {
+          "answer": "Toblerone",
+          "aliases": []
+        },
+        {
+          "answer": "Lindt",
+          "aliases": []
+        },
+        {
+          "answer": "Wawel",
+          "aliases": []
+        },
+        {
+          "answer": "Goplana",
+          "aliases": []
+        },
+        {
+          "answer": "Jeżyki",
+          "aliases": []
+        },
+        {
+          "answer": "Delicje",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień słowa zawierające literę „ś”.",
+      "required_count": 6,
+      "time_limit": 50,
+      "answers": [
+        {
+          "answer": "świat",
+          "aliases": []
+        },
+        {
+          "answer": "światło",
+          "aliases": []
+        },
+        {
+          "answer": "święta",
+          "aliases": []
+        },
+        {
+          "answer": "święty",
+          "aliases": []
+        },
+        {
+          "answer": "śnieg",
+          "aliases": []
+        },
+        {
+          "answer": "śnieżka",
+          "aliases": []
+        },
+        {
+          "answer": "ślimak",
+          "aliases": []
+        },
+        {
+          "answer": "środa",
+          "aliases": []
+        },
+        {
+          "answer": "śniadanie",
+          "aliases": []
+        },
+        {
+          "answer": "śmiech",
+          "aliases": []
+        },
+        {
+          "answer": "śmietana",
+          "aliases": []
+        },
+        {
+          "answer": "śmietnik",
+          "aliases": []
+        },
+        {
+          "answer": "świnia",
+          "aliases": []
+        },
+        {
+          "answer": "śliwka",
+          "aliases": []
+        },
+        {
+          "answer": "śledź",
+          "aliases": []
+        },
+        {
+          "answer": "ściana",
+          "aliases": []
+        },
+        {
+          "answer": "ścieżka",
+          "aliases": []
+        },
+        {
+          "answer": "śrubokręt",
+          "aliases": []
+        },
+        {
+          "answer": "śruba",
+          "aliases": []
+        },
+        {
+          "answer": "ślub",
+          "aliases": []
+        },
+        {
+          "answer": "ślad",
+          "aliases": []
+        },
+        {
+          "answer": "śpiew",
+          "aliases": []
+        },
+        {
+          "answer": "śpiwór",
+          "aliases": []
+        },
+        {
+          "answer": "kość",
+          "aliases": []
+        },
+        {
+          "answer": "miłość",
+          "aliases": []
+        },
+        {
+          "answer": "radość",
+          "aliases": []
+        },
+        {
+          "answer": "przyszłość",
+          "aliases": []
+        },
+        {
+          "answer": "gość",
+          "aliases": []
+        },
+        {
+          "answer": "wieś",
+          "aliases": []
+        },
+        {
+          "answer": "ktoś",
+          "aliases": []
+        },
+        {
+          "answer": "coś",
+          "aliases": []
+        },
+        {
+          "answer": "dość",
+          "aliases": []
+        },
+        {
+          "answer": "jakość",
+          "aliases": []
+        },
+        {
+          "answer": "ilość",
+          "aliases": []
+        },
+        {
+          "answer": "złość",
+          "aliases": []
+        },
+        {
+          "answer": "młodość",
+          "aliases": []
+        },
+        {
+          "answer": "starość",
+          "aliases": []
+        },
+        {
+          "answer": "wolność",
+          "aliases": []
+        },
+        {
+          "answer": "głośnik",
+          "aliases": []
+        },
+        {
+          "answer": "maślak",
+          "aliases": []
+        },
+        {
+          "answer": "taśma",
+          "aliases": []
+        },
+        {
+          "answer": "wiśnia",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "prompt": "Wymień rzeczy, które można prać w pralce.",
+      "required_count": 10,
+      "time_limit": 60,
+      "answers": [
+        {
+          "answer": "Koszulka",
+          "aliases": []
+        },
+        {
+          "answer": "Spodnie",
+          "aliases": []
+        },
+        {
+          "answer": "Skarpetki",
+          "aliases": []
+        },
+        {
+          "answer": "Bielizna",
+          "aliases": []
+        },
+        {
+          "answer": "Ręcznik",
+          "aliases": []
+        },
+        {
+          "answer": "Pościel",
+          "aliases": []
+        },
+        {
+          "answer": "Poszewka",
+          "aliases": []
+        },
+        {
+          "answer": "Prześcieradło",
+          "aliases": []
+        },
+        {
+          "answer": "Bluza",
+          "aliases": []
+        },
+        {
+          "answer": "Sweter",
+          "aliases": []
+        },
+        {
+          "answer": "Koszula",
+          "aliases": []
+        },
+        {
+          "answer": "Sukienka",
+          "aliases": []
+        },
+        {
+          "answer": "Spódnica",
+          "aliases": []
+        },
+        {
+          "answer": "Piżama",
+          "aliases": []
+        },
+        {
+          "answer": "Dres",
+          "aliases": []
+        },
+        {
+          "answer": "Firanka",
+          "aliases": []
+        },
+        {
+          "answer": "Zasłona",
+          "aliases": []
+        },
+        {
+          "answer": "Czapka",
+          "aliases": []
+        },
+        {
+          "answer": "Szalik",
+          "aliases": []
+        },
+        {
+          "answer": "Rękawiczki",
+          "aliases": []
+        },
+        {
+          "answer": "Koc",
+          "aliases": []
+        },
+        {
+          "answer": "Ścierka",
+          "aliases": []
+        },
+        {
+          "answer": "Obrus",
+          "aliases": []
+        },
+        {
+          "answer": "Jeansy",
+          "aliases": []
+        }
+      ]
+    }
+  ],
+  "set": "La Ceramica — RUSH seed v1 FINAL",
+  "generated_at": "2026-09-16",
+  "count": 48
+}

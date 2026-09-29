@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "content_type": "DUEL",
+  "set": "La Ceramica — DUEL seed v1",
+  "generated_at": "2026-09-16",
+  "randomization": {
+    "LIST_weight": 75,
+    "IDENTIFY_weight": 25
+  },
+  "list_categories": [
+    {
+      "name": "Państwa Europy",
+      "type": "LIST"
+    },
+    {
+      "name": "Marki samochodów",
+      "type": "LIST"
+    },
+    {
+      "name": "Kluby piłkarskie",
+      "type": "LIST"
+    },
+    {
+      "name": "Superbohaterowie",
+      "type": "LIST"
+    },
+    {
+      "name": "Filmy animowane",
+      "type": "LIST"
+    },
+    {
+      "name": "Postacie z Harry’ego Pottera",
+      "type": "LIST"
+    },
+    {
+      "name": "Dyscypliny sportowe",
+      "type": "LIST"
+    },
+    {
+      "name": "Rzeczy, które znajdziesz w kuchni",
+      "type": "LIST"
+    },
+    {
+      "name": "Rzeczy, które mają koła",
+      "type": "LIST"
+    },
+    {
+      "name": "Seriale",
+      "type": "LIST"
+    },
+    {
+      "name": "Imiona żeńskie",
+      "type": "LIST"
+    },
+    {
+      "name": "Imiona męskie",
+      "type": "LIST"
+    },
+    {
+      "name": "Rzeczy, które można otworzyć",
+      "type": "LIST"
+    },
+    {
+      "name": "Rzeczy, które mają przyciski",
+      "type": "LIST"
+    },
+    {
+      "name": "Zawody",
+      "type": "LIST"
+    },
+    {
+      "name": "Miasta w województwie podlaskim",
+      "type": "LIST"
+    },
+    {
+      "name": "Celebryci i influencerzy",
+      "type": "LIST"
+    },
+    {
+      "name": "Stolice państw",
+      "type": "LIST"
+    },
+    {
+      "name": "Agrafka",
+      "type": "LIST",
+      "mechanic": "CHAIN_LAST_LETTER"
+    },
+    {
+      "name": "Rzeczy, które robi się codziennie",
+      "type": "LIST"
+    }
+  ],
+  "identify_categories": [
+    {
+      "name": "Flagi państw",
+      "prompt_type": "IMAGE",
+      "asset_status": "TO_IMPORT"
+    },
+    {
+      "name": "Logotypy marek",
+      "prompt_type": "IMAGE",
+      "asset_status": "TO_IMPORT"
+    },
+    {
+      "name": "Herby klubów piłkarskich",
+      "prompt_type": "IMAGE",
+      "asset_status": "TO_IMPORT"
+    },
+    {
+      "name": "Zwierzęta",
+      "prompt_type": "IMAGE",
+      "asset_status": "TO_IMPORT"
+    }
+  ],
+  "counts": {
+    "LIST_categories": 20,
+    "IDENTIFY_categories": 4,
+    "IDENTIFY_items": 327
+  }
+}
