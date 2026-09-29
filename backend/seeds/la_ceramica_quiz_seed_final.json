@@ -1,0 +1,1277 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-16",
+  "set": "La Ceramica — QUIZ seed v1 FINAL",
+  "questions": [
+    {
+      "type": "ABCD",
+      "category": "Geografia",
+      "question": "Które z tych państw ma największą powierzchnię?",
+      "options": [
+        {
+          "text": "Argentyna",
+          "is_correct": false
+        },
+        {
+          "text": "Indie",
+          "is_correct": true
+        },
+        {
+          "text": "Kazachstan",
+          "is_correct": false
+        },
+        {
+          "text": "Algieria",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Jedzenie",
+      "question": "Który z tych produktów zawiera naturalnie najwięcej wody?",
+      "options": [
+        {
+          "text": "Arbuz",
+          "is_correct": false
+        },
+        {
+          "text": "Ogórek",
+          "is_correct": true
+        },
+        {
+          "text": "Pomidor",
+          "is_correct": false
+        },
+        {
+          "text": "Truskawka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Technologia",
+      "question": "Które z tych urządzeń pojawiło się na rynku najwcześniej?",
+      "options": [
+        {
+          "text": "iPhone",
+          "is_correct": false
+        },
+        {
+          "text": "PlayStation 2",
+          "is_correct": false
+        },
+        {
+          "text": "iPod",
+          "is_correct": false
+        },
+        {
+          "text": "Nintendo Game Boy",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Sport",
+      "question": "W którym z tych sportów standardowo używa się najcięższej piłki?",
+      "options": [
+        {
+          "text": "Piłka nożna",
+          "is_correct": false
+        },
+        {
+          "text": "Koszykówka",
+          "is_correct": true
+        },
+        {
+          "text": "Siatkówka",
+          "is_correct": false
+        },
+        {
+          "text": "Piłka ręczna",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Jedzenie",
+      "question": "Który z tych produktów ma przeciętnie najwięcej kalorii w 100 g?",
+      "options": [
+        {
+          "text": "Awokado",
+          "is_correct": false
+        },
+        {
+          "text": "Ser cheddar",
+          "is_correct": false
+        },
+        {
+          "text": "Orzechy włoskie",
+          "is_correct": true
+        },
+        {
+          "text": "Mleczna czekolada",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Człowiek",
+      "question": "Których z tych kości człowiek ma w ciele najwięcej?",
+      "options": [
+        {
+          "text": "Kręgów",
+          "is_correct": false
+        },
+        {
+          "text": "Żeber",
+          "is_correct": false
+        },
+        {
+          "text": "Paliczków",
+          "is_correct": true
+        },
+        {
+          "text": "Kości nadgarstka",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Technologia",
+      "question": "Która z tych ilości danych jest największa?",
+      "options": [
+        {
+          "text": "1 GB",
+          "is_correct": false
+        },
+        {
+          "text": "1000 MB",
+          "is_correct": false
+        },
+        {
+          "text": "0,5 TB",
+          "is_correct": true
+        },
+        {
+          "text": "100 000 KB",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Polska",
+      "question": "Które z tych województw graniczy z największą liczbą innych województw?",
+      "options": [
+        {
+          "text": "Mazowieckie",
+          "is_correct": true
+        },
+        {
+          "text": "Podlaskie",
+          "is_correct": false
+        },
+        {
+          "text": "Pomorskie",
+          "is_correct": false
+        },
+        {
+          "text": "Zachodniopomorskie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Kosmos",
+      "question": "Gdybyś ważył 80 kg na Ziemi, na którym z tych ciał niebieskich wskazanie wagi byłoby najmniejsze?",
+      "options": [
+        {
+          "text": "Mars",
+          "is_correct": false
+        },
+        {
+          "text": "Księżyc",
+          "is_correct": true
+        },
+        {
+          "text": "Wenus",
+          "is_correct": false
+        },
+        {
+          "text": "Jowisz",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Nauka",
+      "question": "Który z tych materiałów najlepiej przewodzi ciepło?",
+      "options": [
+        {
+          "text": "Drewno",
+          "is_correct": false
+        },
+        {
+          "text": "Szkło",
+          "is_correct": false
+        },
+        {
+          "text": "Aluminium",
+          "is_correct": true
+        },
+        {
+          "text": "Guma",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Muzyka",
+      "question": "Który z tych instrumentów ma standardowo najwięcej klawiszy klawiatury?",
+      "options": [
+        {
+          "text": "Fortepian",
+          "is_correct": true
+        },
+        {
+          "text": "Akordeon",
+          "is_correct": false
+        },
+        {
+          "text": "Saksofon",
+          "is_correct": false
+        },
+        {
+          "text": "Klarnet",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Życie codzienne",
+      "question": "Które z tych urządzeń domowych ma zwykle najwyższą moc znamionową?",
+      "options": [
+        {
+          "text": "Telewizor",
+          "is_correct": false
+        },
+        {
+          "text": "Laptop",
+          "is_correct": false
+        },
+        {
+          "text": "Czajnik elektryczny",
+          "is_correct": true
+        },
+        {
+          "text": "Żarówka LED",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Język polski",
+      "question": "Które z tych wyrażeń jest zapisane poprawnie?",
+      "options": [
+        {
+          "text": "Napewno",
+          "is_correct": false
+        },
+        {
+          "text": "Na prawdę",
+          "is_correct": false
+        },
+        {
+          "text": "W ogóle",
+          "is_correct": true
+        },
+        {
+          "text": "Po za tym",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Język polski",
+      "question": "Którego z tych słów można poprawnie użyć w znaczeniu „co najmniej”?",
+      "options": [
+        {
+          "text": "Bynajmniej",
+          "is_correct": false
+        },
+        {
+          "text": "Przynajmniej",
+          "is_correct": true
+        },
+        {
+          "text": "Aczkolwiek",
+          "is_correct": false
+        },
+        {
+          "text": "Tudzież",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Geografia",
+      "question": "Który z tych krajów ma najwięcej lądowych państw sąsiednich w Europie?",
+      "options": [
+        {
+          "text": "Polska",
+          "is_correct": false
+        },
+        {
+          "text": "Niemcy",
+          "is_correct": true
+        },
+        {
+          "text": "Francja",
+          "is_correct": false
+        },
+        {
+          "text": "Austria",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Sport",
+      "question": "Który z tych dystansów jest najdłuższy?",
+      "options": [
+        {
+          "text": "Maraton",
+          "is_correct": true
+        },
+        {
+          "text": "40 długości basenu olimpijskiego",
+          "is_correct": false
+        },
+        {
+          "text": "100 okrążeń standardowej bieżni 400 m",
+          "is_correct": false
+        },
+        {
+          "text": "20 km",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Polska",
+      "question": "Który polski władca znajduje się na banknocie 100 zł?",
+      "options": [
+        {
+          "text": "Mieszko I",
+          "is_correct": false
+        },
+        {
+          "text": "Kazimierz III Wielki",
+          "is_correct": false
+        },
+        {
+          "text": "Władysław II Jagiełło",
+          "is_correct": true
+        },
+        {
+          "text": "Zygmunt I Stary",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Zwierzęta",
+      "question": "Które z tych zwierząt jest torbaczem?",
+      "options": [
+        {
+          "text": "Panda",
+          "is_correct": false
+        },
+        {
+          "text": "Koala",
+          "is_correct": true
+        },
+        {
+          "text": "Lemur",
+          "is_correct": false
+        },
+        {
+          "text": "Leniwiec",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Gry",
+      "question": "Która firma jest twórcą serii Grand Theft Auto?",
+      "options": [
+        {
+          "text": "Ubisoft",
+          "is_correct": false
+        },
+        {
+          "text": "Rockstar Games",
+          "is_correct": true
+        },
+        {
+          "text": "Electronic Arts",
+          "is_correct": false
+        },
+        {
+          "text": "Activision",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Film i popkultura",
+      "question": "Która z tych postaci nie pochodzi z uniwersum Marvela?",
+      "options": [
+        {
+          "text": "Deadpool",
+          "is_correct": false
+        },
+        {
+          "text": "Iron Man",
+          "is_correct": false
+        },
+        {
+          "text": "Hellboy",
+          "is_correct": true
+        },
+        {
+          "text": "Venom",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Literatura",
+      "question": "Która z tych książek nie jest lekturą obowiązkową ani w szkole podstawowej, ani na poziomie podstawowym liceum/technikum według podstawy programowej 2025/2026?",
+      "options": [
+        {
+          "text": "Lalka",
+          "is_correct": false
+        },
+        {
+          "text": "Zbrodnia i kara",
+          "is_correct": false
+        },
+        {
+          "text": "Hobbit, czyli tam i z powrotem",
+          "is_correct": false
+        },
+        {
+          "text": "Stary człowiek i morze",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Geografia",
+      "question": "Która z tych par państw NIE ma wspólnej granicy lądowej?",
+      "options": [
+        {
+          "text": "Dania — Niemcy",
+          "is_correct": false
+        },
+        {
+          "text": "Serbia — Rumunia",
+          "is_correct": false
+        },
+        {
+          "text": "Węgry — Chorwacja",
+          "is_correct": false
+        },
+        {
+          "text": "Słowacja — Słowenia",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Zwierzęta",
+      "question": "Które z tych zwierząt nie występuje dziko w polskich Tatrach?",
+      "options": [
+        {
+          "text": "Ryś",
+          "is_correct": false
+        },
+        {
+          "text": "Wilk",
+          "is_correct": false
+        },
+        {
+          "text": "Muflon",
+          "is_correct": true
+        },
+        {
+          "text": "Świstak",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Prawo",
+      "question": "Jaka kara może grozić w Polsce za nieudzielenie pomocy człowiekowi znajdującemu się w bezpośrednim niebezpieczeństwie utraty życia albo ciężkiego uszczerbku na zdrowiu, gdy pomocy można udzielić bez narażenia siebie lub innej osoby na takie niebezpieczeństwo?",
+      "options": [
+        {
+          "text": "Wyłącznie mandat do 5000 zł",
+          "is_correct": false
+        },
+        {
+          "text": "Do 1 roku pozbawienia wolności",
+          "is_correct": false
+        },
+        {
+          "text": "Do 3 lat pozbawienia wolności",
+          "is_correct": true
+        },
+        {
+          "text": "Do 8 lat pozbawienia wolności",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Polska",
+      "question": "Którego z tych urzędów nigdy nie sprawował Jarosław Kaczyński?",
+      "options": [
+        {
+          "text": "Senator RP",
+          "is_correct": false
+        },
+        {
+          "text": "Prezes Rady Ministrów",
+          "is_correct": false
+        },
+        {
+          "text": "Wiceprezes Rady Ministrów",
+          "is_correct": false
+        },
+        {
+          "text": "Marszałek Sejmu",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Polska",
+      "question": "Jaką funkcję Donald Tusk pełnił w latach 2014–2019?",
+      "options": [
+        {
+          "text": "Przewodniczącego Komisji Europejskiej",
+          "is_correct": false
+        },
+        {
+          "text": "Przewodniczącego Rady Europejskiej",
+          "is_correct": true
+        },
+        {
+          "text": "Przewodniczącego Parlamentu Europejskiego",
+          "is_correct": false
+        },
+        {
+          "text": "Sekretarza generalnego NATO",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Historia Polski",
+      "question": "Które z tych miast przez najdłuższy łączny okres znajdowało się pod zwierzchnictwem państwa polskiego lub Rzeczypospolitej?",
+      "options": [
+        {
+          "text": "Lwów",
+          "is_correct": false
+        },
+        {
+          "text": "Wilno",
+          "is_correct": false
+        },
+        {
+          "text": "Wrocław",
+          "is_correct": false
+        },
+        {
+          "text": "Gdańsk",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Film i popkultura",
+      "question": "Który z tych aktorów nie zagrał Batmana w pełnometrażowym filmie kinowym?",
+      "options": [
+        {
+          "text": "Christian Bale",
+          "is_correct": false
+        },
+        {
+          "text": "Robert Pattinson",
+          "is_correct": false
+        },
+        {
+          "text": "Ben Affleck",
+          "is_correct": false
+        },
+        {
+          "text": "Jake Gyllenhaal",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Muzyka",
+      "question": "Który z tych zespołów pochodzi z Polski?",
+      "options": [
+        {
+          "text": "Måneskin",
+          "is_correct": false
+        },
+        {
+          "text": "Behemoth",
+          "is_correct": true
+        },
+        {
+          "text": "Rammstein",
+          "is_correct": false
+        },
+        {
+          "text": "Nightwish",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Nauka i technologia",
+      "question": "Który z tych wynalazków powstał najpóźniej?",
+      "options": [
+        {
+          "text": "Telefon",
+          "is_correct": false
+        },
+        {
+          "text": "Praktyczna żarówka elektryczna",
+          "is_correct": false
+        },
+        {
+          "text": "Radio",
+          "is_correct": false
+        },
+        {
+          "text": "Telewizja",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Historia",
+      "question": "Ułóż wydarzenia od najstarszego do najnowszego:",
+      "options": [
+        {
+          "text": "Chrzest Polski",
+          "correct_position": 1
+        },
+        {
+          "text": "Odkrycie Ameryki przez Krzysztofa Kolumba",
+          "correct_position": 2
+        },
+        {
+          "text": "Rewolucja francuska",
+          "correct_position": 3
+        },
+        {
+          "text": "Lądowanie człowieka na Księżycu",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Zwierzęta",
+      "question": "Ułóż zwierzęta według typowej maksymalnej prędkości biegu, od najwolniejszego do najszybszego:",
+      "options": [
+        {
+          "text": "Żółw lądowy",
+          "correct_position": 1
+        },
+        {
+          "text": "Nosorożec",
+          "correct_position": 2
+        },
+        {
+          "text": "Koń",
+          "correct_position": 3
+        },
+        {
+          "text": "Gepard",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Film i popkultura",
+      "question": "Ułóż filmy o Harrym Potterze według daty premiery, od najwcześniejszej:",
+      "options": [
+        {
+          "text": "Harry Potter i Komnata Tajemnic",
+          "correct_position": 1
+        },
+        {
+          "text": "Harry Potter i Czara Ognia",
+          "correct_position": 2
+        },
+        {
+          "text": "Harry Potter i Zakon Feniksa",
+          "correct_position": 3
+        },
+        {
+          "text": "Harry Potter i Książę Półkrwi",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Geografia",
+      "question": "Ułóż państwa według długości linii brzegowej ich części kontynentalnej (bez wysp), od najkrótszej do najdłuższej:",
+      "options": [
+        {
+          "text": "Polska",
+          "correct_position": 1
+        },
+        {
+          "text": "Portugalia",
+          "correct_position": 2
+        },
+        {
+          "text": "Włochy",
+          "correct_position": 3
+        },
+        {
+          "text": "Norwegia",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Muzyka",
+      "question": "Ułóż utwory według liczby wyświetleń ich oficjalnych teledysków na YouTube, od najmniejszej do największej:",
+      "options": [
+        {
+          "text": "Taylor Swift — Blank Space",
+          "correct_position": 1
+        },
+        {
+          "text": "Ed Sheeran — Perfect",
+          "correct_position": 2
+        },
+        {
+          "text": "Katy Perry — Roar",
+          "correct_position": 3
+        },
+        {
+          "text": "Mark Ronson feat. Bruno Mars — Uptown Funk",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Sport",
+      "question": "Ułóż piłkarzy według liczby zdobytych Złotych Piłek, od najmniejszej do największej:",
+      "options": [
+        {
+          "text": "Neymar",
+          "correct_position": 1
+        },
+        {
+          "text": "Ronaldinho",
+          "correct_position": 2
+        },
+        {
+          "text": "Cristiano Ronaldo",
+          "correct_position": 3
+        },
+        {
+          "text": "Lionel Messi",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Prawo i życie codzienne",
+      "question": "Ułóż od najwyższego do najniższego priorytetu to, do czego uczestnik ruchu musi się stosować:",
+      "options": [
+        {
+          "text": "Polecenia i sygnały osoby kierującej ruchem",
+          "correct_position": 1
+        },
+        {
+          "text": "Sygnalizacja świetlna",
+          "correct_position": 2
+        },
+        {
+          "text": "Znaki drogowe regulujące pierwszeństwo",
+          "correct_position": 3
+        },
+        {
+          "text": "Ogólne przepisy ruchu drogowego",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Technologia",
+      "question": "Ułóż technologie według momentu ich standaryzacji lub pierwszego szerokiego wprowadzenia, od najwcześniejszej:",
+      "options": [
+        {
+          "text": "Wi‑Fi",
+          "correct_position": 1
+        },
+        {
+          "text": "Bluetooth",
+          "correct_position": 2
+        },
+        {
+          "text": "USB‑C",
+          "correct_position": 3
+        },
+        {
+          "text": "5G",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Film i popkultura",
+      "question": "Ułóż filmy MCU według daty premiery, od najwcześniejszej:",
+      "options": [
+        {
+          "text": "Iron Man",
+          "correct_position": 1
+        },
+        {
+          "text": "Kapitan Ameryka: Pierwsze starcie",
+          "correct_position": 2
+        },
+        {
+          "text": "Avengers",
+          "correct_position": 3
+        },
+        {
+          "text": "Strażnicy Galaktyki",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Film i popkultura",
+      "question": "Ułóż seriale według daty premiery pierwszego odcinka, od najwcześniejszej:",
+      "options": [
+        {
+          "text": "Przyjaciele",
+          "correct_position": 1
+        },
+        {
+          "text": "Breaking Bad",
+          "correct_position": 2
+        },
+        {
+          "text": "The Walking Dead",
+          "correct_position": 3
+        },
+        {
+          "text": "Gra o tron",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Człowiek",
+      "question": "Ułóż elementy układu pokarmowego zgodnie z drogą, którą przebywa pokarm:",
+      "options": [
+        {
+          "text": "Jama ustna",
+          "correct_position": 1
+        },
+        {
+          "text": "Żołądek",
+          "correct_position": 2
+        },
+        {
+          "text": "Jelito cienkie",
+          "correct_position": 3
+        },
+        {
+          "text": "Jelito grube",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Technologia i AI",
+      "question": "Ułóż chatboty AI według publicznego udostępnienia użytkownikom pod tymi nazwami, od najwcześniejszego:",
+      "options": [
+        {
+          "text": "ChatGPT",
+          "correct_position": 1
+        },
+        {
+          "text": "Claude",
+          "correct_position": 2
+        },
+        {
+          "text": "Gemini",
+          "correct_position": 3
+        },
+        {
+          "text": "DeepSeek",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Kosmos",
+      "question": "Ułóż państwa według pierwszego lotu ich obywatela w kosmos, od najwcześniejszego:",
+      "options": [
+        {
+          "text": "ZSRR",
+          "correct_position": 1
+        },
+        {
+          "text": "USA",
+          "correct_position": 2
+        },
+        {
+          "text": "Polska",
+          "correct_position": 3
+        },
+        {
+          "text": "Chiny",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Jedzenie",
+      "question": "Ułóż produkty według przeciętnej kaloryczności w 100 g, od najmniejszej do największej:",
+      "options": [
+        {
+          "text": "Awokado",
+          "correct_position": 1
+        },
+        {
+          "text": "Chleb pszenny",
+          "correct_position": 2
+        },
+        {
+          "text": "Gorzka czekolada",
+          "correct_position": 3
+        },
+        {
+          "text": "Orzechy włoskie",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Gry",
+      "question": "Ułóż gry według premiery ich pierwszej publicznie wydanej wersji, od najstarszej do najnowszej:",
+      "options": [
+        {
+          "text": "Tetris",
+          "correct_position": 1
+        },
+        {
+          "text": "The Sims",
+          "correct_position": 2
+        },
+        {
+          "text": "Minecraft",
+          "correct_position": 3
+        },
+        {
+          "text": "Fortnite",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Literatura",
+      "question": "Ułóż książki według przybliżonej długości oryginalnego tekstu (liczby słów), od najkrótszej do najdłuższej:",
+      "options": [
+        {
+          "text": "Mały Książę",
+          "correct_position": 1
+        },
+        {
+          "text": "Diuna",
+          "correct_position": 2
+        },
+        {
+          "text": "Lalka",
+          "correct_position": 3
+        },
+        {
+          "text": "Gra o tron",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Historia",
+      "question": "Ułóż cywilizacje według czasu ich ukształtowania, od najstarszej do najmłodszej:",
+      "options": [
+        {
+          "text": "Sumerowie",
+          "correct_position": 1
+        },
+        {
+          "text": "Starożytny Egipt",
+          "correct_position": 2
+        },
+        {
+          "text": "Starożytna Grecja",
+          "correct_position": 3
+        },
+        {
+          "text": "Starożytny Rzym",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Nauka i technologia",
+      "question": "Ułóż technologie według momentu ich powstania, od najwcześniejszej do najpóźniejszej:",
+      "options": [
+        {
+          "text": "Tranzystor",
+          "correct_position": 1
+        },
+        {
+          "text": "Mikroprocesor",
+          "correct_position": 2
+        },
+        {
+          "text": "Komputer osobisty",
+          "correct_position": 3
+        },
+        {
+          "text": "World Wide Web (WWW)",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Muzyka",
+      "question": "Ułóż artystów według roku ich występu podczas Super Bowl Halftime Show, od najwcześniejszego do najpóźniejszego:",
+      "options": [
+        {
+          "text": "Michael Jackson",
+          "correct_position": 1
+        },
+        {
+          "text": "Madonna",
+          "correct_position": 2
+        },
+        {
+          "text": "The Weeknd",
+          "correct_position": 3
+        },
+        {
+          "text": "Rihanna",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Nauka i technologia",
+      "question": "Ułóż od najwolniejszego do najszybszego:",
+      "options": [
+        {
+          "text": "Pendolino",
+          "correct_position": 1
+        },
+        {
+          "text": "Prywatny odrzutowiec",
+          "correct_position": 2
+        },
+        {
+          "text": "Prędkość dźwięku w powietrzu",
+          "correct_position": 3
+        },
+        {
+          "text": "Międzynarodowa Stacja Kosmiczna (ISS)",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ORDER",
+      "category": "Matematyka",
+      "question": "Ułóż działania w kolejności, w jakiej należy je wykonywać.",
+      "options": [
+        {
+          "text": "Działania w nawiasach",
+          "correct_position": 1
+        },
+        {
+          "text": "Potęgowanie i pierwiastkowanie",
+          "correct_position": 2
+        },
+        {
+          "text": "Mnożenie i dzielenie",
+          "correct_position": 3
+        },
+        {
+          "text": "Dodawanie i odejmowanie",
+          "correct_position": 4
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Kuchnia",
+      "question": "Który z tych składników nie jest składnikiem klasycznego sosu beszamelowego?",
+      "options": [
+        {
+          "text": "Masło",
+          "is_correct": false
+        },
+        {
+          "text": "Mąka pszenna",
+          "is_correct": false
+        },
+        {
+          "text": "Mleko",
+          "is_correct": false
+        },
+        {
+          "text": "Śmietanka",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Język",
+      "question": "Słowo „szlafmyca” pochodzi od niemieckiego słowa oznaczającego…",
+      "options": [
+        {
+          "text": "Czapkę do spania",
+          "is_correct": true
+        },
+        {
+          "text": "Nocną koszulę",
+          "is_correct": false
+        },
+        {
+          "text": "Miękką poduszkę",
+          "is_correct": false
+        },
+        {
+          "text": "Ciepły koc",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Przyroda",
+      "question": "Który rodzaj gleby najsłabiej przepuszcza wodę?",
+      "options": [
+        {
+          "text": "Gleba piaszczysta",
+          "is_correct": false
+        },
+        {
+          "text": "Gleba żwirowa",
+          "is_correct": false
+        },
+        {
+          "text": "Gleba gliniasta",
+          "is_correct": true
+        },
+        {
+          "text": "Gleba próchnicza",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "type": "ABCD",
+      "category": "Zwierzęta",
+      "question": "Które z tych zwierząt nie prowadzi głównie nocnego trybu życia?",
+      "options": [
+        {
+          "text": "Borsuk",
+          "is_correct": false
+        },
+        {
+          "text": "Sowa",
+          "is_correct": false
+        },
+        {
+          "text": "Nietoperz",
+          "is_correct": false
+        },
+        {
+          "text": "Wiewiórka pospolita",
+          "is_correct": true
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "total": 55,
+    "ABCD": 34,
+    "ORDER": 21
+  }
+}

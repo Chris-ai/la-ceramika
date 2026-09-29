@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "content_type": "MORE_LESS",
+  "set": "La Ceramica — MORE / LESS seed v1 FINAL",
+  "generated_at": "2026-09-16",
+  "count": 29,
+  "questions": [
+    {
+      "question": "Ile wyświetleń na YouTube ma film „Paweł Jumper-Orginał” na kanale Dendi321?",
+      "reference_value": 4000000,
+      "correct_value": 5673397,
+      "unit": "wyświetleń",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Jak długa jest granica Polski z Niemcami?",
+      "reference_value": 450,
+      "correct_value": 467,
+      "unit": "km",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile minut potrzebuje światło ze Słońca, aby dotrzeć do Ziemi?",
+      "reference_value": 10,
+      "correct_value": 8.33,
+      "unit": "min",
+      "correct_side": "LESS"
+    },
+    {
+      "question": "Ile kilometrów ma Wisła?",
+      "reference_value": 1000,
+      "correct_value": 1047,
+      "unit": "km",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile może ważyć duży dorosły samiec niedźwiedzia polarnego?",
+      "reference_value": 500,
+      "correct_value": 600,
+      "unit": "kg",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "W którym roku upadło Cesarstwo Zachodniorzymskie?",
+      "reference_value": 500,
+      "correct_value": 476,
+      "unit": "rok",
+      "correct_side": "LESS"
+    },
+    {
+      "question": "W którym roku miał miejsce II rozbiór Polski?",
+      "reference_value": 1790,
+      "correct_value": 1793,
+      "unit": "rok",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "W którym roku wysłano pierwszego SMS-a?",
+      "reference_value": 1990,
+      "correct_value": 1992,
+      "unit": "rok",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "W którym roku pierwszy człowiek poleciał w kosmos?",
+      "reference_value": 1960,
+      "correct_value": 1961,
+      "unit": "rok",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "W którym roku trafił do sprzedaży pierwszy iPhone?",
+      "reference_value": 2005,
+      "correct_value": 2007,
+      "unit": "rok",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "W ilu państwach język hiszpański jest językiem urzędowym?",
+      "reference_value": 14,
+      "correct_value": 20,
+      "unit": "państw",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile lat miał Freddie Mercury, gdy zmarł?",
+      "reference_value": 50,
+      "correct_value": 45,
+      "unit": "lat",
+      "correct_side": "LESS"
+    },
+    {
+      "question": "Ile lat miał Jan Paweł II, gdy zmarł?",
+      "reference_value": 80,
+      "correct_value": 84,
+      "unit": "lat",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile lat miała Elżbieta II w dniu koronacji?",
+      "reference_value": 30,
+      "correct_value": 27,
+      "unit": "lat",
+      "correct_side": "LESS"
+    },
+    {
+      "question": "Ile reprezentacji narodowych przynajmniej raz zdobyło mistrzostwo świata w piłce nożnej mężczyzn?",
+      "reference_value": 6,
+      "correct_value": 8,
+      "unit": "reprezentacji",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile tytułów wielkoszlemowych w singlu zdobyła Iga Świątek?",
+      "reference_value": 5,
+      "correct_value": 6,
+      "unit": "tytułów",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ilu mieszkańców ma Białystok?",
+      "reference_value": 282000,
+      "correct_value": 289200,
+      "unit": "mieszkańców",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile państw członkowskich ONZ zawiera literę „a” w swojej krótkiej polskiej nazwie?",
+      "reference_value": 124,
+      "correct_value": 163,
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile klawiszy ma typowa pełnowymiarowa klawiatura komputerowa z blokiem numerycznym?",
+      "reference_value": 80,
+      "correct_value": 104,
+      "unit": "klawisze",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Jaką minimalną długość może mieć regulaminowe boisko do piłki nożnej?",
+      "reference_value": 88,
+      "correct_value": 90,
+      "unit": "m",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile minut trwa kinowa wersja filmu „Titanic” Jamesa Camerona?",
+      "reference_value": 180,
+      "correct_value": 194,
+      "unit": "min",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile kcal mają średnie frytki McDonald’s w Polsce?",
+      "reference_value": 300,
+      "correct_value": null,
+      "unit": "kcal",
+      "correct_side": null
+    },
+    {
+      "question": "Jaka jest kapitalizacja giełdowa Nvidii?",
+      "reference_value": 2.5,
+      "correct_value": 5.12,
+      "unit": "bln USD",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Jak głęboki jest najgłębszy punkt Rowu Mariańskiego?",
+      "reference_value": 10000,
+      "correct_value": 10935,
+      "unit": "m",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Jaką maksymalną wysokość mogą osiągać najwyższe gatunki bambusa?",
+      "reference_value": 30,
+      "correct_value": 40,
+      "unit": "m",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile podstawowych wartości rytmicznych nut wyróżniamy od całej nuty do sześćdziesięcioczwórki?",
+      "reference_value": 5,
+      "correct_value": 7,
+      "unit": "wartości",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile litrów wody mieści typowa domowa wanna?",
+      "reference_value": 100,
+      "correct_value": 150,
+      "unit": "l",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile minut zazwyczaj gotuje się jajko na twardo po włożeniu do wrzącej wody?",
+      "reference_value": 7,
+      "correct_value": 10,
+      "unit": "min",
+      "correct_side": "MORE"
+    },
+    {
+      "question": "Ile godzin trwał rekordowo długi film przesłany na YouTube jako zwykły film, nie licząc transmisji na żywo?",
+      "reference_value": 256,
+      "correct_value": 596.5225,
+      "unit": "godz.",
+      "correct_side": "MORE"
+    }
+  ],
+  "inactive_until_verified": [18, 22]
+}
