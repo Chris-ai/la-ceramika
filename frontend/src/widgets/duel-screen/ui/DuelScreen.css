@@ -6,16 +6,20 @@
   display: grid;
   place-items: center;
   overflow: hidden;
-  background: #f7f2ec url('/background.webp') center/cover;
   color: var(--color-border);
+}
+.duel-host-screen {
+  background: rgb(53 37 31 / 28%);
+  backdrop-filter: blur(5px);
 }
 .duel-presentation-screen {
   z-index: 100;
+  background: var(--color-background) url('/hex-background.svg') center/cover;
 }
 .duel-stage {
   position: relative;
-  width: min(1160px, calc(100vw - 50px));
-  height: min(690px, calc(100svh - 150px));
+  width: min(1440px, calc(100vw - 32px));
+  height: min(780px, calc(100svh - 120px));
   display: grid;
   place-items: center;
   border: 2px solid var(--color-border);
@@ -40,14 +44,7 @@
   box-shadow: none;
   background: rgb(255 253 251/0.76);
 }
-.duel-emblem {
-  position: absolute;
-  top: 30px;
-  left: 34px;
-  width: 58px;
-  height: 58px;
-  color: #c24c67;
-}
+
 .duel-intro {
   text-align: center;
   animation: duel-intro-in 0.65s cubic-bezier(0.2, 0.85, 0.2, 1) both;
@@ -75,7 +72,8 @@
   gap: 34px;
 }
 .duel-versus > div {
-  min-width: 230px;
+  min-width: 110px;
+  justify-content: center;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -101,16 +99,24 @@
 .duel-play {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(220px, 1fr) minmax(350px, 1.5fr) minmax(220px, 1fr);
+  height: 100%;
+  grid-template-rows: minmax(0, 1fr) auto;
   align-items: center;
-  gap: 35px;
-  padding: 70px;
+  gap: 28px;
+  padding: 32px 48px 40px;
+}
+.duel-clocks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 320px));
+  justify-content: center;
+  gap: 32px;
 }
 .duel-clock {
-  display: grid;
-  place-items: center;
-  gap: 12px;
-  padding: 28px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
   border: 3px solid #d7cec7;
   border-radius: 24px;
   background: var(--color-white);
@@ -121,13 +127,12 @@
 .duel-clock .duel-team-mark {
   background: var(--team) !important;
 }
-.duel-clock strong {
-  font-size: 22px;
-}
 .duel-clock time {
   font-variant-numeric: tabular-nums;
-  font-size: clamp(45px, 6vw, 80px);
+  font-size: clamp(30px, 3.4vw, 50px);
   font-weight: var(--font-weight-display);
+  letter-spacing: -0.05em;
+  white-space: nowrap;
 }
 .duel-clock--active {
   opacity: 1;
@@ -139,6 +144,28 @@
 }
 .duel-list-prompt {
   text-align: center;
+}
+.duel-identify-prompt {
+  min-width: 0;
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+}
+.duel-identify-prompt img {
+  width: min(900px, 100%);
+  height: min(480px, calc(100svh - 330px));
+  object-fit: contain;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-offset-md);
+}
+.duel-identify-prompt__credit {
+  color: var(--color-muted);
+  font-size: var(--font-size-xs);
+}
+.duel-identify-prompt__credit a {
+  color: inherit;
 }
 .duel-list-prompt h1 {
   margin-bottom: 0;
@@ -177,27 +204,8 @@
   display: flex;
   gap: 14px;
 }
-.duel-controls button {
-  min-width: 170px;
-  height: 62px;
-  padding: 0 28px;
-  border: 2px solid var(--color-border);
-  border-radius: 18px;
-  background: var(--color-surface);
-  color: var(--color-border);
-  font-family: inherit;
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-black);
-  box-shadow: 4px 5px 0 var(--color-border);
-  cursor: pointer;
-}
-.duel-controls .duel-start,
 .duel-controls .duel-change {
   background: var(--color-accent);
-}
-.duel-controls button:disabled {
-  opacity: 0.55;
-  cursor: wait;
 }
 .duel-error {
   position: fixed;
@@ -230,9 +238,8 @@
     transform: none;
   }
 }
-@media (max-width: 850px) {
+@media (max-width: 1100px) {
   .duel-play {
-    grid-template-columns: 1fr 1fr;
     padding: 30px;
   }
   .duel-list-prompt {
@@ -248,5 +255,30 @@
   }
   .duel-stage {
     height: calc(100svh - 120px);
+  }
+}
+
+.duel-presentation-screen .duel-stage {
+  height: calc(100svh - 120px);
+}
+@media (max-width: 600px) {
+  .duel-play {
+    padding: 24px;
+    gap: 20px;
+  }
+  .duel-clocks {
+    gap: 16px;
+  }
+  .duel-clock {
+    padding: 10px;
+    gap: 8px;
+    border-radius: 16px;
+  }
+  .duel-clock .duel-team-mark {
+    width: 28px;
+    height: 28px;
+  }
+  .duel-clock time {
+    font-size: clamp(22px, 5vw, 30px);
   }
 }

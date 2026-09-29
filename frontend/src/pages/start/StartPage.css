@@ -1,0 +1,24 @@
+.start-page {
+  min-height: 100svh;
+  padding: clamp(24px, 5vw, 72px);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-text);
+}
+.start-page__center {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vh, 36px);
+  padding: 1vh 0 24px;
+}
+@media (max-width: 600px) {
+  .start-page {
+    padding: 24px;
+  }
+  .start-page__center {
+    padding-top: 36px;
+  }
+}

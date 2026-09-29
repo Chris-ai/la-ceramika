@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import {
-  animalIcons,
+  teamIcons,
   gameSetupSchema,
   teamColors,
   toGameSetupPayload,
@@ -9,8 +9,8 @@ import {
 
 const valid = {
   teams: [
-    { name: ' Sowy ', color: teamColors[0].value, avatar: animalIcons[0].id },
-    { name: 'Misie', color: teamColors[1].value, avatar: animalIcons[1].id },
+    { color: teamColors[0].value, avatar: teamIcons[0].id },
+    { color: teamColors[1].value, avatar: teamIcons[1].id },
   ],
   mapPreset: 'M',
   winCondition: 'ELIMINATION',
@@ -19,18 +19,14 @@ const valid = {
   resurrectionEnabled: true,
 }
 
-test('wymaga nazw obu drużyn oraz dodatniej liczby kroków serii', () => {
+test('wymaga dodatniej liczby kroków serii', () => {
   const result = gameSetupSchema.safeParse({
     ...valid,
-    teams: [{ ...valid.teams[0], name: '   ' }, valid.teams[1]],
     streakToBonus: '',
   })
   assert.equal(result.success, false)
   if (!result.success) {
-    assert.deepEqual(result.error.issues.map((issue) => issue.path.join('.')).sort(), [
-      'streakToBonus',
-      'teams.0.name',
-    ])
+    assert.deepEqual(result.error.issues.map((issue) => issue.path.join('.')).sort(), ['streakToBonus'])
   }
 })
 
@@ -48,7 +44,7 @@ test('limit rund jest wymagany tylko przy warunku rundowym', () => {
 test('nie dopuszcza tej samej ikony lub koloru w dwóch drużynach', () => {
   const result = gameSetupSchema.safeParse({
     ...valid,
-    teams: [valid.teams[0], { ...valid.teams[1], color: teamColors[0].value, avatar: animalIcons[0].id }],
+    teams: [valid.teams[0], { ...valid.teams[1], color: teamColors[0].value, avatar: teamIcons[0].id }],
   })
   assert.equal(result.success, false)
   if (!result.success) {
@@ -59,11 +55,32 @@ test('nie dopuszcza tej samej ikony lub koloru w dwóch drużynach', () => {
   }
 })
 
-test('submit normalizuje nazwy i liczby, a eliminacja nie ma limitu rund', () => {
+test('submit automatycznie nadaje nazwy i normalizuje liczby, a eliminacja nie ma limitu rund', () => {
   const parsed = gameSetupSchema.parse(valid)
   const payload = toGameSetupPayload(parsed)
-  assert.equal(payload.teams[0].name, 'Sowy')
+  assert.equal('name' in parsed.teams[0], false)
+  assert.deepEqual(
+    payload.teams.map((team) => team.name),
+    ['Drużyna 1', 'Drużyna 2'],
+  )
   assert.equal(payload.hexCount, 20)
   assert.equal(payload.streakToBonus, 3)
   assert.equal(payload.roundLimit, null)
+})
+
+test('każda z 16 ikon jest dostępna bez nazwy drużyny', () => {
+  assert.equal(teamIcons.length, 16)
+  for (const icon of teamIcons) {
+    const other = teamIcons.find((candidate) => candidate.id !== icon.id)!
+    assert.equal(
+      gameSetupSchema.safeParse({
+        ...valid,
+        teams: [
+          { color: teamColors[0].value, avatar: icon.id },
+          { color: teamColors[1].value, avatar: other.id },
+        ],
+      }).success,
+      true,
+    )
+  }
 })

@@ -10,7 +10,6 @@ export type Hex = {
 
 export type GameTeam = {
   id?: string
-  name: string
   color: string
   avatar: string
   turnOrder: number
@@ -24,8 +23,18 @@ export type Game = {
   status?: string
   currentTeamId?: string
   currentRound?: number
+  resurrectionPending?: boolean
   baseMoveUsed?: boolean
   hexes: Hex[]
   teams: GameTeam[]
   hexCount: number
+}
+
+export type GameSummary = {
+  gameId: string
+  status: string
+  currentRound: number
+  createdAt: string
+  updatedAt: string
+  teams: Pick<GameTeam, 'color' | 'avatar'>[]
 }

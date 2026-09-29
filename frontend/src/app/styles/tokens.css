@@ -24,7 +24,7 @@
   --spacing-sm: 8px;
   --spacing-md: 16px;
   --spacing-lg: 24px;
-  --font-family-sans: 'Segoe UI', Arial, sans-serif;
+  --font-family-primary: 'Fraunces', Georgia, serif;
   --font-size-2xs: 9px;
   --font-size-xs: 11px;
   --font-size-sm: 12px;
@@ -41,7 +41,7 @@
   --font-weight-semibold: 700;
   --font-weight-bold: 800;
   --font-weight-black: 900;
-  --font-weight-display: 950;
+  --font-weight-display: 900;
   --line-height-tight: 1;
   --line-height-snug: 1.15;
   --line-height-compact: 1.3;

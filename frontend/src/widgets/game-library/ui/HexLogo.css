@@ -1,0 +1,59 @@
+.hex-logo {
+  width: min(830px, 92vw);
+  animation: hex-logo-float 5s ease-in-out 1.25s infinite;
+  filter: drop-shadow(3px 5px 0 rgb(53 37 31 / 16%));
+}
+
+.hex-logo svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.hex-logo__mask-text {
+  font-family: var(--font-family-primary);
+  font-size: 104px;
+  font-weight: var(--font-weight-display);
+  letter-spacing: -7px;
+}
+
+.hex-logo__tile {
+  stroke: var(--color-border);
+  stroke-width: 1.4;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hex-logo-drop 720ms cubic-bezier(0.2, 0.82, 0.28, 1.18) both;
+  animation-delay: var(--hex-delay);
+}
+
+@keyframes hex-logo-drop {
+  0% {
+    opacity: 0;
+    transform: translateY(-150px) rotate(-8deg) scale(0.8);
+  }
+  72% {
+    opacity: 1;
+    transform: translateY(6px) rotate(1deg) scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hex-logo-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-0.15deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.15deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hex-logo,
+  .hex-logo__tile {
+    animation: none;
+  }
+}

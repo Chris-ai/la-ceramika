@@ -3,7 +3,6 @@ import { useMutation } from '@tanstack/react-query'
 import { Icon } from '@iconify/react/offline'
 import { challengeOptions, type ChallengeType } from '@/entities/challenge'
 import type { Hex } from '@/entities/game'
-import { createDuel, type Duel } from '@/features/duel-control'
 import { startChallenge, type ChallengeData } from '@/features/play-challenge'
 import { LoadingSpinner } from '@/shared/ui/loading-spinner'
 
@@ -13,13 +12,11 @@ export function HexActionPanel({
   gameId,
   target,
   onChallenge,
-  onDuel,
   onError,
 }: {
   gameId: string
   target: HexTarget
   onChallenge: (type: ChallengeType, data: ChallengeData) => void
-  onDuel: (duel: Duel) => void
   onError: (message: string) => void
 }) {
   const [loading, setLoading] = useState<ChallengeType | null>(null)
@@ -27,8 +24,7 @@ export function HexActionPanel({
     mutationFn: ({ hexId, type }: { hexId: string; type: ChallengeType }) =>
       startChallenge(gameId, hexId, type),
   })
-  const duelMutation = useMutation({ mutationFn: (hexId: string) => createDuel(gameId, hexId) })
-  const options = target.mode === 'NEUTRAL' ? challengeOptions.slice(0, 3) : challengeOptions.slice(3)
+  const options = challengeOptions.slice(0, 3)
 
   return (
     <aside className="hex-action-panel" aria-label="Dostępne akcje na heksie">
@@ -44,16 +40,9 @@ export function HexActionPanel({
             onClick={() => {
               if (!target.hex.id) return
               setLoading(option.type)
-              const request =
-                option.type === 'DUEL'
-                  ? duelMutation.mutateAsync(target.hex.id)
-                  : challengeMutation.mutateAsync({ hexId: target.hex.id, type: option.type })
-              void request
-                .then((data) =>
-                  option.type === 'DUEL'
-                    ? onDuel(data as Duel)
-                    : onChallenge(option.type, data as ChallengeData),
-                )
+              void challengeMutation
+                .mutateAsync({ hexId: target.hex.id, type: option.type })
+                .then((data) => onChallenge(option.type, data as ChallengeData))
                 .catch((error) =>
                   onError(error instanceof Error ? error.message : 'Nie udało się rozpocząć wyzwania.'),
                 )

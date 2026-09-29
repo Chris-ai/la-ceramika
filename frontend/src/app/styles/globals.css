@@ -1,9 +1,11 @@
 @import './tokens.css';
+@import './fonts.css';
 
 :root {
-  background: var(--color-background) url('/background.webp') center / cover fixed;
-  font-family: var(--font-family-sans);
+  background: var(--color-background) url('/hex-background.svg') center / cover fixed;
+  font-family: var(--font-family-primary);
   font-synthesis: none;
+  font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
 }
 
@@ -16,7 +18,9 @@ body {
 }
 
 button,
-input {
+input,
+select,
+textarea {
   font: inherit;
 }
 
@@ -32,4 +36,11 @@ input {
   justify-items: center;
   gap: var(--spacing-md);
   color: var(--color-text);
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: inherit;
 }

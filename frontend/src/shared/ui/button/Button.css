@@ -1,0 +1,55 @@
+.button {
+  min-width: 170px;
+  height: 62px;
+  padding: 0 28px;
+  border: 2px solid var(--color-border);
+  border-radius: 18px;
+  background: var(--color-surface);
+  color: var(--color-border);
+  font: inherit;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-black);
+  box-shadow: 4px 5px 0 var(--color-border);
+  cursor: pointer;
+}
+
+.button--primary {
+  background: var(--color-accent);
+}
+
+.button--keyboard {
+  height: 58px;
+  border-radius: 9px;
+  background: var(--color-surface);
+  box-shadow:
+    0 5px 0 var(--color-border),
+    0 8px 14px rgb(53 37 31 / 16%);
+  transform: translateY(0);
+  transition:
+    transform 90ms ease,
+    box-shadow 90ms ease,
+    background-color 160ms ease;
+}
+
+.button--keyboard:active:not(:disabled) {
+  box-shadow:
+    0 2px 0 var(--color-border),
+    0 4px 8px rgb(53 37 31 / 12%);
+  transform: translateY(3px);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.button--text {
+  min-width: 0;
+  height: auto;
+  padding: 8px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+}

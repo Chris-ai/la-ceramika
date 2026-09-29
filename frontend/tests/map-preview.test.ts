@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { test } from 'node:test'
 import {
-  animalIcons,
+  teamIcons,
   gameSetupSchema,
   mapSizes,
   teamColors,
@@ -25,7 +25,7 @@ test('wszystkie rozmiary tworzą dokładną, spójną mapę i rozdzielone BASE',
         teams: Array.from({ length: teamCount }, (_, index) => ({
           name: `Drużyna ${index + 1}`,
           color: teamColors[index].value,
-          avatar: animalIcons[index].id,
+          avatar: teamIcons[index].id,
         })),
         mapPreset: preset,
         winCondition: 'ELIMINATION',
