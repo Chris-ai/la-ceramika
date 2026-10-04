@@ -94,7 +94,7 @@
 }
 .rush-form {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   gap: 9px;
 }
 .rush-form input {

@@ -65,7 +65,11 @@ export function DuelView({
             {duel.type === 'IDENTIFY' && duel.prompt ? (
               <>
                 {duel.prompt.imageUrl ? (
-                  <DuelImage key={duel.prompt.imageUrl} src={duel.prompt.imageUrl} />
+                  <DuelImage
+                    key={duel.prompt.imageUrl}
+                    src={duel.prompt.imageUrl}
+                    logo={duel.prompt.attribution === 'Logo by Brandfetch'}
+                  />
                 ) : (
                   <h1>{duel.prompt.text}</h1>
                 )}

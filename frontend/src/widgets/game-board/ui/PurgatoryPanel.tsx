@@ -1,5 +1,5 @@
 import { Toast } from '@/shared/ui/toast'
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import type { Game } from '@/entities/game'
 import { TeamAvatar, teamLabel } from '@/entities/team'
@@ -10,10 +10,17 @@ import {
   spinRoulette,
   type ChallengeData,
 } from '@/features/play-challenge'
-import { Button } from '@/shared/ui/button'
 import './PurgatoryPanel.css'
 
-export function PurgatoryPanel({ game, onGameUpdated }: { game: Game; onGameUpdated(game: Game): void }) {
+export function PurgatoryPanel({
+  game,
+  onGameUpdated,
+  children,
+}: {
+  game: Game
+  onGameUpdated(game: Game): void
+  children: (action: { canAttempt: boolean; busy: boolean; begin: () => void }) => ReactNode
+}) {
   const [attempt, setAttempt] = useState<{ hexId: string; challenge: ChallengeData } | null>(null)
   const [result, setResult] = useState<'WIN' | 'LOSS' | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -22,10 +29,6 @@ export function PurgatoryPanel({ game, onGameUpdated }: { game: Game; onGameUpda
     .filter((team) => team.status === 'PURGATORY')
     .sort((a, b) => a.turnOrder - b.turnOrder)
   const current = teams.find((team) => team.id === game.currentTeamId)
-  const neutralCount = game.hexes.filter(
-    (hex) => hex.status !== 'DESTROYED' && hex.ownerTeamIndex === null,
-  ).length
-  const canReturn = neutralCount >= teams.length
   const isTurn = current && game.status === 'ACTIVE'
 
   async function begin() {
@@ -49,7 +52,6 @@ export function PurgatoryPanel({ game, onGameUpdated }: { game: Game; onGameUpda
           className={`purgatory-panel ${isTurn ? 'purgatory-panel--current' : ''}`}
           aria-label="Drużyny w czyśćcu"
         >
-          <h2>Czyściec</h2>
           <ul>
             {teams.map((team) => (
               <li
@@ -64,33 +66,14 @@ export function PurgatoryPanel({ game, onGameUpdated }: { game: Game; onGameUpda
               </li>
             ))}
           </ul>
-          {isTurn && (
-            <div className="purgatory-turn" role="status">
-              <p>
-                {game.baseMoveUsed
-                  ? canReturn
-                    ? 'Próba zakończona. Przejdź do następnej drużyny.'
-                    : 'Za mało neutralnych pól. Tura pominięta — przejdź dalej.'
-                  : 'Jedna szansa na powrót. Pole i wyzwanie zostaną wylosowane.'}
-              </p>
-              {!game.baseMoveUsed && (
-                <Button
-                  variant="primary"
-                  disabled={start.isPending || attempt !== null}
-                  onClick={() => void begin()}
-                >
-                  {start.isPending
-                    ? 'Losowanie…'
-                    : game.resurrectionPending
-                      ? 'Wznów próbę powrotu'
-                      : 'Próba powrotu'}
-                </Button>
-              )}
-            </div>
-          )}
-          {error && <p role="alert">{error}</p>}
         </aside>
       )}
+      {children({
+        canAttempt: !!isTurn && !game.baseMoveUsed,
+        busy: start.isPending || attempt !== null,
+        begin: () => void begin(),
+      })}
+      {error && <Toast message={error} tone="error" onDismiss={() => setError(null)} />}
       {result && (
         <Toast
           message={result === 'WIN' ? 'Powrót na mapę! Nowa baza zdobyta.' : 'Drużyna pozostaje w czyśćcu.'}
