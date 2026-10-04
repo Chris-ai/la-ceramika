@@ -1,5 +1,6 @@
 import uuid
 from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field, model_validator
 
@@ -11,11 +12,12 @@ class TeamCreate(BaseModel):
 
 
 class GameCreate(BaseModel):
+    continueSession: bool = False
     replaceActiveGameId: uuid.UUID | None = None
     teams: list[TeamCreate] = Field(min_length=2, max_length=6)
     hexCount: int = Field(le=42)
-    winCondition: str
-    roundLimit: int | None = Field(default=None, ge=1)
+    winCondition: Literal["ELIMINATION"] = "ELIMINATION"
+    roundLimit: None = None
     streakToBonus: int = Field(ge=1)
     resurrectionEnabled: bool
 
@@ -25,12 +27,6 @@ class GameCreate(BaseModel):
         maximum = 36 if len(self.teams) <= 3 else 42
         if not minimum <= self.hexCount <= maximum:
             raise ValueError(f"Liczba heksów musi mieścić się w zakresie {minimum}–{maximum}.")
-        if self.winCondition not in {"ELIMINATION", "ROUND_LIMIT"}:
-            raise ValueError("Nieznany warunek zwycięstwa.")
-        if self.winCondition == "ROUND_LIMIT" and self.roundLimit is None:
-            raise ValueError("Limit rund jest wymagany.")
-        if self.winCondition == "ELIMINATION" and self.roundLimit is not None:
-            raise ValueError("Eliminacja nie może mieć limitu rund.")
         if len({team.color.lower() for team in self.teams}) != len(self.teams):
             raise ValueError("Kolory drużyn muszą być unikalne.")
         if len({team.avatar for team in self.teams}) != len(self.teams):
@@ -90,12 +86,26 @@ class ChallengeStart(BaseModel):
 
 
 class ChallengeResult(BaseModel):
-    won: bool
+    model_config = {"extra": "forbid"}
+    challengeId: uuid.UUID
+    choice: str | None = Field(default=None, max_length=2000)
+    answers: list[str] = Field(default_factory=list, max_length=200)
+    stakes: list[int] = Field(default_factory=list, max_length=4)
+    timedOut: bool = False
 
 
 class RouletteBet(BaseModel):
     choice: str
+    challengeId: uuid.UUID
 
 
 class DuelFinish(BaseModel):
     winnerTeamId: uuid.UUID
+
+
+class NextPlayer(BaseModel):
+    currentTeamId: uuid.UUID
+
+
+class NextDuelPrompt(BaseModel):
+    previousContentId: uuid.UUID
