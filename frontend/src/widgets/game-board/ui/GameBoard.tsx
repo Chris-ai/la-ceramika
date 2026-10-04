@@ -1,13 +1,20 @@
 import { Toast } from '@/shared/ui/toast'
 import { teamLabel } from '@/entities/team'
-import { useEffect, useState } from 'react'
+import { useEffect, useEffectEvent, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { Icon } from '@iconify/react/offline'
 import fireIcon from '@iconify-icons/heroicons/fire-solid'
 import turnArrowIcon from '@iconify-icons/heroicons/arrow-right'
 import type { ChallengeType } from '@/entities/challenge'
 import type { Game, Hex } from '@/entities/game'
-import { ChallengeModal, resolveChallenge, spinRoulette, type ChallengeData } from '@/features/play-challenge'
+import {
+  getPendingChallenge,
+  ChallengeModal,
+  resolveChallenge,
+  spinRoulette,
+  type ChallengeData,
+  type ChallengeAnswer,
+} from '@/features/play-challenge'
 import { nextPlayer } from '@/features/end-turn'
 import { createDuel, getCurrentDuel, type Duel } from '@/features/duel-control'
 import { HexActionPanel } from '@/features/select-hex-action'
@@ -32,6 +39,11 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
   const [actionError, setActionError] = useState<string | null>(null)
   const [turnEndModal, setTurnEndModal] = useState<'BASE_REQUIRED' | 'BONUS_CONFIRM' | null>(null)
   const [activeDuel, setActiveDuel] = useState<Duel | null>(null)
+  const restorePending = useEffectEvent((pending: { hexId: string; challenge: ChallengeData } | null) => {
+    const hex = pending && map.hexes.find((item) => item.id === pending.hexId)
+    if (pending && hex)
+      setChallengeTarget({ hex, mode: 'NEUTRAL', type: pending.challenge.type, data: pending.challenge })
+  })
   const nextTurnMutation = useMutation({ mutationFn: nextPlayer })
   const duelMutation = useMutation({
     mutationFn: ({ gameId, hexId }: { gameId: string; hexId: string }) => createDuel(gameId, hexId),
@@ -41,17 +53,26 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
       gameId,
       hexId,
       type,
-      won,
+      answer,
     }: {
       gameId: string
       hexId: string
       type: ChallengeType
-      won: boolean
-    }) => resolveChallenge(gameId, hexId, type, won),
+      answer: ChallengeAnswer & { challengeId: string }
+    }) => resolveChallenge(gameId, hexId, type, answer),
   })
   const rouletteMutation = useMutation({
-    mutationFn: ({ gameId, hexId, choice }: { gameId: string; hexId: string; choice: 'RED' | 'BLACK' }) =>
-      spinRoulette(gameId, hexId, choice),
+    mutationFn: ({
+      gameId,
+      hexId,
+      choice,
+      challengeId,
+    }: {
+      challengeId: string
+      gameId: string
+      hexId: string
+      choice: 'RED' | 'BLACK'
+    }) => spinRoulette(gameId, hexId, choice, challengeId),
   })
   useEffect(() => {
     const timeout = window.setTimeout(() => setIsMapEntering(false), 1750)
@@ -61,6 +82,14 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
     if (!map.gameId) return
 
     let cancelled = false
+    void getPendingChallenge(map.gameId)
+      .then((pending) => {
+        if (!cancelled) restorePending(pending)
+      })
+      .catch((error: unknown) => {
+        if (!cancelled)
+          setActionError(error instanceof Error ? error.message : 'Nie udało się wznowić wyzwania.')
+      })
     void getCurrentDuel(map.gameId)
       .then((duel) => {
         if (!cancelled && duel) setActiveDuel(duel)
@@ -102,7 +131,7 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
     setHexActionTarget(null)
     window.setTimeout(() => {
       void nextTurnMutation
-        .mutateAsync(map.gameId!)
+        .mutateAsync({ gameId: map.gameId!, currentTeamId: map.currentTeamId! })
         .then(onGameUpdated)
         .catch((error) => {
           setActionError(error instanceof Error ? error.message : 'Nie udało się zakończyć tury.')
@@ -234,15 +263,16 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
           initialType={challengeTarget.type}
           challengeData={challengeTarget.data}
           onClose={() => setChallengeTarget(null)}
-          onResolve={async (verdict) => {
+          onResolve={async (answer) => {
             if (!map.gameId || !challengeTarget.hex.id) throw new Error('Brak identyfikatora gry lub heksa.')
             const updated = await resolveChallengeMutation.mutateAsync({
               gameId: map.gameId,
               hexId: challengeTarget.hex.id,
               type: challengeTarget.type,
-              won: verdict === 'WIN',
+              answer: { ...answer, challengeId: challengeTarget.data!.challengeId },
             })
-            onGameUpdated(updated)
+            onGameUpdated(updated.game)
+            return updated.result
           }}
           onRouletteSpin={async (choice) => {
             if (!map.gameId || !challengeTarget.hex.id) throw new Error('Brak identyfikatora gry lub heksa.')
@@ -250,6 +280,7 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
               gameId: map.gameId,
               hexId: challengeTarget.hex.id,
               choice,
+              challengeId: challengeTarget.data!.challengeId,
             })
             onGameUpdated(outcome.game)
             return { number: outcome.number, color: outcome.color, result: outcome.result }

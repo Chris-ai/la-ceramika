@@ -20,6 +20,7 @@ export function RouletteGame({
   const [bet, setBet] = useState<'RED' | 'BLACK' | null>(null)
   const [number, setNumber] = useState<number | null>(null)
   const [spinning, setSpinning] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [serverColor, setServerColor] = useState<'RED' | 'BLACK' | 'GREEN' | null>(null)
   const color =
     serverColor ?? (number === null ? null : number === 0 ? 'GREEN' : red.has(number) ? 'RED' : 'BLACK')
@@ -31,15 +32,21 @@ export function RouletteGame({
     if (!bet || spinning) return
     setNumber(null)
     setSpinning(true)
+    setError(null)
     if (onSpin)
-      void Promise.all([onSpin(bet), new Promise((resolve) => window.setTimeout(resolve, 2100))]).then(
-        ([outcome]) => {
+      void Promise.all([onSpin(bet), new Promise((resolve) => window.setTimeout(resolve, 2100))])
+        .then(([outcome]) => {
           setNumber(outcome.number)
           setServerColor(outcome.color)
           setSpinning(false)
           onServerResolved?.(outcome.result)
-        },
-      )
+        })
+        .catch((error: unknown) => {
+          setSpinning(false)
+          setError(
+            error instanceof Error ? error.message : 'Nie udało się zapisać losowania. Spróbuj ponownie.',
+          )
+        })
     else
       window.setTimeout(() => {
         setNumber(numbers[Math.floor(Math.random() * numbers.length)])
@@ -63,22 +70,23 @@ export function RouletteGame({
       <div className="roulette-bets">
         <button
           className={bet === 'RED' ? 'red is-selected' : 'red'}
-          disabled={spinning || number !== null}
+          disabled={spinning || number !== null || error !== null}
           onClick={() => setBet('RED')}
         >
           Czerwone
         </button>
         <button
           className={bet === 'BLACK' ? 'black is-selected' : 'black'}
-          disabled={spinning || number !== null}
+          disabled={spinning || number !== null || error !== null}
           onClick={() => setBet('BLACK')}
         >
           Czarne
         </button>
       </div>
       <button className="gamble-confirm" disabled={!bet || spinning || number !== null} onClick={spin}>
-        {spinning ? 'Kręcimy…' : 'Zakręć'}
+        {spinning ? 'Kręcimy…' : error ? 'Ponów losowanie' : 'Zakręć'}
       </button>
+      {error && <p role="alert">{error}</p>}
     </div>
   )
 }

@@ -7,7 +7,7 @@ import { RushGame } from './RushGame'
 import { randomRushTask, type RushTask } from '../model/rushData'
 import { GambleGame } from './GambleGame'
 import { challengeOptions, type ChallengeType } from '@/entities/challenge'
-import type { ChallengeData } from '../api/challengeApi'
+import type { ChallengeAnswer, ChallengeData } from '../api/challengeApi'
 import './ChallengeModal.css'
 
 type ChallengeVerdict = 'WIN' | 'LOSS'
@@ -25,7 +25,7 @@ export function ChallengeModal({
   initialType?: ChallengeType | null
   challengeData?: ChallengeData
   onClose: () => void
-  onResolve: (verdict: ChallengeVerdict) => Promise<void>
+  onResolve: (answer: ChallengeAnswer) => Promise<ChallengeVerdict>
   onRouletteSpin?: (
     choice: 'RED' | 'BLACK',
   ) => Promise<{ number: number; color: 'RED' | 'BLACK' | 'GREEN'; result: ChallengeVerdict }>
@@ -46,15 +46,20 @@ export function ChallengeModal({
   const bodyRef = useRef<HTMLDivElement>(null)
   const footerRef = useRef<HTMLElement>(null)
   const resolutionStarted = useRef(false)
+  const pendingAnswer = useRef<ChallengeAnswer>({})
+  const [saveError, setSaveError] = useState<string | null>(null)
   const available = mode === 'NEUTRAL' ? challengeOptions.slice(0, 3) : challengeOptions.slice(3)
   const activeOption = challengeOptions.find((option) => option.type === selected)
   const handleResolved = useCallback(
-    (result: ChallengeVerdict) => {
+    (_result: ChallengeVerdict, answer: ChallengeAnswer = {}) => {
       if (resolutionStarted.current) return
       resolutionStarted.current = true
-      void onResolve(result)
-        .then(() => setVerdict(result))
-        .catch(() => {
+      pendingAnswer.current = answer
+      setSaveError(null)
+      void onResolve(answer)
+        .then(setVerdict)
+        .catch((error: unknown) => {
+          setSaveError(error instanceof Error ? error.message : 'Nie udało się zapisać wyniku.')
           resolutionStarted.current = false
         })
     },
@@ -87,7 +92,7 @@ export function ChallengeModal({
     observer.observe(body)
     if (footerRef.current) observer.observe(footerRef.current)
     return () => observer.disconnect()
-  }, [selected, verdict])
+  }, [selected, verdict, saveError])
   return (
     <div
       className="challenge-overlay"
@@ -195,6 +200,14 @@ export function ChallengeModal({
             </>
           )}
         </div>
+        {saveError && (
+          <footer ref={footerRef} className="challenge-footer" role="alert">
+            <p>{saveError}</p>
+            <button type="button" onClick={() => handleResolved('LOSS', pendingAnswer.current)}>
+              Ponów zapis wyniku
+            </button>
+          </footer>
+        )}
         {verdict && (
           <footer ref={footerRef} className={`challenge-footer challenge-footer--${verdict.toLowerCase()}`}>
             <div className="challenge-verdict">

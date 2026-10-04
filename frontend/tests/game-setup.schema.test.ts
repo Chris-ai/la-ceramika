@@ -13,8 +13,6 @@ const valid = {
     { color: teamColors[1].value, avatar: teamIcons[1].id },
   ],
   mapPreset: 'M',
-  winCondition: 'ELIMINATION',
-  roundLimit: '',
   streakToBonus: '3',
   resurrectionEnabled: true,
 }
@@ -30,15 +28,13 @@ test('wymaga dodatniej liczby kroków serii', () => {
   }
 })
 
-test('limit rund jest wymagany tylko przy warunku rundowym', () => {
-  assert.equal(gameSetupSchema.safeParse(valid).success, true)
-  const result = gameSetupSchema.safeParse({ ...valid, winCondition: 'ROUND_LIMIT' })
-  assert.equal(result.success, false)
-  if (!result.success) assert.deepEqual(result.error.issues[0].path, ['roundLimit'])
-  assert.equal(
-    gameSetupSchema.safeParse({ ...valid, winCondition: 'ROUND_LIMIT', roundLimit: '5' }).success,
-    true,
-  )
+test('v1 zawsze wysyła eliminację bez limitu rund', () => {
+  const parsed = gameSetupSchema.parse({ ...valid, winCondition: 'ROUND_LIMIT', roundLimit: '5' })
+  const payload = toGameSetupPayload(parsed)
+  assert.equal(payload.winCondition, 'ELIMINATION')
+  assert.equal(payload.roundLimit, null)
+  assert.equal('winCondition' in parsed, false)
+  assert.equal('roundLimit' in parsed, false)
 })
 
 test('nie dopuszcza tej samej ikony lub koloru w dwóch drużynach', () => {

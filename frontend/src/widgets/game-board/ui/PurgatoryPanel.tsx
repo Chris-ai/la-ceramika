@@ -104,17 +104,21 @@ export function PurgatoryPanel({ game, onGameUpdated }: { game: Game; onGameUpda
           initialType={attempt.challenge.type}
           challengeData={attempt.challenge}
           onClose={() => setAttempt(null)}
-          onResolve={async (verdict) => {
-            const updated = await resolveChallenge(
-              game.gameId!,
-              attempt.hexId,
-              attempt.challenge.type,
-              verdict === 'WIN',
-            )
-            onGameUpdated(updated)
+          onResolve={async (answer) => {
+            const updated = await resolveChallenge(game.gameId!, attempt.hexId, attempt.challenge.type, {
+              ...answer,
+              challengeId: attempt.challenge.challengeId,
+            })
+            onGameUpdated(updated.game)
+            return updated.result
           }}
           onRouletteSpin={async (choice) => {
-            const outcome = await spinRoulette(game.gameId!, attempt.hexId, choice)
+            const outcome = await spinRoulette(
+              game.gameId!,
+              attempt.hexId,
+              choice,
+              attempt.challenge.challengeId,
+            )
             onGameUpdated(outcome.game)
             return outcome
           }}

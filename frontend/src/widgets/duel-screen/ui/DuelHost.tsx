@@ -14,15 +14,14 @@ export function DuelHost({
   onGameUpdated(game: Game): void
   onReturn(): void
 }) {
-  const { snapshot, isStarting, isPromptLoading, error, begin, pass, switchPlayer } = useDuelController(
-    initialDuel,
-    onGameUpdated,
-  )
+  const { snapshot, isStarting, isPromptLoading, error, begin, pass, switchPlayer, retryFinish } =
+    useDuelController(initialDuel, onGameUpdated)
 
   const transport = useMemo(() => createDuelTransport(initialDuel.gameId), [initialDuel.gameId])
   const handleCommand = useEffectEvent((command: string) => {
     if (command === 'START' && snapshot.phase === 'INTRO' && !isStarting) void begin().catch(() => undefined)
-    if (command === 'PASS' && snapshot.phase === 'ACTIVE' && !isPromptLoading) pass()
+    if (command === 'PASS' && snapshot.phase === 'ACTIVE' && !isPromptLoading)
+      void pass().catch(() => undefined)
     if (command === 'SWITCH' && snapshot.phase === 'ACTIVE' && !isPromptLoading)
       void switchPlayer().catch(() => undefined)
     if (command === 'RETURN' && snapshot.phase === 'RESULT') onReturn()
@@ -42,6 +41,11 @@ export function DuelHost({
       {error && (
         <div className="duel-error" role="alert">
           {error}
+          {retryFinish && (
+            <button type="button" onClick={retryFinish}>
+              Ponów zapis wyniku
+            </button>
+          )}
         </div>
       )}
     </div>
