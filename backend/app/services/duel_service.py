@@ -38,10 +38,13 @@ def serialize_duel(session: Session, duel: Duel) -> dict:
         "defender": {"id": defender.id, "color": defender.color, "avatar": defender.avatar},
         "winnerTeamId": duel.winner_team_id,
         "prompt": None,
+        "contentId": duel.content_id,
     }
     if duel.type == "IDENTIFY" and duel.content_id:
         item = session.get(DuelItem, duel.content_id)
-        image = resolve_image(category.name, item.prompt) if item else None
+        image = resolve_image(category.name, item.prompt) if item and item.prompt_type == "IMAGE" else None
+        if item and item.prompt_type == "TEXT":
+            payload["prompt"] = {"text": item.prompt, "imageUrl": None, "answer": item.answer, "attribution": None}
         if item and image:
             image_url = image["imageUrl"]
             if image_url == "PROXY":
@@ -73,7 +76,7 @@ def _available_identify_items(session: Session, game_id: UUID, category_id: int)
 
 def _assign_working_item(session: Session, duel: Duel, category_name: str) -> bool:
     for item in _available_identify_items(session, duel.game_id, duel.category_id):
-        if resolve_image(category_name, item.prompt) is None:
+        if item.prompt_type != "TEXT" and resolve_image(category_name, item.prompt) is None:
             continue
         duel.content_id = item.content_id
         session.add(DuelItemUsage(game_id=duel.game_id, content_id=item.content_id))
@@ -106,6 +109,8 @@ def create_duel(session: Session, game_id: UUID, target_hex_id: UUID) -> Duel:
         raise HTTPException(404, "Nie znaleziono gry lub heksa.")
     if game.status != "ACTIVE" or target.status != "ACTIVE" or target.owner_team_id is None:
         raise HTTPException(409, "Na tym heksie nie można rozpocząć pojedynku.")
+    if game.active_challenge_id:
+        raise HTTPException(409, "Najpierw dokończ rozpoczęte wyzwanie.")
     attacker = session.get(GameTeam, game.current_team_id)
     defender = session.get(GameTeam, target.owner_team_id)
     if attacker is None or defender is None or attacker.id == defender.id:
@@ -162,7 +167,7 @@ def create_duel(session: Session, game_id: UUID, target_hex_id: UUID) -> Duel:
     return duel
 
 
-def next_duel_prompt(session: Session, game_id: UUID, duel_id: UUID) -> Duel:
+def next_duel_prompt(session: Session, game_id: UUID, duel_id: UUID, previous_content_id: UUID | None = None) -> Duel:
     game = session.get(Game, game_id, with_for_update=True)
     if game is None or game.status != "ACTIVE":
         raise HTTPException(409, "Gra nie jest aktywna.")
@@ -171,6 +176,8 @@ def next_duel_prompt(session: Session, game_id: UUID, duel_id: UUID) -> Duel:
         raise HTTPException(404, "Nie znaleziono pojedynku.")
     if duel.type != "IDENTIFY" or duel.status != "ACTIVE":
         raise HTTPException(409, "Następny obraz jest dostępny tylko w aktywnym DUEL IDENTIFY.")
+    if previous_content_id is not None and duel.content_id != previous_content_id:
+        return duel
     category = session.get(Category, duel.category_id)
     if not _assign_working_item(session, duel, category.name):
         raise HTTPException(409, "Brak kolejnych dostępnych obrazów w tej kategorii.")
@@ -209,6 +216,8 @@ def start_duel(session: Session, game_id: UUID, duel_id: UUID) -> Duel:
     duel = session.get(Duel, duel_id)
     if duel is None or duel.game_id != game_id:
         raise HTTPException(404, "Nie znaleziono pojedynku.")
+    if duel.status == "ACTIVE" and _is_current_turn_duel(session, duel, game):
+        return duel
     if duel.status != "INTRO":
         raise HTTPException(409, "Pojedynek nie czeka na rozpoczęcie.")
     duel.status = "ACTIVE"
@@ -220,9 +229,12 @@ def start_duel(session: Session, game_id: UUID, duel_id: UUID) -> Duel:
 
 
 def finish_duel(session: Session, game_id: UUID, duel_id: UUID, winner_team_id: UUID) -> tuple[Duel, Game]:
-    duel = session.get(Duel, duel_id)
+    game = session.get(Game, game_id, with_for_update=True, populate_existing=True)
+    duel = session.get(Duel, duel_id, populate_existing=True)
     if duel is None or duel.game_id != game_id:
         raise HTTPException(404, "Nie znaleziono pojedynku.")
+    if duel.status == "FINISHED" and duel.winner_team_id == winner_team_id:
+        return duel, get_game(session, game_id)
     if duel.status != "ACTIVE":
         raise HTTPException(409, "Pojedynek nie jest aktywny.")
     if winner_team_id not in {duel.attacker_team_id, duel.defender_team_id}:

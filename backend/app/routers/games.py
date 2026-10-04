@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, Response, status
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
-from app.schemas import ChallengeResult, ChallengeStart, DuelFinish, GameCreate, GameState, GameSummary, RouletteBet
+from app.schemas import ChallengeResult, ChallengeStart, DuelFinish, GameCreate, GameState, GameSummary, RouletteBet, NextPlayer, NextDuelPrompt
 from app.services.active_game_service import find_active_game
-from app.services.challenge_service import resolve_challenge, spin_roulette, start_challenge
+from app.services.challenge_service import submit_answer, spin_roulette, start_challenge
 from app.services.duel_service import (
     create_duel,
     current_duel,
@@ -52,14 +52,14 @@ def start_neutral_challenge(game_id: UUID, hex_id: UUID, payload: ChallengeStart
     return start_challenge(session, game_id, hex_id, payload.type)
 
 
-@router.post("/{game_id}/hexes/{hex_id}/challenge/{challenge_type}/result", response_model=GameState)
+@router.post("/{game_id}/hexes/{hex_id}/challenge/{challenge_type}/result")
 def resolve_neutral_challenge(game_id: UUID, hex_id: UUID, challenge_type: str, payload: ChallengeResult, session: Session = Depends(get_db)):
-    return serialize_game(resolve_challenge(session, game_id, hex_id, challenge_type, payload.won))
+    return submit_answer(session, game_id, hex_id, challenge_type, payload)
 
 
 @router.post("/{game_id}/hexes/{hex_id}/roulette-spin")
 def roulette_spin(game_id: UUID, hex_id: UUID, payload: RouletteBet, session: Session = Depends(get_db)):
-    number, color, won, game = spin_roulette(session, game_id, hex_id, payload.choice)
+    number, color, won, game = spin_roulette(session, game_id, hex_id, payload.choice, payload.challengeId)
     return {"number": number, "color": color, "result": "WIN" if won else "LOSS", "game": serialize_game(game)}
 
 
@@ -80,8 +80,8 @@ def activate_duel(game_id: UUID, duel_id: UUID, session: Session = Depends(get_d
 
 
 @router.post("/{game_id}/duels/{duel_id}/next-prompt")
-def advance_duel_prompt(game_id: UUID, duel_id: UUID, session: Session = Depends(get_db)):
-    return serialize_duel(session, next_duel_prompt(session, game_id, duel_id))
+def advance_duel_prompt(game_id: UUID, duel_id: UUID, payload: NextDuelPrompt, session: Session = Depends(get_db)):
+    return serialize_duel(session, next_duel_prompt(session, game_id, duel_id, payload.previousContentId))
 
 
 @router.get("/{game_id}/duels/{duel_id}/prompt-image")
@@ -100,9 +100,9 @@ def resolve_duel(game_id: UUID, duel_id: UUID, payload: DuelFinish, session: Ses
 
 
 @router.post("/{game_id}/next-player", response_model=GameState)
-def advance_player(game_id: UUID, session: Session = Depends(get_db)):
+def advance_player(game_id: UUID, payload: NextPlayer, session: Session = Depends(get_db)):
     try:
-        return serialize_game(next_player(session, game_id))
+        return serialize_game(next_player(session, game_id, payload.currentTeamId))
     except ValueError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
 
@@ -111,3 +111,16 @@ def advance_player(game_id: UUID, session: Session = Depends(get_db)):
 def resurrection(game_id: UUID, session: Session = Depends(get_db)):
     from app.services.resurrection_service import start_resurrection
     return start_resurrection(session, game_id)
+
+
+@router.get("/{game_id}/pending-challenge")
+def pending_challenge(game_id: UUID, session: Session = Depends(get_db)):
+    from app.models import HexChallenge
+    from app.services.challenge_service import challenge_payload
+    game = get_game(session, game_id)
+    if not game:
+        raise HTTPException(404, "Nie znaleziono gry.")
+    if game.status != "ACTIVE" or not game.active_challenge_id or game.resurrection_challenge_id:
+        return None
+    challenge = session.get(HexChallenge, game.active_challenge_id)
+    return {"hexId": challenge.hex_id, "challenge": challenge_payload(session, challenge)} if challenge else None

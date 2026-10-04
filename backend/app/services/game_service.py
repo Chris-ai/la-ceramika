@@ -6,9 +6,10 @@ from uuid import UUID
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
-from app.models import Content, Duel, Game, GameHex, GameTeam, HexChallenge, PlaySession
+from app.models import Duel, Game, GameHex, GameTeam, HexChallenge, PlaySession
 from app.schemas import GameCreate
 from app.services.active_game_service import prepare_new_game, touch_game
+from app.services.content_service import free_content, take_content
 
 DIRECTIONS = ((1, 0), (-1, 0), (0, 1), (0, -1), (1, -1), (-1, 1))
 
@@ -66,19 +67,20 @@ def choose_bases(hexes: list[tuple[int, int]], team_count: int) -> list[tuple[in
         pair_distances = [distances[first][second] for index, first in enumerate(selected) for second in selected[index + 1:]]
         average = sum(pair_distances) / len(pair_distances)
         spread = sum(abs(value - average) for value in pair_distances) / len(pair_distances)
-        score = min(pair_distances) * 2.5 - spread + random.random() * 0.1
+        room = [0.0] * team_count
+        for point in board.difference(selected):
+            nearest = min(distances[base][point] for base in selected)
+            leaders = [i for i, base in enumerate(selected) if distances[base][point] == nearest]
+            for i in leaders:
+                room[i] += 1 / len(leaders)
+        exits = [sum(point in board and point not in selected for point in neighbors(base)) for base in selected]
+        score = min(pair_distances) * 2.5 - spread - (max(room) - min(room)) * 0.8 - (max(exits) - min(exits)) * 0.5 + random.random() * 0.1
         if score > best_score:
             best, best_score = selected, score
     if len(best) != team_count:
         raise RuntimeError("Nie udało się rozmieścić baz.")
     random.shuffle(best)
     return best
-
-
-def content_pool(session: Session, content_type: str) -> list[UUID]:
-    values = list(session.scalars(select(Content.id).where(Content.type == content_type, Content.active.is_(True))))
-    random.shuffle(values)
-    return values
 
 
 def serialize_game(game: Game) -> dict:
@@ -106,7 +108,11 @@ def serialize_game(game: Game) -> dict:
 
 def create_game(session: Session, setup: GameCreate) -> Game:
     prepare_new_game(session, setup.replaceActiveGameId)
-    play_session = PlaySession()
+    play_session = session.scalar(select(PlaySession).where(PlaySession.finished_at.is_(None)).order_by(PlaySession.created_at.desc()).limit(1).with_for_update()) if setup.continueSession else None
+    if play_session is None:
+        for previous in session.scalars(select(PlaySession).where(PlaySession.finished_at.is_(None))):
+            previous.finished_at = datetime.now(timezone.utc)
+        play_session = PlaySession()
     game = Game(
         play_session_id=play_session.id,
         status="ACTIVE",
@@ -137,10 +143,10 @@ def create_game(session: Session, setup: GameCreate) -> Game:
     coordinates = generate_connected_hexes(setup.hexCount)
     bases = choose_bases(coordinates, len(teams))
     base_owner = {point: teams[index] for index, point in enumerate(bases)}
-    quiz_pool = content_pool(session, "QUIZ")
-    rush_pool = content_pool(session, "RUSH")
-    all_in_pool = content_pool(session, "ALL_IN")
-    more_less_pool = content_pool(session, "MORE_LESS")
+    quiz_pool = free_content(session, play_session.id, "QUIZ")
+    rush_pool = free_content(session, play_session.id, "RUSH")
+    all_in_pool = free_content(session, play_session.id, "ALL_IN")
+    more_less_pool = free_content(session, play_session.id, "MORE_LESS")
 
     for point in coordinates:
         owner = base_owner.get(point)
@@ -149,8 +155,8 @@ def create_game(session: Session, setup: GameCreate) -> Game:
         session.flush()
         if owner:
             continue
-        session.add(HexChallenge(hex_id=game_hex.id, type="QUIZ", status="AVAILABLE", content_id=quiz_pool.pop()))
-        session.add(HexChallenge(hex_id=game_hex.id, type="RUSH", status="AVAILABLE", content_id=rush_pool.pop()))
+        session.add(HexChallenge(hex_id=game_hex.id, type="QUIZ", status="AVAILABLE", content_id=take_content(session, quiz_pool, "QUIZ")))
+        session.add(HexChallenge(hex_id=game_hex.id, type="RUSH", status="AVAILABLE", content_id=take_content(session, rush_pool, "RUSH")))
         gamble_type = random.choice(("ALL_IN", "MORE_LESS", "ROULETTE"))
         if gamble_type == "ALL_IN" and not all_in_pool or gamble_type == "MORE_LESS" and not more_less_pool:
             gamble_type = "ROULETTE"
@@ -190,14 +196,18 @@ def serialize_game_summary(game: Game) -> dict:
     }
 
 
-def next_player(session: Session, game_id: UUID) -> Game:
+def next_player(session: Session, game_id: UUID, expected_team_id: UUID | None = None) -> Game:
     game = get_game(session, game_id, lock=True)
     if game is None:
         raise ValueError("Game not found")
     if game.status != "ACTIVE":
         raise ValueError("Gra nie jest aktywna.")
+    if expected_team_id is not None and game.current_team_id != expected_team_id:
+        raise ValueError("Tura została już zmieniona. Odśwież planszę.")
     if not game.base_move_used:
         raise ValueError("Najpierw wykorzystaj ruch bazowy.")
+    if game.active_challenge_id:
+        raise ValueError("Najpierw dokończ rozpoczęte wyzwanie.")
     active_duel = session.scalar(
         select(Duel.id).where(
             Duel.game_id == game.id,

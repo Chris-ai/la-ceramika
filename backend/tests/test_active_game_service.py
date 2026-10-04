@@ -9,7 +9,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.db.session import engine
-from app.models import Content, Game, GameTeam, PlaySession
+from app.models import Content, Game, GameTeam, PlaySession, SessionContentUsage
 from app.schemas import GameCreate
 from app.services.active_game_service import find_active_game, prepare_new_game
 from app.services.game_service import create_game, get_game, next_player
@@ -101,13 +101,32 @@ class ActiveGameTest(unittest.TestCase):
             {"name": "Drużyna 1", "color": "#91abea", "avatar": "owl"},
             {"color": "#f28e9a", "avatar": "rocket"},
         ], hexCount=12, winCondition="ELIMINATION", streakToBonus=3, resurrectionEnabled=True)
-        with patch("app.services.game_service.content_pool", side_effect=lambda session, kind: list(pools.get(kind, []))):
-            game = create_game(self.session, setup)
+        with patch("app.services.game_service.free_content", side_effect=lambda session, party_id, kind: list(pools.get(kind, []))):
+            with patch("app.services.game_service.take_content", side_effect=lambda session, pool, kind: pool.pop()):
+                game = create_game(self.session, setup)
         self.session.expire_all()
         stored = get_game(self.session, game.id)
         self.assertEqual({team.color: team.name for team in stored.teams}, {
             "#91abea": "Drużyna 1", "#f28e9a": "Drużyna 2",
         })
+
+    def test_next_game_can_keep_evening_without_repeating_revealed_content(self):
+        setup = GameCreate(teams=[{"color": "#123456", "avatar": "owl"}, {"color": "#654321", "avatar": "fox"}],
+                           hexCount=12, streakToBonus=3, resurrectionEnabled=True)
+        first = create_game(self.session, setup)
+        party_id = first.play_session_id
+        shown = next(c.content_id for h in first.hexes for c in h.challenges if c.type == "QUIZ")
+        self.session.add(SessionContentUsage(play_session_id=party_id, game_id=first.id, content_id=shown))
+        self.session.commit()
+        setup.replaceActiveGameId = first.id
+        setup.continueSession = True
+        second = create_game(self.session, setup)
+        self.assertEqual(second.play_session_id, party_id)
+        self.assertNotIn(shown, [c.content_id for h in second.hexes for c in h.challenges])
+        setup.replaceActiveGameId = second.id
+        setup.continueSession = False
+        third = create_game(self.session, setup)
+        self.assertNotEqual(third.play_session_id, party_id)
 
     def test_next_player_updates_activity_and_rejects_archive(self):
         game = self.add_game(days=6)

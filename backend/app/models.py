@@ -116,6 +116,8 @@ class Game(Base):
     current_round: Mapped[int] = mapped_column(Integer, default=1)
     current_team_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
     resurrection_challenge_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    active_challenge_id: Mapped[uuid.UUID | None] = mapped_column(UUID(as_uuid=True))
+    last_challenge_result: Mapped[dict | None] = mapped_column(JSONB)
     base_move_used: Mapped[bool] = mapped_column(Boolean, default=False)
     streak_to_bonus: Mapped[int] = mapped_column(Integer, default=3)
     resurrection_enabled: Mapped[bool] = mapped_column(Boolean, default=True)

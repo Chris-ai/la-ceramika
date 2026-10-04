@@ -40,6 +40,7 @@ def start_resurrection(session: Session, game_id: UUID) -> dict:
     if challenge.content_id and not session.get(SessionContentUsage, (game.play_session_id, challenge.content_id)):
         session.add(SessionContentUsage(play_session_id=game.play_session_id, content_id=challenge.content_id, game_id=game.id))
     payload = challenge_payload(session, challenge)
+    game.active_challenge_id = challenge.id
     touch_game(game)
     session.commit()
     return {"game": serialize_game(game), "challenge": payload, "hexId": challenge.hex_id}
