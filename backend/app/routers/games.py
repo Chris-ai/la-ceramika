@@ -85,12 +85,13 @@ def advance_duel_prompt(game_id: UUID, duel_id: UUID, payload: NextDuelPrompt, s
 
 
 @router.get("/{game_id}/duels/{duel_id}/prompt-image")
-def get_duel_prompt_image(game_id: UUID, duel_id: UUID, session: Session = Depends(get_db)):
-    image = duel_prompt_image(session, game_id, duel_id)
+def get_duel_prompt_image(game_id: UUID, duel_id: UUID, content_id: UUID | None = None, session: Session = Depends(get_db)):
+    image = duel_prompt_image(session, game_id, duel_id, content_id)
     if image is None:
         raise HTTPException(status_code=404, detail="Prompt image not found")
     content, media_type = image
-    return Response(content=content, media_type=media_type, headers={"Cache-Control": "public, max-age=3600"})
+    cache_control = "private, max-age=3600" if content_id else "no-store"
+    return Response(content=content, media_type=media_type, headers={"Cache-Control": cache_control})
 
 
 @router.post("/{game_id}/duels/{duel_id}/finish")
