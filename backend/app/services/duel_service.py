@@ -48,7 +48,7 @@ def serialize_duel(session: Session, duel: Duel) -> dict:
         if item and image:
             image_url = image["imageUrl"]
             if image_url == "PROXY":
-                image_url = f"/games/{duel.game_id}/duels/{duel.id}/prompt-image"
+                image_url = f"/games/{duel.game_id}/duels/{duel.id}/prompt-image?content_id={item.content_id}"
             payload["prompt"] = {
                 "imageUrl": image_url,
                 "answer": item.answer,
@@ -189,11 +189,16 @@ def next_duel_prompt(session: Session, game_id: UUID, duel_id: UUID, previous_co
     return duel
 
 
-def duel_prompt_image(session: Session, game_id: UUID, duel_id: UUID) -> tuple[bytes, str] | None:
+def duel_prompt_image(session: Session, game_id: UUID, duel_id: UUID, content_id: UUID | None = None) -> tuple[bytes, str] | None:
     duel = session.get(Duel, duel_id)
     if duel is None or duel.game_id != game_id or duel.type != "IDENTIFY" or not duel.content_id:
         return None
-    item = session.get(DuelItem, duel.content_id)
+    requested_id = content_id or duel.content_id
+    if requested_id != duel.content_id and not session.get(DuelItemUsage, (game_id, requested_id)):
+        return None
+    item = session.get(DuelItem, requested_id)
+    if item is None or item.duel_category_id != duel.category_id or item.prompt_type != "IMAGE":
+        return None
     category = session.get(Category, duel.category_id)
     return fetch_proxied_image(category.name, item.prompt) if item and category else None
 

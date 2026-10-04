@@ -173,3 +173,35 @@ class SubmissionTest(unittest.TestCase):
         self.assertEqual(current_duel(self.session, self.game.id).status, "ACTIVE")
         self.assertEqual(start_duel(self.session, self.game.id, duel_id).id, duel_id)
         self.assertFalse(self.game.base_move_used)
+
+    def test_proxy_image_changes_with_prompt_and_old_url_keeps_its_image(self):
+        from app.services.duel_service import duel_prompt_image
+        from app.routers.games import get_duel_prompt_image
+        category = Category(name=f"Herby {self.game.id}")
+        self.session.add(category)
+        self.session.flush()
+        self.session.add(DuelCategory(category_id=category.id, type="IDENTIFY"))
+        for prompt, answer in (("atletico.example", "Atletico"), ("other.example", "Inny klub")):
+            content = Content(type="DUEL")
+            self.session.add(content)
+            self.session.flush()
+            self.session.add(DuelItem(content_id=content.id, duel_category_id=category.id,
+                                      prompt_type="IMAGE", prompt=prompt, answer=answer))
+        duel = Duel(game_id=self.game.id, target_hex_id=self.enemy.id, attacker_team_id=self.teams[0].id,
+                    defender_team_id=self.teams[1].id, category_id=category.id, type="IDENTIFY", status="ACTIVE")
+        self.session.add(duel)
+        self.session.commit()
+        with patch("app.services.duel_service.resolve_image", return_value={"imageUrl": "PROXY", "attribution": None}), \
+             patch("app.services.duel_service.fetch_proxied_image", side_effect=lambda category, prompt: (prompt.encode(), "image/png")):
+            next_duel_prompt(self.session, self.game.id, duel.id)
+            first = serialize_duel(self.session, duel)
+            first_image = duel_prompt_image(self.session, self.game.id, duel.id, first["contentId"])
+            next_duel_prompt(self.session, self.game.id, duel.id, first["contentId"])
+            second = serialize_duel(self.session, duel)
+            self.assertNotEqual(first["prompt"]["imageUrl"], second["prompt"]["imageUrl"])
+            self.assertNotEqual(first["prompt"]["answer"], second["prompt"]["answer"])
+            self.assertIn(str(second["contentId"]), second["prompt"]["imageUrl"])
+            self.assertNotEqual(first_image, duel_prompt_image(self.session, self.game.id, duel.id, second["contentId"]))
+            self.assertEqual(first_image, duel_prompt_image(self.session, self.game.id, duel.id, first["contentId"]))
+            legacy = get_duel_prompt_image(self.game.id, duel.id, None, self.session)
+            self.assertEqual(legacy.headers["cache-control"], "no-store")
