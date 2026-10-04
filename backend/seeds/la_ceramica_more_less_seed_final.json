@@ -9,7 +9,7 @@
       "question": "Ile wyświetleń na YouTube ma film „Paweł Jumper-Orginał” na kanale Dendi321?",
       "reference_value": 4000000,
       "correct_value": 5673397,
-      "unit": "wyświetleń",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
@@ -44,84 +44,84 @@
       "question": "W którym roku upadło Cesarstwo Zachodniorzymskie?",
       "reference_value": 500,
       "correct_value": 476,
-      "unit": "rok",
+      "unit": "",
       "correct_side": "LESS"
     },
     {
       "question": "W którym roku miał miejsce II rozbiór Polski?",
       "reference_value": 1790,
       "correct_value": 1793,
-      "unit": "rok",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "W którym roku wysłano pierwszego SMS-a?",
       "reference_value": 1990,
       "correct_value": 1992,
-      "unit": "rok",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "W którym roku pierwszy człowiek poleciał w kosmos?",
       "reference_value": 1960,
       "correct_value": 1961,
-      "unit": "rok",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "W którym roku trafił do sprzedaży pierwszy iPhone?",
       "reference_value": 2005,
       "correct_value": 2007,
-      "unit": "rok",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "W ilu państwach język hiszpański jest językiem urzędowym?",
       "reference_value": 14,
       "correct_value": 20,
-      "unit": "państw",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "Ile lat miał Freddie Mercury, gdy zmarł?",
       "reference_value": 50,
       "correct_value": 45,
-      "unit": "lat",
+      "unit": "",
       "correct_side": "LESS"
     },
     {
       "question": "Ile lat miał Jan Paweł II, gdy zmarł?",
       "reference_value": 80,
       "correct_value": 84,
-      "unit": "lat",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "Ile lat miała Elżbieta II w dniu koronacji?",
       "reference_value": 30,
       "correct_value": 27,
-      "unit": "lat",
+      "unit": "",
       "correct_side": "LESS"
     },
     {
       "question": "Ile reprezentacji narodowych przynajmniej raz zdobyło mistrzostwo świata w piłce nożnej mężczyzn?",
       "reference_value": 6,
       "correct_value": 8,
-      "unit": "reprezentacji",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
       "question": "Ile tytułów wielkoszlemowych w singlu zdobyła Iga Świątek?",
       "reference_value": 5,
       "correct_value": 6,
-      "unit": "tytułów",
+      "unit": "ytułów",
       "correct_side": "MORE"
     },
     {
       "question": "Ilu mieszkańców ma Białystok?",
       "reference_value": 282000,
       "correct_value": 289200,
-      "unit": "mieszkańców",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
@@ -134,7 +134,7 @@
       "question": "Ile klawiszy ma typowa pełnowymiarowa klawiatura komputerowa z blokiem numerycznym?",
       "reference_value": 80,
       "correct_value": 104,
-      "unit": "klawisze",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
@@ -183,7 +183,7 @@
       "question": "Ile podstawowych wartości rytmicznych nut wyróżniamy od całej nuty do sześćdziesięcioczwórki?",
       "reference_value": 5,
       "correct_value": 7,
-      "unit": "wartości",
+      "unit": "",
       "correct_side": "MORE"
     },
     {
@@ -203,8 +203,8 @@
     {
       "question": "Ile godzin trwał rekordowo długi film przesłany na YouTube jako zwykły film, nie licząc transmisji na żywo?",
       "reference_value": 256,
-      "correct_value": 596.5225,
-      "unit": "godz.",
+      "correct_value": 597,
+      "unit": "",
       "correct_side": "MORE"
     }
   ],
