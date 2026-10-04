@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import type { Game } from '@/entities/game'
 import { finishDuel, nextDuelPrompt, startDuel, type Duel } from '../api/duelApi'
@@ -8,6 +8,8 @@ import { duelSnapshot, useDuelStore } from './duelStore'
 export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game) => void) {
   const snapshot = useDuelStore()
   const finishing = useRef(false)
+  const changingPrompt = useRef(false)
+  const [retryIndex, setRetryIndex] = useState(0)
   const transport = useMemo(() => createDuelTransport(initialDuel.gameId), [initialDuel.gameId])
   const startMutation = useMutation({ mutationFn: startDuel })
   const promptMutation = useMutation({ mutationFn: nextDuelPrompt })
@@ -47,6 +49,7 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
       const now = performance.now()
       const delta = now - previous
       previous = now
+      if (changingPrompt.current) return
       const state = useDuelStore.getState()
       if (state.activeTeamId === state.duel?.attacker.id) {
         state.setTimers(Math.max(0, state.attackerMs - delta), state.defenderMs)
@@ -75,10 +78,16 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
         onGameUpdated(game)
         useDuelStore.getState().finish(winnerId)
       })
-      .catch(() => {
-        finishing.current = false
-      })
-  }, [snapshot.attackerMs, snapshot.defenderMs, snapshot.phase, snapshot.duel, onGameUpdated, finishMutation])
+      .catch(() => undefined)
+  }, [
+    snapshot.attackerMs,
+    snapshot.defenderMs,
+    snapshot.phase,
+    snapshot.duel,
+    onGameUpdated,
+    finishMutation,
+    retryIndex,
+  ])
 
   async function begin() {
     if (!snapshot.duel) return
@@ -87,18 +96,36 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
   }
 
   async function switchPlayer() {
-    if (!snapshot.duel) return
-    if (snapshot.duel.type === 'IDENTIFY') {
-      const duel = await promptMutation.mutateAsync(snapshot.duel)
-      useDuelStore.getState().updateDuel(duel)
+    await advancePrompt(false)
+  }
+
+  async function advancePrompt(passing: boolean) {
+    const state = useDuelStore.getState()
+    if (!state.duel || state.phase !== 'ACTIVE' || changingPrompt.current || finishing.current) return
+    changingPrompt.current = true
+    try {
+      if (state.duel.type === 'IDENTIFY') {
+        const duel = await promptMutation.mutateAsync(state.duel)
+        if (useDuelStore.getState().phase !== 'ACTIVE' || finishing.current) return
+        useDuelStore.getState().updateDuel(duel)
+      }
+      if (passing) useDuelStore.getState().pass()
+      else useDuelStore.getState().switchPlayer()
+    } finally {
+      changingPrompt.current = false
     }
-    useDuelStore.getState().switchPlayer()
   }
 
   const mutationError = startMutation.error ?? promptMutation.error ?? finishMutation.error
 
   return {
     snapshot,
+    retryFinish: finishMutation.isError
+      ? () => {
+          finishing.current = false
+          setRetryIndex((value) => value + 1)
+        }
+      : undefined,
     isStarting: startMutation.isPending,
     isPromptLoading: promptMutation.isPending,
     error:
@@ -108,7 +135,7 @@ export function useDuelController(initialDuel: Duel, onGameUpdated: (game: Game)
           ? 'Nie udało się wykonać akcji pojedynku.'
           : null,
     begin,
-    pass: useDuelStore.getState().pass,
+    pass: () => advancePrompt(true),
     switchPlayer,
   }
 }

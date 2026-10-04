@@ -1,3 +1,4 @@
+import type { ChallengeAnswer } from '../api/challengeApi'
 import { useState } from 'react'
 import { randomAllIn, randomGambleType, randomMoreLess } from '../model/gambleData'
 import { AllInGame } from './AllInGame'
@@ -8,7 +9,7 @@ import './GambleGame.css'
 type GambleResult = 'WIN' | 'LOSS'
 
 type GambleGameProps = {
-  onResolved: (result: GambleResult) => void
+  onResolved: (result: GambleResult, answer?: ChallengeAnswer) => void
   gambleType?: 'ALL_IN' | 'MORE_LESS' | 'ROULETTE' | null
   payload?: unknown
   onRouletteSpin?: (choice: 'RED' | 'BLACK') => Promise<{

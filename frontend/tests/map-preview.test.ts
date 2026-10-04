@@ -28,8 +28,6 @@ test('wszystkie rozmiary tworzą dokładną, spójną mapę i rozdzielone BASE',
           avatar: teamIcons[index].id,
         })),
         mapPreset: preset,
-        winCondition: 'ELIMINATION',
-        roundLimit: '',
         streakToBonus: '3',
         resurrectionEnabled: true,
       })

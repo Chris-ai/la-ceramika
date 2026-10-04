@@ -3,7 +3,8 @@ import type { Game } from '@/entities/game'
 
 export type DuelTeam = { id: string; color: string; avatar: string }
 export type DuelPrompt = {
-  imageUrl: string
+  imageUrl: string | null
+  text?: string
   answer?: string
   attribution: string | { author: string; authorUrl: string; source: string; sourceUrl: string } | null
 }
@@ -17,6 +18,7 @@ export type Duel = {
   attacker: DuelTeam
   defender: DuelTeam
   winnerTeamId: string | null
+  contentId?: string | null
   prompt: DuelPrompt | null
 }
 
@@ -25,7 +27,7 @@ const normalizeDuel = (duel: Duel): Duel => ({
   prompt: duel.prompt
     ? {
         ...duel.prompt,
-        imageUrl: duel.prompt.imageUrl.startsWith('/') ? apiUrl(duel.prompt.imageUrl) : duel.prompt.imageUrl,
+        imageUrl: duel.prompt.imageUrl?.startsWith('/') ? apiUrl(duel.prompt.imageUrl) : duel.prompt.imageUrl,
       }
     : null,
 })
@@ -47,9 +49,10 @@ export async function startDuel(duel: Duel) {
 
 export async function nextDuelPrompt(duel: Duel) {
   return normalizeDuel(
-    await apiRequest<Duel>(`/games/${duel.gameId}/duels/${duel.id}/next-prompt`, {
-      method: 'POST',
-    }),
+    await apiRequest<Duel>(
+      `/games/${duel.gameId}/duels/${duel.id}/next-prompt`,
+      jsonRequest('POST', { previousContentId: duel.contentId }),
+    ),
   )
 }
 

@@ -1,3 +1,4 @@
+import type { ChallengeAnswer } from '../api/challengeApi'
 import { useEffect, useRef, useState } from 'react'
 import type { QuizQuestion } from '../model/quizData'
 import './QuizGame.css'
@@ -11,7 +12,7 @@ const shuffle = <T,>(items: T[]) => {
   return result
 }
 type QuizResult = 'WIN' | 'LOSS' | 'NO_ANSWER'
-const QUIZ_TIME_SECONDS = 60
+const QUIZ_TIME_SECONDS = 30
 const evaluateAnswer = (question: QuizQuestion, answer: string | null, order: string[]): QuizResult => {
   if (question.type === 'ABCD') {
     if (!answer) return 'NO_ANSWER'
@@ -31,7 +32,7 @@ export function QuizGame({
 }: {
   question: QuizQuestion
   start: boolean
-  onResolved: (result: 'WIN' | 'LOSS') => void
+  onResolved: (result: 'WIN' | 'LOSS', answer?: ChallengeAnswer) => void
 }) {
   const [abcdChoices] = useState(() => (question.type === 'ABCD' ? shuffle(question.options) : []))
   const [orderChoices] = useState(() => (question.type === 'ORDER' ? shuffle(question.options) : []))
@@ -43,6 +44,7 @@ export function QuizGame({
   const [result, setResult] = useState<QuizResult | null>(null)
   const answerRef = useRef<string | null>(null)
   const orderRef = useRef<string[]>([])
+  const resolvedRef = useRef(false)
 
   useEffect(() => {
     if (!start) return
@@ -59,10 +61,11 @@ export function QuizGame({
   }, [question.question, start])
 
   function checkAnswer() {
-    if (result) return
+    if (resolvedRef.current || timeLeft <= 0) return
+    resolvedRef.current = true
     const next = evaluateAnswer(question, answerRef.current, orderRef.current)
     setResult(next)
-    onResolved(next === 'WIN' ? 'WIN' : 'LOSS')
+    onResolved(next === 'WIN' ? 'WIN' : 'LOSS', { choice: answerRef.current, answers: orderRef.current })
   }
 
   useEffect(() => {
@@ -72,9 +75,10 @@ export function QuizGame({
         if (current <= 1) {
           window.clearInterval(timer)
           window.setTimeout(() => {
-            const next = evaluateAnswer(question, answerRef.current, orderRef.current)
-            setResult(next)
-            onResolved(next === 'WIN' ? 'WIN' : 'LOSS')
+            if (resolvedRef.current) return
+            resolvedRef.current = true
+            setResult('NO_ANSWER')
+            onResolved('LOSS', { timedOut: true })
           }, 0)
           return 0
         }

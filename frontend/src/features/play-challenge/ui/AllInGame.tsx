@@ -1,3 +1,4 @@
+import type { ChallengeAnswer } from '../api/challengeApi'
 import { useState } from 'react'
 import { randomAllIn } from '../model/gambleData'
 
@@ -5,7 +6,7 @@ export function AllInGame({
   onResolved,
   initialQuestion,
 }: {
-  onResolved: (result: 'WIN' | 'LOSS') => void
+  onResolved: (result: 'WIN' | 'LOSS', answer?: ChallengeAnswer) => void
   initialQuestion?: ReturnType<typeof randomAllIn>
 }) {
   const [question] = useState(() => initialQuestion ?? randomAllIn())
@@ -24,7 +25,7 @@ export function AllInGame({
     const correct = question.options.findIndex((option) => option.is_correct)
     const next = stakes[correct] >= 50 ? 'WIN' : 'LOSS'
     setResult(next)
-    onResolved(next)
+    onResolved(next, { stakes })
   }
   return (
     <div className="all-in">

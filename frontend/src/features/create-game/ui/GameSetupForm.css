@@ -394,3 +394,20 @@ button:focus-visible,
     margin-inline: 20px;
   }
 }
+.session-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+.session-option input {
+  accent-color: #d5a829;
+  width: 17px;
+  height: 17px;
+  flex: none;
+}
+.session-option__hint {
+  display: block;
+  margin: 6px 0 14px;
+  line-height: 1.4;
+}

@@ -1,5 +1,7 @@
+import type { ChallengeAnswer } from '../api/challengeApi'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
-import { normalizeRushAnswer, type RushTask } from '../model/rushData'
+import { type RushTask } from '../model/rushData'
+import { matchRushAnswer } from '../model/rushMatching'
 import './RushGame.css'
 
 export function RushGame({
@@ -7,7 +9,7 @@ export function RushGame({
   onResolved,
 }: {
   task: RushTask
-  onResolved: (result: 'WIN' | 'LOSS') => void
+  onResolved: (result: 'WIN' | 'LOSS', answer?: ChallengeAnswer) => void
 }) {
   const [input, setInput] = useState('')
   const [found, setFound] = useState<string[]>([])
@@ -24,7 +26,7 @@ export function RushGame({
           window.setTimeout(() => {
             const next = foundRef.current.length >= task.required_count ? 'WIN' : 'LOSS'
             setResult(next)
-            onResolved(next)
+            onResolved(next, { answers: foundRef.current })
           }, 0)
           return 0
         }
@@ -37,10 +39,7 @@ export function RushGame({
   function submitAnswer(event: FormEvent) {
     event.preventDefault()
     if (result || !input.trim()) return
-    const normalized = normalizeRushAnswer(input)
-    const match = task.answers.find((candidate) =>
-      [candidate.answer, ...candidate.aliases].some((answer) => normalizeRushAnswer(answer) === normalized),
-    )
+    const match = matchRushAnswer(input, task.answers)
     if (!match || foundRef.current.includes(match.answer)) return
     const next = [...foundRef.current, match.answer]
     foundRef.current = next
@@ -48,7 +47,7 @@ export function RushGame({
     setInput('')
     if (next.length >= task.required_count) {
       setResult('WIN')
-      onResolved('WIN')
+      onResolved('WIN', { answers: next })
     }
   }
 

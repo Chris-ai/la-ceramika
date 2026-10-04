@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react/offline'
 import duelIcon from '@iconify-icons/game-icons/crossed-swords'
 import type { CSSProperties } from 'react'
 import type { DuelSnapshot } from '@/features/duel-control'
+import { DuelImage } from './DuelImage'
 
 const timer = (milliseconds: number) => {
   const tenths = Math.max(0, Math.ceil(milliseconds / 100))
@@ -63,7 +64,11 @@ export function DuelView({
           <div className={`duel-list-prompt ${duel.type === 'IDENTIFY' ? 'duel-identify-prompt' : ''}`}>
             {duel.type === 'IDENTIFY' && duel.prompt ? (
               <>
-                <img src={duel.prompt.imageUrl} alt="Element do rozpoznania" />
+                {duel.prompt.imageUrl ? (
+                  <DuelImage key={duel.prompt.imageUrl} src={duel.prompt.imageUrl} />
+                ) : (
+                  <h1>{duel.prompt.text}</h1>
+                )}
                 {duel.prompt.attribution && (
                   <small className="duel-identify-prompt__credit">
                     {typeof duel.prompt.attribution === 'string' ? (

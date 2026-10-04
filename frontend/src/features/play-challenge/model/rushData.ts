@@ -11,10 +11,4 @@ export type RushTask = {
 const tasks = rushSeed.tasks as RushTask[]
 export const randomRushTask = () => tasks[Math.floor(Math.random() * tasks.length)]
 
-export const normalizeRushAnswer = (value: string) =>
-  value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLocaleLowerCase('pl')
-    .trim()
-    .replace(/\s+/g, ' ')
+export { normalizeRushAnswer } from './rushMatching'

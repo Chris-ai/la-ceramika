@@ -40,16 +40,14 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
         { color: teamColors[1].value, avatar: teamIcons[1].id },
       ],
       mapPreset: 'M',
-      winCondition: 'ELIMINATION',
-      roundLimit: '',
       streakToBonus: '3',
       resurrectionEnabled: true,
+      continueSession: false,
     },
   })
   const { fields, append, remove } = useFieldArray({ control, name: 'teams' })
   const teams = useWatch({ control, name: 'teams' }) ?? []
   const mapPreset = useWatch({ control, name: 'mapPreset' }) ?? 'M'
-  const winCondition = useWatch({ control, name: 'winCondition' }) ?? 'ELIMINATION'
   const sizes = mapSizes(teams.length)
 
   function addTeam() {
@@ -91,6 +89,13 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
                 <div className="settings-column">
                   <fieldset className="form-section">
                     <legend>Plansza</legend>
+                    <label className="session-option">
+                      <input type="checkbox" {...register('continueSession')} /> Kolejna partia tego samego
+                      wieczoru
+                    </label>
+                    <small className="session-option__hint">
+                      Zaznacz, aby nie powtarzać już pokazanych pytań. Odznacz, aby rozpocząć nowy wieczór.
+                    </small>
                     <div className="map-size-options" role="group" aria-label="Liczba heksów na planszy">
                       {(['S', 'M', 'XL', 'XXL'] as const).map((preset) => (
                         <button
@@ -112,67 +117,6 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
 
                   <fieldset className="form-section">
                     <legend>Ustawienia rozgrywki</legend>
-                    <div className="section-label">Warunek zwycięstwa</div>
-                    <div className="choice-grid">
-                      <label className={`choice ${winCondition === 'ELIMINATION' ? 'choice--selected' : ''}`}>
-                        <input
-                          type="radio"
-                          value="ELIMINATION"
-                          {...register('winCondition')}
-                          onChange={() => {
-                            setValue('winCondition', 'ELIMINATION', {
-                              shouldDirty: true,
-                              shouldValidate: true,
-                            })
-                            setSubmitted(null)
-                          }}
-                        />
-                        <span>
-                          <strong>Eliminacja</strong>
-                          <small>Ostatnia drużyna z terytorium wygrywa.</small>
-                        </span>
-                      </label>
-                      <label className={`choice ${winCondition === 'ROUND_LIMIT' ? 'choice--selected' : ''}`}>
-                        <input
-                          type="radio"
-                          value="ROUND_LIMIT"
-                          {...register('winCondition')}
-                          onChange={() => {
-                            setValue('winCondition', 'ROUND_LIMIT', {
-                              shouldDirty: true,
-                              shouldValidate: true,
-                            })
-                            setSubmitted(null)
-                          }}
-                        />
-                        <span>
-                          <strong>Limit rund</strong>
-                          <small>Po pełnych rundach wygrywa największe terytorium.</small>
-                        </span>
-                      </label>
-                    </div>
-                    <div
-                      className={`round-reveal ${winCondition === 'ROUND_LIMIT' ? 'round-reveal--open' : ''}`}
-                      aria-hidden={winCondition !== 'ROUND_LIMIT'}
-                    >
-                      <div className="round-reveal-inner">
-                        <label className="field round-field">
-                          <span>Liczba pełnych rund</span>
-                          <input
-                            type="number"
-                            inputMode="numeric"
-                            min={1}
-                            readOnly={winCondition !== 'ROUND_LIMIT'}
-                            tabIndex={winCondition !== 'ROUND_LIMIT' ? -1 : undefined}
-                            aria-invalid={!!errors.roundLimit}
-                            {...register('roundLimit', { onChange: () => setSubmitted(null) })}
-                          />
-                          {winCondition === 'ROUND_LIMIT' && errors.roundLimit && (
-                            <small className="field-error">{errors.roundLimit.message}</small>
-                          )}
-                        </label>
-                      </div>
-                    </div>
                     <label className="field streak-field">
                       <span>Seria do bonusowego ruchu</span>
                       <input
@@ -245,10 +189,7 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
                 <div className="config-preview" role="status">
                   Konfiguracja gotowa: {submitted.teams.length}{' '}
                   {submitted.teams.length <= 4 ? 'drużyny' : 'drużyn'}, {submitted.hexCount} heksów,{' '}
-                  {submitted.winCondition === 'ELIMINATION'
-                    ? 'eliminacja'
-                    : `${submitted.roundLimit} pełnych rund`}
-                  , wskrzeszanie {submitted.resurrectionEnabled ? 'włączone' : 'wyłączone'}.
+                  eliminacja, wskrzeszanie {submitted.resurrectionEnabled ? 'włączone' : 'wyłączone'}.
                 </div>
               )}
               {startError && (

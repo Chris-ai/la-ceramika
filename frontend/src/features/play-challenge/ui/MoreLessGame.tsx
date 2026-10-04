@@ -1,3 +1,4 @@
+import type { ChallengeAnswer } from '../api/challengeApi'
 import { useEffect, useState } from 'react'
 import { randomMoreLess } from '../model/gambleData'
 
@@ -7,7 +8,7 @@ export function MoreLessGame({
   onResolved,
   initialQuestion,
 }: {
-  onResolved: (result: 'WIN' | 'LOSS') => void
+  onResolved: (result: 'WIN' | 'LOSS', answer?: ChallengeAnswer) => void
   initialQuestion?: ReturnType<typeof randomMoreLess>
 }) {
   const [question] = useState(() => initialQuestion ?? randomMoreLess())
@@ -32,8 +33,8 @@ export function MoreLessGame({
   }, [revealed])
   const result = revealed ? (choice && choice === question.correct_side ? 'WIN' : 'LOSS') : null
   useEffect(() => {
-    if (result) onResolved(result)
-  }, [result, onResolved])
+    if (result) onResolved(result, { choice })
+  }, [result, choice, onResolved])
   const target = Math.max(
     7,
     Math.min(93, 50 + Math.log(question.correct_value / question.reference_value) * 30),

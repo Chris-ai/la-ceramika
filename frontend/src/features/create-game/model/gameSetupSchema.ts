@@ -36,19 +36,11 @@ export const gameSetupSchema = z
       .min(2, 'Dodaj przynajmniej 2 drużyny.')
       .max(6, 'Możesz dodać maksymalnie 6 drużyn.'),
     mapPreset: z.enum(['S', 'M', 'XL', 'XXL']),
-    winCondition: z.enum(['ELIMINATION', 'ROUND_LIMIT']),
-    roundLimit: z.string(),
     streakToBonus: z.string().refine(positiveInteger, 'Podaj dodatnią liczbę kroków.'),
     resurrectionEnabled: z.boolean(),
+    continueSession: z.boolean().default(false),
   })
   .superRefine((values, context) => {
-    if (values.winCondition === 'ROUND_LIMIT' && !positiveInteger(values.roundLimit)) {
-      context.addIssue({
-        code: 'custom',
-        path: ['roundLimit'],
-        message: 'Podaj dodatnią liczbę pełnych rund.',
-      })
-    }
     values.teams.forEach((team, index) => {
       if (values.teams.findIndex((other) => other.color === team.color) !== index) {
         context.addIssue({
@@ -74,9 +66,10 @@ export function toGameSetupPayload(values: ValidatedGameSetup) {
   return {
     teams: values.teams.map((team, index) => ({ ...team, name: `Drużyna ${index + 1}` })),
     hexCount: mapSizes(values.teams.length)[values.mapPreset],
-    winCondition: values.winCondition,
-    roundLimit: values.winCondition === 'ROUND_LIMIT' ? Number(values.roundLimit.trim()) : null,
+    winCondition: 'ELIMINATION' as const,
+    roundLimit: null,
     streakToBonus: Number(values.streakToBonus.trim()),
     resurrectionEnabled: values.resurrectionEnabled,
+    continueSession: values.continueSession,
   }
 }
