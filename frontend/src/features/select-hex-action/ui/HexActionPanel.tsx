@@ -24,37 +24,40 @@ export function HexActionPanel({
     mutationFn: ({ hexId, type }: { hexId: string; type: ChallengeType }) =>
       startChallenge(gameId, hexId, type),
   })
-  const options = challengeOptions.slice(0, 3)
+  const options = ['QUIZ', 'GAMBLE', 'RUSH'].map((type) =>
+    challengeOptions.find((option) => option.type === type)!,
+  )
 
   return (
     <aside className="hex-action-panel" aria-label="Dostępne akcje na heksie">
-      {options
-        .filter(
-          (option) => !target.hex.availableChallenges || target.hex.availableChallenges.includes(option.type),
-        )
-        .map((option) => (
-          <button
-            type="button"
-            key={option.type}
-            disabled={loading !== null}
-            onClick={() => {
-              if (!target.hex.id) return
-              setLoading(option.type)
-              void challengeMutation
-                .mutateAsync({ hexId: target.hex.id, type: option.type })
-                .then((data) => onChallenge(option.type, data as ChallengeData))
-                .catch((error) =>
-                  onError(error instanceof Error ? error.message : 'Nie udało się rozpocząć wyzwania.'),
-                )
-                .finally(() => setLoading(null))
-            }}
-          >
-            <span style={{ backgroundColor: option.color }}>
-              {loading === option.type ? <LoadingSpinner /> : <Icon icon={option.icon} aria-hidden="true" />}
-            </span>
-            <strong>{option.label}</strong>
-          </button>
-        ))}
+      {options.map((option) => (
+        <button
+          type="button"
+          key={option.type}
+          disabled={
+            loading !== null ||
+            (target.hex.availableChallenges !== undefined &&
+              !target.hex.availableChallenges.includes(option.type))
+          }
+          title={option.label}
+          aria-label={option.label}
+          onClick={() => {
+            if (!target.hex.id) return
+            setLoading(option.type)
+            void challengeMutation
+              .mutateAsync({ hexId: target.hex.id, type: option.type })
+              .then((data) => onChallenge(option.type, data as ChallengeData))
+              .catch((error) =>
+                onError(error instanceof Error ? error.message : 'Nie udało się rozpocząć wyzwania.'),
+              )
+              .finally(() => setLoading(null))
+          }}
+        >
+          <span style={{ backgroundColor: option.color }}>
+            {loading === option.type ? <LoadingSpinner /> : <Icon icon={option.icon} aria-hidden="true" />}
+          </span>
+        </button>
+      ))}
     </aside>
   )
 }

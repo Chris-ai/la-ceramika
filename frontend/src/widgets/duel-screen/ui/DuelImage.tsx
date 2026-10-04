@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function DuelImage({ src }: { src: string }) {
+export function DuelImage({ src, logo = false }: { src: string; logo?: boolean }) {
   const [failed, setFailed] = useState(false)
   if (failed)
     return (
@@ -11,5 +11,12 @@ export function DuelImage({ src }: { src: string }) {
         </button>
       </div>
     )
-  return <img src={src} alt="Element do rozpoznania" onError={() => setFailed(true)} />
+  return (
+    <img
+      className={logo ? 'duel-logo-image' : undefined}
+      src={src}
+      alt="Element do rozpoznania"
+      onError={() => setFailed(true)}
+    />
+  )
 }

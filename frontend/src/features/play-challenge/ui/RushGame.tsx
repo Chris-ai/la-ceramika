@@ -83,10 +83,8 @@ export function RushGame({
           placeholder="Wpisz odpowiedź…"
           aria-label="Odpowiedź"
           autoComplete="off"
+          enterKeyHint="done"
         />
-        <button type="submit" disabled={!input.trim() || result !== null}>
-          Dodaj
-        </button>
       </form>
     </div>
   )

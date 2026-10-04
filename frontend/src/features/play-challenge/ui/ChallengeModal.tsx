@@ -2,6 +2,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { Icon } from '@iconify/react/offline'
 import closeIcon from '@iconify-icons/heroicons/x-mark'
 import { QuizGame } from './QuizGame'
+import { ChallengeConfetti } from './ChallengeConfetti'
 import { randomQuizQuestion, type QuizQuestion } from '../model/quizData'
 import { RushGame } from './RushGame'
 import { randomRushTask, type RushTask } from '../model/rushData'
@@ -100,6 +101,7 @@ export function ChallengeModal({
         if (event.target === event.currentTarget && selected === null) onClose()
       }}
     >
+      {verdict === 'WIN' && <ChallengeConfetti />}
       <section
         ref={modalRef}
         className={`challenge-modal ${activeOption ? 'challenge-modal--stage' : ''}`}
@@ -210,9 +212,6 @@ export function ChallengeModal({
         )}
         {verdict && (
           <footer ref={footerRef} className={`challenge-footer challenge-footer--${verdict.toLowerCase()}`}>
-            <div className="challenge-verdict">
-              <strong>{verdict === 'WIN' ? 'Wygrana!' : 'Przegrana'}</strong>
-            </div>
             <button type="button" onClick={() => onReturn(verdict)}>
               Wróć do mapy
             </button>

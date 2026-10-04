@@ -1,0 +1,36 @@
+.challenge-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.challenge-confetti i {
+  position: absolute;
+  top: -24px;
+  left: var(--x);
+  width: 9px;
+  height: 16px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: challenge-confetti-fall var(--duration) var(--delay) ease-in both;
+}
+@keyframes challenge-confetti-fall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0) rotate(0deg);
+  }
+  8%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--drift), calc(100dvh + 40px), 0) rotate(var(--spin));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .challenge-confetti {
+    display: none;
+  }
+}

@@ -164,6 +164,10 @@
   color: var(--color-muted);
   font-size: var(--font-size-xs);
 }
+.duel-identify-prompt img.duel-logo-image {
+  background: #85888e;
+  padding: 20px;
+}
 .duel-identify-prompt__credit a {
   color: inherit;
 }

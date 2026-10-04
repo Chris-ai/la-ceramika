@@ -1,77 +1,84 @@
 .purgatory-panel {
   position: absolute;
-  top: 24px;
-  left: 24px;
+  top: 50%;
+  left: 0;
   z-index: 5;
-  width: min(290px, calc(100vw - 48px));
-  padding: 18px;
+  padding: 12px 10px 12px 8px;
+  transform: translateY(-50%);
   border: 2px solid var(--color-border);
-  border-radius: 20px;
-  background: var(--color-background);
-  box-shadow: 4px 5px 0 var(--color-border);
-}
-.purgatory-panel h2 {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 12px;
-  font-size: 20px;
-}
-.purgatory-panel h2 span {
-  opacity: 0.6;
+  border-left: 0;
+  border-radius: 0 18px 18px 0;
+  background: var(--color-surface);
+  box-shadow: 3px 4px 0 var(--color-border);
+  animation: purgatory-slide-in 360ms ease-out both;
 }
 .purgatory-panel ul {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  flex-direction: column;
+  gap: 10px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 .purgatory-panel li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
-  height: 52px;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
   border: 2px solid var(--color-border);
-  padding: 6px;
   border-radius: 12px;
-  font-size: 13px;
+  background: var(--color-surface);
+  transition:
+    background 200ms ease,
+    box-shadow 200ms ease,
+    transform 200ms ease;
 }
 .purgatory-panel .animal-icon {
   display: block;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   mask-size: contain;
   mask-repeat: no-repeat;
   mask-position: center;
 }
-.purgatory-team--current {
+.purgatory-panel .purgatory-team--current {
   background: var(--color-accent);
-  font-weight: 800;
+  outline: 3px solid var(--color-border);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 7px var(--color-accent);
+  transform: translateX(3px);
 }
-.purgatory-panel--current {
-  outline: 4px solid var(--color-accent);
-  outline-offset: 4px;
+@keyframes purgatory-slide-in {
+  from {
+    opacity: 0;
+    transform: translate(-100%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
 }
-.purgatory-turn {
-  border-top: 1px solid var(--color-border);
-  margin-top: 12px;
-  padding-top: 4px;
-}
-.purgatory-turn p {
-  font-size: 14px;
-  line-height: 1.5;
-}
-.purgatory-turn button {
-  width: 100%;
-}
-@media (max-width: 600px) {
+@media (max-width: 700px), (max-height: 550px) {
   .purgatory-panel {
-    position: relative;
-    top: auto;
-    left: auto;
-    justify-self: start;
-    margin-bottom: 20px;
+    padding: 10px 8px 10px 5px;
+  }
+  .purgatory-panel ul {
+    gap: 9px;
+  }
+  .purgatory-panel li {
+    width: 38px;
+    height: 38px;
+  }
+  .purgatory-panel .animal-icon {
+    width: 27px;
+    height: 27px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .purgatory-panel {
+    animation: none;
+  }
+  .purgatory-panel li {
+    transition: none;
   }
 }

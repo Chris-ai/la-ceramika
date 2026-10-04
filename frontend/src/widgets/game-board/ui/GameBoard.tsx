@@ -4,6 +4,7 @@ import { useEffect, useEffectEvent, useState } from 'react'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { Icon } from '@iconify/react/offline'
 import fireIcon from '@iconify-icons/heroicons/fire-solid'
+import resurrectionIcon from '@iconify-icons/game-icons/angel-wings'
 import turnArrowIcon from '@iconify-icons/heroicons/arrow-right'
 import type { ChallengeType } from '@/entities/challenge'
 import type { Game, Hex } from '@/entities/game'
@@ -149,7 +150,6 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
 
   return (
     <main className="board-screen">
-      <PurgatoryPanel key={map.currentTeamId} game={map} onGameUpdated={onGameUpdated} />
       <HexMap
         game={map}
         activeTeamIndex={activeTeamIndex}
@@ -206,20 +206,37 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
           <ActionWheel count={actionCount} />
         </div>
       </div>
-      <button
-        type="button"
-        className={`turn-end ${isTurnChanging ? 'turn-end--changing' : ''}`}
-        style={{ backgroundColor: activeTeam.color }}
-        disabled={
-          isTurnChanging ||
-          map.status === 'FINISHED' ||
-          (activeTeam.status === 'PURGATORY' && !map.baseMoveUsed)
-        }
-        onClick={requestNextTurn}
-        aria-label={`Zakończ turę drużyny ${teamLabel(activeTeam)}`}
-      >
-        <Icon icon={turnArrowIcon} aria-hidden="true" />
-      </button>
+      <PurgatoryPanel key={map.currentTeamId} game={map} onGameUpdated={onGameUpdated}>
+        {({ canAttempt, busy, begin }) => (
+          <button
+            type="button"
+            className={`turn-end ${isTurnChanging ? 'turn-end--changing' : ''} ${canAttempt ? 'turn-end--resurrection' : ''}`}
+            style={{ backgroundColor: activeTeam.color }}
+            disabled={
+              isTurnChanging || busy || map.status === 'FINISHED' || !!challengeTarget || !!activeDuel
+            }
+            onClick={canAttempt ? begin : requestNextTurn}
+            title={
+              canAttempt
+                ? map.resurrectionPending
+                  ? 'Wznów próbę powrotu'
+                  : 'Próba powrotu'
+                : 'Następna drużyna'
+            }
+            aria-label={
+              canAttempt
+                ? `Próba powrotu: ${teamLabel(activeTeam)}`
+                : `Zakończ turę drużyny ${teamLabel(activeTeam)}`
+            }
+          >
+            <Icon
+              key={canAttempt ? 'resurrection' : 'next'}
+              icon={canAttempt ? resurrectionIcon : turnArrowIcon}
+              aria-hidden="true"
+            />
+          </button>
+        )}
+      </PurgatoryPanel>
       {turnEndModal && (
         <div className="turn-modal-overlay" role="presentation">
           <section
