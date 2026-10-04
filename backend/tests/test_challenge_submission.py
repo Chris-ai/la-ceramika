@@ -153,3 +153,23 @@ class SubmissionTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             next_player(self.session, self.game.id, self.teams[0].id)
         self.assertEqual(self.game.current_team_id, self.teams[1].id)
+
+    def test_created_duel_can_be_recovered_and_started_after_lost_response(self):
+        from app.services.duel_service import current_duel, start_duel
+        category = Category(name=f"Recovery {self.game.id}")
+        self.session.add(category)
+        self.session.flush()
+        self.session.add(DuelCategory(category_id=category.id, type="LIST"))
+        duel = Duel(game_id=self.game.id, target_hex_id=self.enemy.id, attacker_team_id=self.teams[0].id,
+                    defender_team_id=self.teams[1].id, category_id=category.id, type="LIST", status="INTRO")
+        self.session.add(duel)
+        self.session.commit()
+        duel_id = duel.id
+        self.session.expire_all()
+        self.assertEqual(current_duel(self.session, self.game.id).id, duel_id)
+        self.assertEqual(create_duel(self.session, self.game.id, self.enemy.id).id, duel_id)
+        start_duel(self.session, self.game.id, duel_id)
+        self.session.expire_all()
+        self.assertEqual(current_duel(self.session, self.game.id).status, "ACTIVE")
+        self.assertEqual(start_duel(self.session, self.game.id, duel_id).id, duel_id)
+        self.assertFalse(self.game.base_move_used)

@@ -38,6 +38,13 @@ export function DuelHost({
   return (
     <div className="duel-host-screen">
       <DuelView snapshot={snapshot} />
+      <button
+        className="duel-reopen-host"
+        type="button"
+        onClick={() => window.open(`/game/${initialDuel.gameId}/presentation`, 'la-ceramica-presentation')}
+      >
+        Otwórz panel hosta
+      </button>
       {error && (
         <div className="duel-error" role="alert">
           {error}

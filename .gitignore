@@ -82,3 +82,7 @@ desktop.ini
 *.temp
 *.swp
 *.swo
+
+
+AGENTS.md
+docs/*

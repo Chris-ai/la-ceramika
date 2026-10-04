@@ -24,16 +24,23 @@ export type DuelTransport = {
 }
 
 export function createDuelTransport(gameId: string): DuelTransport {
-  const channel = new BroadcastChannel(`la-ceramica.duel.${gameId}`)
+  // React may clean up and restart effects with the same transport (StrictMode).
+  // Create the channel on subscription/use, and reopen after cleanup.
+  let channel: BroadcastChannel | null = null
+  const connection = () => (channel ??= new BroadcastChannel(`la-ceramica.duel.${gameId}`))
   return {
-    publish: (snapshot) => channel.postMessage({ kind: 'SNAPSHOT', snapshot } satisfies Message),
-    requestSnapshot: () => channel.postMessage({ kind: 'REQUEST_SNAPSHOT' } satisfies Message),
-    command: (command) => channel.postMessage({ kind: 'COMMAND', command } satisfies Message),
+    publish: (snapshot) => connection().postMessage({ kind: 'SNAPSHOT', snapshot } satisfies Message),
+    requestSnapshot: () => connection().postMessage({ kind: 'REQUEST_SNAPSHOT' } satisfies Message),
+    command: (command) => connection().postMessage({ kind: 'COMMAND', command } satisfies Message),
     subscribe(listener) {
+      const subscribedChannel = connection()
       const handler = (event: MessageEvent<Message>) => listener(event.data)
-      channel.addEventListener('message', handler)
-      return () => channel.removeEventListener('message', handler)
+      subscribedChannel.addEventListener('message', handler)
+      return () => subscribedChannel.removeEventListener('message', handler)
     },
-    close: () => channel.close(),
+    close: () => {
+      channel?.close()
+      channel = null
+    },
   }
 }

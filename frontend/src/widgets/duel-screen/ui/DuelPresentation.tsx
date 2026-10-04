@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { createDuelTransport, getCurrentDuel, type DuelSnapshot } from '@/features/duel-control'
+import { createDuelTransport, getCurrentDuel, DUEL_TIME_MS, type DuelSnapshot } from '@/features/duel-control'
 import { Button } from '@/shared/ui/button'
 import { DuelView } from './DuelView'
 import './DuelScreen.css'
@@ -7,8 +7,8 @@ import './DuelScreen.css'
 const initial: DuelSnapshot = {
   duel: null,
   phase: 'IDLE',
-  attackerMs: 30000,
-  defenderMs: 30000,
+  attackerMs: DUEL_TIME_MS,
+  defenderMs: DUEL_TIME_MS,
   activeTeamId: null,
   winnerTeamId: null,
 }
@@ -17,21 +17,29 @@ export function DuelPresentation({ gameId }: { gameId: string }) {
   const [snapshot, setSnapshot] = useState(initial)
   const transport = useMemo(() => createDuelTransport(gameId), [gameId])
   useEffect(() => {
+    let cancelled = false
+    let receivedSnapshot = false
     const unsubscribe = transport.subscribe((message) => {
       if (message.kind !== 'SNAPSHOT') return
+      receivedSnapshot = true
       setSnapshot(message.snapshot)
     })
-    void getCurrentDuel(gameId).then((duel) => {
-      if (duel)
-        setSnapshot({
-          ...initial,
-          duel,
-          phase: duel.status === 'ACTIVE' ? 'ACTIVE' : 'INTRO',
-          activeTeamId: duel.attacker.id,
-        })
-    })
+    void getCurrentDuel(gameId)
+      .then((duel) => {
+        if (duel && !cancelled && !receivedSnapshot)
+          setSnapshot({
+            ...initial,
+            duel,
+            phase: duel.status === 'ACTIVE' ? 'ACTIVE' : 'INTRO',
+            activeTeamId: duel.attacker.id,
+          })
+      })
+      .catch(() => undefined)
     transport.requestSnapshot()
+    const reconnect = window.setInterval(() => transport.requestSnapshot(), 2000)
     return () => {
+      cancelled = true
+      window.clearInterval(reconnect)
       unsubscribe()
       transport.close()
     }

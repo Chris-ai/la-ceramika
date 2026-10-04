@@ -1,7 +1,7 @@
 import { Toast } from '@/shared/ui/toast'
 import { teamLabel } from '@/entities/team'
 import { useEffect, useEffectEvent, useState } from 'react'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { Icon } from '@iconify/react/offline'
 import fireIcon from '@iconify-icons/heroicons/fire-solid'
 import turnArrowIcon from '@iconify-icons/heroicons/arrow-right'
@@ -38,7 +38,20 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
   const [isTurnChanging, setIsTurnChanging] = useState(false)
   const [actionError, setActionError] = useState<string | null>(null)
   const [turnEndModal, setTurnEndModal] = useState<'BASE_REQUIRED' | 'BONUS_CONFIRM' | null>(null)
-  const [activeDuel, setActiveDuel] = useState<Duel | null>(null)
+  const [localDuel, setActiveDuel] = useState<Duel | null>(null)
+  const [dismissedDuelId, setDismissedDuelId] = useState<string | null>(null)
+  const duelRecovery = useQuery({
+    queryKey: ['duel-recovery', map.gameId],
+    queryFn: () => getCurrentDuel(map.gameId!),
+    enabled: !!map.gameId && map.status === 'ACTIVE',
+    retry: 2,
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+    staleTime: 0,
+    gcTime: 0,
+  })
+  const activeDuel =
+    localDuel ?? (duelRecovery.data?.id !== dismissedDuelId ? (duelRecovery.data ?? null) : null)
   const restorePending = useEffectEvent((pending: { hexId: string; challenge: ChallengeData } | null) => {
     const hex = pending && map.hexes.find((item) => item.id === pending.hexId)
     if (pending && hex)
@@ -90,12 +103,6 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
         if (!cancelled)
           setActionError(error instanceof Error ? error.message : 'Nie udało się wznowić wyzwania.')
       })
-    void getCurrentDuel(map.gameId)
-      .then((duel) => {
-        if (!cancelled && duel) setActiveDuel(duel)
-      })
-      .catch(() => undefined)
-
     return () => {
       cancelled = true
     }
@@ -245,6 +252,18 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
           </section>
         </div>
       )}
+      {duelRecovery.isError && !activeDuel && (
+        <div className="board-action-error" role="alert">
+          Nie udało się sprawdzić trwającego pojedynku.
+          <button
+            type="button"
+            disabled={duelRecovery.isFetching}
+            onClick={() => void duelRecovery.refetch()}
+          >
+            Ponów wczytywanie pojedynku
+          </button>
+        </div>
+      )}
       {actionError && (
         <div className="board-action-error" role="alert">
           {actionError}
@@ -297,6 +316,7 @@ export function GameBoard({ map, onGameUpdated }: { map: Game; onGameUpdated: (g
           initialDuel={activeDuel}
           onGameUpdated={onGameUpdated}
           onReturn={() => {
+            setDismissedDuelId(activeDuel.id)
             setActiveDuel(null)
             setHexActionTarget(null)
             setSelectedHex(null)

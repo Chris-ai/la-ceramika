@@ -124,6 +124,8 @@ def create_duel(session: Session, game_id: UUID, target_hex_id: UUID) -> Duel:
         raise HTTPException(409, "Heks nie sąsiaduje z terytorium aktywnej drużyny.")
     active = current_duel(session, game.id)
     if active is not None:
+        if active.target_hex_id == target_hex_id:
+            return active
         raise HTTPException(409, "W tej grze trwa już pojedynek.")
     list_categories = list(session.execute(
         select(DuelCategory, Category).join(Category, Category.id == DuelCategory.category_id)
