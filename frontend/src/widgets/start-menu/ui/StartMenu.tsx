@@ -59,10 +59,6 @@ export function StartMenu() {
           </span>
         </Button>
       )}
-      <Link className="button button--default start-menu__item" to="/rules">
-        <span>ZASADY</span>
-        <span aria-hidden="true">?</span>
-      </Link>
       {active.isPending && (
         <span className="start-menu__status" role="status">
           Sprawdzanie aktywnej gry…

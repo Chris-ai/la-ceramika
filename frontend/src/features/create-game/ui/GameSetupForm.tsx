@@ -89,13 +89,7 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
                 <div className="settings-column">
                   <fieldset className="form-section">
                     <legend>Plansza</legend>
-                    <label className="session-option">
-                      <input type="checkbox" {...register('continueSession')} /> Kolejna partia tego samego
-                      wieczoru
-                    </label>
-                    <small className="session-option__hint">
-                      Zaznacz, aby nie powtarzać już pokazanych pytań. Odznacz, aby rozpocząć nowy wieczór.
-                    </small>
+
                     <div className="map-size-options" role="group" aria-label="Liczba heksów na planszy">
                       {(['S', 'M', 'XL', 'XXL'] as const).map((preset) => (
                         <button
@@ -117,7 +111,7 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
 
                   <fieldset className="form-section">
                     <legend>Ustawienia rozgrywki</legend>
-                    <label className="field streak-field">
+                    <label className="field">
                       <span>Seria do bonusowego ruchu</span>
                       <input
                         type="number"
@@ -149,6 +143,9 @@ export function GameSetupForm({ onSubmit, onCancel }: GameSetupFormProps) {
                           />
                         )}
                       />
+                    </label>
+                    <label className="session-option field streak-field">
+                      <input type="checkbox" {...register('continueSession')} /> Nowy zestaw pytań
                     </label>
                   </fieldset>
                 </div>
