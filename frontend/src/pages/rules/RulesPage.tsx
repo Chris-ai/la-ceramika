@@ -49,7 +49,8 @@ export function RulesPage() {
       <ul>
         <li>
           <strong>QUIZ:</strong> wybierz jedną z czterech odpowiedzi albo uporządkuj cztery elementy. Masz 30
-          sekund i jedno zatwierdzenie. Brak zatwierdzenia przed końcem czasu oznacza porażkę.
+          sekund. Koniec czasu automatycznie zatwierdza wybraną odpowiedź lub ułożoną kolejność. Przycisk
+          „Zatwierdź” pozwala zakończyć wcześniej. Brak wyboru lub niepełna kolejność oznacza porażkę.
         </li>
         <li>
           <strong>RUSH:</strong> wpisz wymaganą liczbę odpowiedzi przed końcem czasu wskazanego w zadaniu.
