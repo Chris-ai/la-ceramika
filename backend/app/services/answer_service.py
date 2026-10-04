@@ -11,8 +11,6 @@ def normalize_rush_answer(value: str) -> str:
 
 
 def evaluate_answer(kind: str, payload: dict, answer: dict) -> bool:
-    if answer.get("timedOut") and kind == "QUIZ":
-        return False
     if kind == "QUIZ":
         if payload["type"] == "ABCD":
             return any(o["text"] == answer.get("choice") and o["is_correct"] for o in payload["options"])

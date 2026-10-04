@@ -77,8 +77,13 @@ export function QuizGame({
           window.setTimeout(() => {
             if (resolvedRef.current) return
             resolvedRef.current = true
-            setResult('NO_ANSWER')
-            onResolved('LOSS', { timedOut: true })
+            const next = evaluateAnswer(question, answerRef.current, orderRef.current)
+            setResult(next)
+            onResolved(next === 'WIN' ? 'WIN' : 'LOSS', {
+              choice: answerRef.current,
+              answers: [...orderRef.current],
+              timedOut: true,
+            })
           }, 0)
           return 0
         }
@@ -117,7 +122,7 @@ export function QuizGame({
               <button
                 type="button"
                 key={option.text}
-                disabled={result !== null}
+                disabled={result !== null || timeLeft <= 0}
                 style={{ animationDelay: `${index * 80}ms` }}
                 className={`quiz-answer ${answer === option.text ? 'quiz-answer--selected' : ''} ${
                   result
@@ -148,7 +153,7 @@ export function QuizGame({
                   <button
                     type="button"
                     key={option.text}
-                    disabled={result !== null || position >= 0}
+                    disabled={result !== null || timeLeft <= 0 || position >= 0}
                     style={{ animationDelay: `${index * 80}ms` }}
                     className={`quiz-order-choice ${position >= 0 ? 'quiz-order-choice--used' : ''}`}
                     onClick={() =>
@@ -173,7 +178,7 @@ export function QuizGame({
                   <button
                     type="button"
                     key={index}
-                    disabled={!text || result !== null}
+                    disabled={!text || result !== null || timeLeft <= 0}
                     className={`quiz-order-slot ${text ? 'quiz-order-slot--filled' : ''} ${
                       result && text ? (isCorrect ? 'quiz-answer--correct' : 'quiz-answer--wrong') : ''
                     }`}

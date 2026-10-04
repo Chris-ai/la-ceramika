@@ -9,17 +9,21 @@ from app.services.answer_service import evaluate_answer, normalize_rush_answer
 
 
 class AnswersTest(unittest.TestCase):
-    def test_quiz_timeout_loses_even_with_correct_selection(self):
+    def test_quiz_timeout_submits_current_selection(self):
         quiz = {"type": "ABCD", "options": [{"text": "A", "is_correct": True}]}
         self.assertTrue(evaluate_answer("QUIZ", quiz, {"choice": "A"}))
-        self.assertFalse(evaluate_answer("QUIZ", quiz, {"choice": "A", "timedOut": True}))
+        self.assertTrue(evaluate_answer("QUIZ", quiz, {"choice": "A", "timedOut": True}))
+        self.assertFalse(evaluate_answer("QUIZ", quiz, {"choice": "B", "timedOut": True}))
+        self.assertFalse(evaluate_answer("QUIZ", quiz, {"timedOut": True}))
         self.assertFalse(evaluate_answer("QUIZ", quiz, {}))
 
     def test_order_requires_exact_complete_order(self):
         quiz = {"type": "ORDER", "options": [{"text": str(i), "correct_position": i} for i in (4, 2, 1, 3)]}
         self.assertTrue(evaluate_answer("QUIZ", quiz, {"answers": ["1", "2", "3", "4"]}))
+        self.assertTrue(evaluate_answer("QUIZ", quiz, {"answers": ["1", "2", "3", "4"], "timedOut": True}))
         for answers in (["1", "2"], ["1", "1", "3", "4"], ["2", "1", "3", "4"]):
             self.assertFalse(evaluate_answer("QUIZ", quiz, {"answers": answers}))
+            self.assertFalse(evaluate_answer("QUIZ", quiz, {"answers": answers, "timedOut": True}))
 
     def test_all_in_validates_capital_and_threshold(self):
         task = {"options": [{"is_correct": i == 0} for i in range(4)]}
