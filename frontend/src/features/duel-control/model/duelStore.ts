@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { DUEL_TIME_MS, DUEL_PASS_PENALTY_MS } from './duelConfig.ts'
 import type { Duel } from '../api/duelApi'
 import type { DuelSnapshot } from './duelChannel'
 
@@ -16,8 +17,8 @@ type DuelState = DuelSnapshot & {
 const empty: DuelSnapshot = {
   duel: null,
   phase: 'IDLE',
-  attackerMs: 30000,
-  defenderMs: 30000,
+  attackerMs: DUEL_TIME_MS,
+  defenderMs: DUEL_TIME_MS,
   activeTeamId: null,
   winnerTeamId: null,
 }
@@ -44,8 +45,8 @@ export const useDuelStore = create<DuelState>((set) => ({
   pass: () =>
     set((state) =>
       state.activeTeamId === state.duel?.attacker.id
-        ? { attackerMs: Math.max(0, state.attackerMs - 3000) }
-        : { defenderMs: Math.max(0, state.defenderMs - 3000) },
+        ? { attackerMs: Math.max(0, state.attackerMs - DUEL_PASS_PENALTY_MS) }
+        : { defenderMs: Math.max(0, state.defenderMs - DUEL_PASS_PENALTY_MS) },
     ),
   finish: (winnerTeamId) => set({ phase: 'RESULT', winnerTeamId }),
   reset: () => set(empty),
